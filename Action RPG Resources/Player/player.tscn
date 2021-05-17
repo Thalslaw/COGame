@@ -675,8 +675,8 @@ collision_layer = 2147483652
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -6.40901 )
 shape = SubResource( 47 )
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
 [editable path="Sword/Sword"]
-
 [editable path="Hurtbox"]

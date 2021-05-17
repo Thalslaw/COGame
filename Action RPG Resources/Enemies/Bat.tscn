@@ -88,11 +88,10 @@ collision_mask = 4
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -15 )
 shape = SubResource( 10 )
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="no_hp" from="Stats" to="." method="_on_Stats_no_hp"]
 
 [editable path="Hurtbox"]
-
 [editable path="HuntZone"]
-
 [editable path="Hitbox"]
