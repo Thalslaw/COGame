@@ -25,5 +25,5 @@ func generate_Paths():
 	var map = walker.walk(DISTANCE)
 	walker.queue_free()
 	for location in map:
-		pathTileMap.set_cellv(location, -1)
+		pathTileMap.set_cellv(location, 0)
 	pathTileMap.update_bitmask_region(borders.position, borders.end)
