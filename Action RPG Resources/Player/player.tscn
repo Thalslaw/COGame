@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Action RPG Resources/Player/player.gd" type="Script" id=1]
 [ext_resource path="res://Action RPG Resources/Player/Player.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Action RPG Resources/Player/SwordHitbox.gd" type="Script" id=4]
 [ext_resource path="res://Action RPG Resources/HitandHurt boxes/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=6]
+[ext_resource path="res://Action RPG Resources/Player/dotdotdot.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.8385
@@ -619,6 +620,11 @@ position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 60
 frame = 32
+
+[node name="dotdotdot" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -24 )
+texture = ExtResource( 7 )
 
 [node name="Shadow" type="Sprite" parent="."]
 z_index = -1
