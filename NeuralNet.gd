@@ -3,6 +3,8 @@ extends Node2D
 # this is the big boy of the layers, neurons and dendrites.
 # expect some wacky shit
 
+const LAYERBLUEPRINT = preload("res://Layer.tscn")
+
 ##list of layers 
 
 ##learning rate as a float
@@ -10,6 +12,10 @@ extends Node2D
 ##layer count 
 
 func _ready():
+	var la = LAYERBLUEPRINT.instance()
+	self.add_child(la)
+	#print("Made a Layer")
+	
 	##take in the learning rate
 	##take in the list of layers
 	##if the list of layers = 1, just tell it to fuck off
