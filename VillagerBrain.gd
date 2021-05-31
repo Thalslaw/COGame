@@ -1,4 +1,22 @@
-extends Node2D
+extends KinematicBody2D #kinematic body so it can kinetic!
+
+#export vars for movement. allows fine tuning of the character's movement.
+export var 	ACCELERATION = 500
+export var 	MAX_SPEED = 80
+export var 	ROLL_SPEED = 125
+export var 	FRICTION = 500
+
+#vector variables for movement.
+var velocity = Vector2.ZERO
+var roll_vector = Vector2.DOWN
+
+#gathering objects so that animations can be linked to movement. some may be missing adding those later
+onready var animationPlayer = $AnimationPlayer
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
+onready var swordHitbox = $Sword/Sword
+onready var playerhurt = $Hurtbox
+onready var speech = $dotdotdot
 
 #Self
 const NNBLUEPRINT = preload("res://NeuralNet.tscn")
@@ -82,20 +100,56 @@ func idle_state(delta):
 	pass	
 
 func move_state(delta):
-	#do some moving, Low level.
-	pass
+	#replace inputs with neural net to get movement. 
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized()
 	
-func roll_state(delta):
-	#do some rolling, Low level.
-	pass
+	if input_vector != Vector2.ZERO:
+		speech.visible = false
+		roll_vector = input_vector
+		swordHitbox.knockback_vector = input_vector
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Move/blend_position", input_vector)
+		animationTree.set("parameters/Attack/blend_position", input_vector)
+		animationTree.set("parameters/Roll/blend_position", input_vector)
+		animationState.travel("Move")
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+	else:
+		animationState.travel("Idle")
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
-func attack_state(delta):
-	#do some hitty action. Low level
-	pass
+	move()
 	
-func talk_state(delta):
-	#do some talky chattah. Low level.
-	pass
+	#replace iInput.x to whatever mechanism to trigger the appropiate actions
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
+		speech.visible = false
+		
+	if Input.is_action_just_pressed("roll"):
+		state = ROLL
+		speech.visible = false
+		
+	if Input.is_action_just_pressed("chat"):
+		state = TALK
+		speech.visible = false
+	
+	
+func roll_state(delta): #dey be rollin' dey hatin'. no Iframes though
+	velocity = roll_vector * ROLL_SPEED
+	animationState.travel("Roll")
+	move()
+	
+func attack_state(delta): #currently non lethal and non-hitty. hitboxes man.
+	velocity = Vector2.ZERO
+	animationState.travel("Attack")
+
+func talk_state(delta): #my junky talk command thingy...
+	velocity = Vector2.ZERO
+	speech.visible = true
+	talk_end()
+
 
 func _physics_process(delta):
 	
@@ -107,8 +161,8 @@ func _physics_process(delta):
 			#idle_state(delta)
 			pass
 		MOVE:
-			#move_state(delta)
-			pass
+			move_state(delta)
+			
 		ROLL:
 			#roll_state(delta)
 			pass
@@ -119,4 +173,15 @@ func _physics_process(delta):
 			#talk_state(delta)
 			pass
 	
+func move(): #tells physics to work i think?
+	velocity = move_and_slide(velocity)
 	
+#mandatory to reset the character so they can move again.
+func roll_animation_finished():
+	state = MOVE
+
+func attack_animation_finished():
+	state = MOVE
+	
+func talk_end():
+	state = MOVE

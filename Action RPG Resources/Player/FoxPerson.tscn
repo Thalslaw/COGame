@@ -1,9 +1,13 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Action RPG Resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Action RPG Resources/HitandHurt boxes/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=3]
 [ext_resource path="res://VillagerBrain.gd" type="Script" id=4]
+
+[sub_resource type="StreamTexture" id=48]
+flags = 4
+load_path = "res://.import/dotdotdot.png-1ab2cc0eed95e054c9de8c2cc684ba35.stex"
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.57217
@@ -28,6 +32,44 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 36, 37, 38, 39 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Attack Left"
@@ -43,6 +85,44 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 32, 33, 34, 35 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -60,6 +140,44 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 24, 25, 26, 27 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "Attack Up"
@@ -75,6 +193,44 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 28, 29, 30, 31 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -160,6 +316,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 55, 56, 57, 58, 59 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "Roll Left"
@@ -175,6 +345,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 50, 51, 52, 53, 54 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -192,6 +376,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 40, 41, 42, 43, 44 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "Roll Up"
@@ -207,6 +405,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 45, 46, 47, 48, 49 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "roll_animation_finished"
+} ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -396,6 +608,10 @@ graph_offset = Vector2( 0, 54.216 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=46]
 
+[sub_resource type="CapsuleShape2D" id=47]
+radius = 16.0
+height = 23.5718
+
 [node name="FoxPerson" type="KinematicBody2D"]
 script = ExtResource( 4 )
 
@@ -403,7 +619,13 @@ script = ExtResource( 4 )
 position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 54
+frame = 49
+
+[node name="dotdotdot" type="Sprite" parent="."]
+visible = false
+position = Vector2( 3.57628e-07, -18.875 )
+scale = Vector2( 1, 1.13889 )
+texture = SubResource( 48 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]
 position = Vector2( 0, 3.41897 )
@@ -443,9 +665,20 @@ shape = SubResource( 2 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 45 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 46 )
 parameters/Attack/blend_position = Vector2( -0.00313479, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Move/blend_position = Vector2( -0.00156742, 0 )
 parameters/Roll/blend_position = Vector2( -0.246082, -0.12931 )
+
+[node name="Sword" type="Position2D" parent="."]
+position = Vector2( 0, -4 )
+rotation = 1.5708
+
+[node name="Sword" type="Area2D" parent="Sword"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/Sword"]
+position = Vector2( -16, 0 )
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 47 )
+disabled = true

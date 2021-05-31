@@ -6,7 +6,7 @@
 [ext_resource path="res://Action RPG Resources/Player/SwordHitbox.gd" type="Script" id=4]
 [ext_resource path="res://Action RPG Resources/HitandHurt boxes/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=6]
-[ext_resource path="res://Action RPG Resources/Player/dotdotdot.png" type="Texture" id=7]
+[ext_resource path="res://Action RPG Resources/Music and Sounds/dotdotdot.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.8385
@@ -619,7 +619,7 @@ script = ExtResource( 1 )
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 36
+frame = 59
 
 [node name="dotdotdot" type="Sprite" parent="."]
 visible = false
@@ -664,7 +664,6 @@ parameters/Roll/blend_position = Vector2( 0, 1 )
 
 [node name="Sword" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
-rotation = 1.5708
 
 [node name="Sword" parent="Sword" instance=ExtResource( 3 )]
 position = Vector2( 15, 0 )
