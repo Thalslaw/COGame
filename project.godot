@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Walker",
 "language": "GDScript",
-"path": "res://Walker.gd"
+"path": "res://World/Walker.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",
@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="COGame"
-run/main_scene="res://ConScene.tscn"
+run/main_scene="res://World/ConScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -42,7 +42,7 @@ window/stretch/mode="2d"
 
 [gdnative]
 
-singletons=[ "res://git_api (2).gdnlib", "res://git_api.gdnlib", "res://godot-git-plugin-v1.2.1-x11/git_api.gdnlib" ]
+singletons=[ "res://Git/git_api (2).gdnlib", "res://Git/git_api.gdnlib", "res://godot-git-plugin-v1.2.1-x11/git_api.gdnlib" ]
 
 [input]
 

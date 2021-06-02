@@ -19,7 +19,7 @@ onready var playerhurt = $Hurtbox
 onready var speech = $dotdotdot
 
 #Self
-const NNBLUEPRINT = preload("res://NeuralNet.tscn")
+const NNBLUEPRINT = preload("res://Villager/NeuralNet.tscn")
 
 #Find Satisfiers.GD and make sure that they exist for this entity.
 

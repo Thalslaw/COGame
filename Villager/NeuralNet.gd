@@ -3,7 +3,7 @@ extends Node2D
 # this is the big boy of the layers, neurons and dendrites.
 # expect some wacky shit
 
-const LAYERBLUEPRINT = preload("res://Layer.tscn")
+const LAYERBLUEPRINT = preload("res://World/Layer.tscn")
 
 ##list of layers 
 

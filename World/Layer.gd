@@ -2,8 +2,8 @@ extends Node2D
 
 const LAYER_COUNT = 10
 
-const NEURONBLUEPRINT = preload("res://Neuron.tscn")
-const DENDRITEBLUEPRINT = preload("res://Dendrite.tscn")
+const NEURONBLUEPRINT = preload("res://Villager/Neuron.tscn")
+const DENDRITEBLUEPRINT = preload("res://Villager/Dendrite.tscn")
 
 #needs a list of neurons maybe?
 

@@ -4,12 +4,13 @@
 [ext_resource path="res://Action RPG Resources/World/GrassBackground.png" type="Texture" id=2]
 [ext_resource path="res://Action RPG Resources/World/CliffTileset.png" type="Texture" id=3]
 [ext_resource path="res://Action RPG Resources/UI/HealthBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World.gd" type="Script" id=5]
+[ext_resource path="res://World/World.gd" type="Script" id=5]
 [ext_resource path="res://Action RPG Resources/Enemies/Bat.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Action RPG Resources/Player/player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Action RPG Resources/World/Bush.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Action RPG Resources/World/Tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Action RPG Resources/World/Grass.tscn" type="PackedScene" id=10]
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
