@@ -3,7 +3,7 @@ class_name Walker
 
 const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const CHANCE_DIRECTION_CHANGE = 0.15
-const MAX_STEPS_WITHOUT_DIRECTION_CHANGE = 4
+const MAX_STEPS_WITHOUT_DIRECTION_CHANGE = 6
 
 var position = Vector2.ZERO
 var direction = Vector2.RIGHT

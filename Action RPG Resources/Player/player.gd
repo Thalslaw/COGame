@@ -49,6 +49,8 @@ func move_state(delta):
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
 	
+	##move collision box in front of player here maybe? 
+	
 	if input_vector != Vector2.ZERO:
 		speech.visible = false
 		roll_vector = input_vector
