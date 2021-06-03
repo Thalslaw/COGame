@@ -1,4 +1,5 @@
-extends Node2D
+extends Node
+class_name Satisfiers
 
 export var max_agentic_satisfaction = 1.0 setget set_max_agentic_satisfaction
 var agentic_satisfaction = max_agentic_satisfaction setget set_agentic_satisfaction
@@ -46,12 +47,18 @@ func set_egoic_satisfaction(value):
 	egoic_satisfaction = value
 	emit_signal("EGsat_modified",egoic_satisfaction)
 
-
-
-
-
-func _ready():
+func _init():
 	#these are set to 50% so that the agent always initialises with things it 'could' want to do.
 	self.agentic_satisfaction = (max_agentic_satisfaction/2)
 	self.arousal_satisfaction = (max_arousal_satisfaction/2)
 	self.egoic_satisfaction = (max_egoic_satisfaction/2)
+	
+func getAg():
+	return agentic_satisfaction
+	
+func getAr():
+	return arousal_satisfaction
+	
+func getEg():
+	#here, have an eg. :P 
+	return egoic_satisfaction

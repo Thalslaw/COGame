@@ -18,19 +18,12 @@ onready var swordHitbox = $Sword/Sword
 onready var playerhurt = $Hurtbox
 onready var speech = $dotdotdot
 
-#Self
-const NNBLUEPRINT = preload("res://Villager/NeuralNet.tscn")
+#Villagers need brains. This is not optional.
+var brain = NeuralNet.new(5)#init args: layercount
+var urges = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer.
 
-#Find Satisfiers.GD and make sure that they exist for this entity.
 
-#The approach is called PPO. Proximal Policy Optimisation
-#low level acted first til done,
-#if out of low level, find if mid level needs exist
-# mid level acted my making low level things.
-#if mid level needs do not exist,
-#pick a drive to do to make dah drama happan
-
-#Finding its policy is kind'a nested within itself. 
+var nextThingToDo = []
 
 
 #High level abstract goals that correspond to life fulfilling goals
@@ -44,14 +37,11 @@ var egoers = [2,4,5,6,7,11,12,13,14,15,17]
 
 #Mid level intentions analogous to basic instincts that are necessary to survive.
 #Creature existing in just this state is stressed and in panic ohshitgunnadie mode
-enum{
-	#set of directives they are trying to calculate. Short term needs over abstract goals.
-	haveSex,
-	goForAWalk,
-	eatSomething,
-	doAThing
-	
-}
+#set of directives they are trying to calculate. Short term needs over abstract goals.
+#haveSex,
+#goForAWalk,
+#eatSomething,
+#doAThing
 
 #Low level physical layer actions that the entity is doing or about to do
 enum {
@@ -73,31 +63,37 @@ var state = IDLE
 #get base egoic satisfaction
 
 func _ready():
-	#Make A Neural Net
-	var nn = NNBLUEPRINT.instance()
-	self.add_child(nn)
-	#print("made a neural net")
+	pass
 	
 func think_state(delta):
-	#this state should be reached if the entity has finished its current low level task
+	#this state should be reached if the entity has finished its list of tasks. 
+	#this could also take a while so getting the vars for this loop is sensible.
 	
-	#the plan is to check to see if there is a next low level task and potentially set self up doing it immediately.
-	#if it gets too long or returns no list of low level tasks it can immediately do, look to mid level instincts.
-	#The mid level also contains improvisations and prompted things it does. A farmer, hungry while working, eats produce.
-	#each mid level instinct needs to be defined and described how they do it here by breaking them up into low level tasks,
-	#like 'go over there', or 'have sex with this person', or 'hit dat threat'.
-	#if no mid level needs exist, then it looks inside its neural net for things it wants to do. 
-	#It calls... NeuralNet.Run. 
+	#low level stuff shouldn't be returned just on their own. So:
+	#identify mid level goals and stuff: TODO! 
+	var agenticness = urges.getAg()
+	var arousalness = urges.getAr()
+	var egoicness = urges.getEg()
+	#include addressing low health! That's a fairly primal urge!
+	#include minimum bound for sex drive. We have a genetic algorithm working here!
 	
-	#procedure: 
-	#check environment in small sensor range, its own huntZone
-	#iz hungry? nom bat!
+	#identify high level goals:
+	brain.think()#input a list of satisfiers	
 	
 	pass
 
 func idle_state(delta):
 	#this is a catch-all for if things get weird and they dunno what to do. Low level.
-	pass	
+	print("entered the idle state")
+	if nextThingToDo.count() != 0:
+		#then they really shouldn't be idle, but finishing a task directs to the idle state.
+		#go do the thing
+		pass
+	else:
+		#decide whether to think about what to do. input a pause if people need slowing down or behave like they're on crack
+		state = THINK
+	print("finished the idle state")
+	
 
 func move_state(delta):
 	#replace inputs with neural net to get movement. 
@@ -155,14 +151,11 @@ func _physics_process(delta):
 	
 	match state:
 		THINK:
-			#think_state(delta)
-			pass
+			think_state(delta)
 		IDLE:
-			#idle_state(delta)
-			pass
+			idle_state(delta)
 		MOVE:
 			move_state(delta)
-			
 		ROLL:
 			#roll_state(delta)
 			pass
@@ -178,10 +171,10 @@ func move(): #tells physics to work i think?
 	
 #mandatory to reset the character so they can move again.
 func roll_animation_finished():
-	state = MOVE
+	state = IDLE
 
 func attack_animation_finished():
-	state = MOVE
+	state = IDLE
 	
 func talk_end():
-	state = MOVE
+	state = IDLE

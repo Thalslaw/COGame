@@ -1,45 +1,39 @@
-extends Node2D
+extends Node
+class_name NeuralNet
 
-# this is the big boy of the layers, neurons and dendrites.
-# expect some wacky shit
+const EULER = 2.718 #It's irrational, but deal with it.
 
-const LAYERBLUEPRINT = preload("res://World/Layer.tscn")
+var output = []
+var layerList = []
+var learningRate = 0.0
 
-##list of layers 
+func _init(layerCount):
+	for n in layerCount:
+		if n == 0:
+			#reserved for input neurons
+			var la = Layer.new(3) #the number of input neurons
+			layerList.append(la)
+		elif n == layerCount: #else if. Not "file" backwards, brain... you so silly.
+			#reserved for output neurons
+			var la = Layer.new(17) #the number of output neurons
+			layerList.append(la)
+		else:
+			var la = Layer.new(5) #the number of hidden layer neurons. 
+			layerList.append(la)
 
-##learning rate as a float
-
-##layer count 
-
-func _ready():
-	var la = LAYERBLUEPRINT.instance()
-	self.add_child(la)
-	#print("Made a Layer")
 	
-	##take in the learning rate
-	##take in the list of layers
-	##if the list of layers = 1, just tell it to fuck off
-	##else loop through the layer count
-		#for each layer, make the layers. 
-		#if set up right, they ought to make neurons.
-		#if set up right, they ought to make dendrites.
-	
-	pass
-	
-func sigmoid(value):
-	##yes I know I made a megaline of maths
-	##yes I know euler's number is worse than 2.7182818284... etc,. Deal with it.
-	return (1/(1+(2.718^(0.0-value))))
-	
-func run():
-	##this is where the magic happens
+func think(satisfiers):
 	##logic catching in case the neural net is garbage goes here
+	output.clear()
 	#for loop through l layers
-		#for loop through n neurons
-			#if n is 0, is input neuron. equals input n
-			#else set neuron value to 0 to reset
-			#then... oh boy... 
-			#for np; np < this.layers[l-1].neurons.count; np++
-				#neuron.value = neuron.value + this.layers[l-1].neurons[np].value * neuron.dendrites[np].weight
-			#neuron.value = sigmoid(neuron.value + neuron.bias)	
-	pass
+	for l in layerList:
+		if (l == 0):
+			l.setContents(satisfiers)
+		else:
+			var previousLayer = layerList[l-1].getContents()
+			for neurons in l.getContents():
+				for neuron in neurons:
+					for previousNeuron in previousLayer:
+						neuron.setBias(1/(1+(EULER^(0.0-(neuron.getBias() + previousNeuron.getBias())))))
+		output.append(layerList[layerList.count()].getContents())
+	return output
