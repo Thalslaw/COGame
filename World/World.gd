@@ -45,4 +45,4 @@ func generate_Paths():
 	walker.queue_free()
 	for location in map:
 		pathTileMap.set_cellv(location, 0)
-	pathTileMap.update_bitmask_region(borders.position, borders.end)
+	pathTileMap.update_bitmask_region(bigBorders.position, bigBorders.end)

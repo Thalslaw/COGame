@@ -6,6 +6,8 @@ const EULER = 2.718 #It's irrational, but deal with it.
 var output = []
 var layerList = []
 var learningRate = 0.0
+var i #this is to address a known hole in GDscript
+var j
 
 func _init(layerCount):
 	for n in layerCount:
@@ -25,15 +27,19 @@ func _init(layerCount):
 func think(satisfiers):
 	##logic catching in case the neural net is garbage goes here
 	output.clear()
+	i = 0
+	j = 0
 	#for loop through l layers
 	for l in layerList:
-		if (l == 0):
+		if (l == layerList[0]):
 			l.setContents(satisfiers)
+			i = i + 1
 		else:
-			var previousLayer = layerList[l-1].getContents()
-			for neurons in l.getContents():
-				for neuron in neurons:
-					for previousNeuron in previousLayer:
-						neuron.setBias(1/(1+(EULER^(0.0-(neuron.getBias() + previousNeuron.getBias())))))
-		output.append(layerList[layerList.count()].getContents())
+			var previousLayer = layerList[j].getContents()
+			for neuron in l.getContents():
+				for previousNeuron in previousLayer:
+					neuron.setBias(1/(1+(pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
+			i = i + 1
+			j = j + 1
+	output = layerList[j].getContents()
 	return output

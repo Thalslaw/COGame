@@ -20,8 +20,8 @@ onready var speech = $dotdotdot
 
 #Villagers need brains. This is not optional.
 var brain = NeuralNet.new(5)#init args: layercount
-var urges = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer.
-
+var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer.
+var urges = []
 
 var nextThingToDo = []
 
@@ -69,29 +69,34 @@ func think_state(delta):
 	#this state should be reached if the entity has finished its list of tasks. 
 	#this could also take a while so getting the vars for this loop is sensible.
 	
+	#clear the mind.
+	urges.clear()
+	
 	#low level stuff shouldn't be returned just on their own. So:
 	#identify mid level goals and stuff: TODO! 
-	var agenticness = urges.getAg()
-	var arousalness = urges.getAr()
-	var egoicness = urges.getEg()
+	var agenticness = sates.getAg()
+	urges.append(agenticness)
+	var arousalness = sates.getAr()
+	urges.append(arousalness)
+	var egoicness = sates.getEg()
+	urges.append(egoicness)
 	#include addressing low health! That's a fairly primal urge!
 	#include minimum bound for sex drive. We have a genetic algorithm working here!
 	
 	#identify high level goals:
-	brain.think()#input a list of satisfiers	
+	brain.think(urges)#input a list of satisfiers	
 	
 	pass
 
 func idle_state(delta):
 	#this is a catch-all for if things get weird and they dunno what to do. Low level.
 	print("entered the idle state")
-	if nextThingToDo.count() != 0:
-		#then they really shouldn't be idle, but finishing a task directs to the idle state.
-		#go do the thing
-		pass
-	else:
-		#decide whether to think about what to do. input a pause if people need slowing down or behave like they're on crack
+	if (nextThingToDo.empty()):
+		print("has started to think about what to do.")
 		state = THINK
+	else:
+		print("has stuff to do.")
+		pass
 	print("finished the idle state")
 	
 

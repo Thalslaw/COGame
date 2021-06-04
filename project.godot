@@ -67,7 +67,7 @@ window/stretch/shrink=2.0
 
 [gdnative]
 
-singletons=[ "res://Git/git_api (2).gdnlib", "res://Git/git_api.gdnlib", "res://godot-git-plugin-v1.2.1-x11/git_api.gdnlib" ]
+singletons=[ "res://git_api (2).gdnlib", "res://git_api.gdnlib", "res://godot-git-plugin-v1.2.1-x11/git_api.gdnlib" ]
 
 [input]
 
