@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Action RPG Resources/Player/player.gd" type="Script" id=1]
 [ext_resource path="res://Action RPG Resources/Player/Player.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Action RPG Resources/HitandHurt boxes/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=6]
 [ext_resource path="res://Action RPG Resources/Music and Sounds/dotdotdot.png" type="Texture" id=7]
+[ext_resource path="res://Action RPG Resources/Player/whodat.png" type="Texture" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.8385
@@ -356,7 +357,210 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=14]
-resource_name = "RollDown"
+resource_name = "QuestDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Question:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "QuestLeft"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Question:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "QuestRight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Question:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "QuestUp"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Question:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=18]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:frame")
@@ -385,8 +589,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "RollLeft"
+[sub_resource type="Animation" id=19]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:frame")
@@ -415,8 +618,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "RollRight"
+[sub_resource type="Animation" id=20]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:frame")
@@ -445,8 +647,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=17]
-resource_name = "RollUp"
+[sub_resource type="Animation" id=21]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:frame")
@@ -475,139 +676,399 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="Animation" id=22]
+resource_name = "TalkDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dotdotdot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "TalkLeft"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dotdotdot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "TalkRight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dotdotdot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "TalkUp"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dotdotdot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "AttackLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "AttackDown"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "AttackRight"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "AttackUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=22]
-blend_point_0/node = SubResource( 18 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=30]
+blend_point_0/node = SubResource( 26 )
 blend_point_0/pos = Vector2( -1.1, 0 )
-blend_point_1/node = SubResource( 19 )
+blend_point_1/node = SubResource( 27 )
 blend_point_1/pos = Vector2( 0, 1 )
-blend_point_2/node = SubResource( 20 )
+blend_point_2/node = SubResource( 28 )
 blend_point_2/pos = Vector2( 1.1, 0 )
-blend_point_3/node = SubResource( 21 )
+blend_point_3/node = SubResource( 29 )
 blend_point_3/pos = Vector2( 0, -1 )
 min_space = Vector2( -1.1, -1 )
 max_space = Vector2( 1.1, 1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=31]
 animation = "IdleLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "IdleRight"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "IdleUp"
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=34]
 animation = "IdleDown"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=27]
-blend_point_0/node = SubResource( 23 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=35]
+blend_point_0/node = SubResource( 31 )
 blend_point_0/pos = Vector2( -1.1, 0 )
-blend_point_1/node = SubResource( 24 )
+blend_point_1/node = SubResource( 32 )
 blend_point_1/pos = Vector2( 1.1, 0 )
-blend_point_2/node = SubResource( 25 )
+blend_point_2/node = SubResource( 33 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 26 )
+blend_point_3/node = SubResource( 34 )
 blend_point_3/pos = Vector2( 0, 1 )
 min_space = Vector2( -1.1, -1 )
 max_space = Vector2( 1.1, 1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "MoveDown"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "MoveUp"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "MoveLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "MoveRight"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=32]
-blend_point_0/node = SubResource( 28 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=40]
+blend_point_0/node = SubResource( 36 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 29 )
+blend_point_1/node = SubResource( 37 )
 blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 30 )
+blend_point_2/node = SubResource( 38 )
 blend_point_2/pos = Vector2( -1.1, 0 )
-blend_point_3/node = SubResource( 31 )
+blend_point_3/node = SubResource( 39 )
 blend_point_3/pos = Vector2( 1.1, 0 )
 min_space = Vector2( -1.1, -1 )
 max_space = Vector2( 1.1, 1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "QuestLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "QuestDown"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "QuestRight"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "QuestUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=45]
+blend_point_0/node = SubResource( 41 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 42 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 43 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 44 )
+blend_point_3/pos = Vector2( 0, -1 )
+
+[sub_resource type="AnimationNodeAnimation" id=46]
 animation = "RollDown"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=47]
 animation = "RollLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=48]
 animation = "RollUp"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=49]
 animation = "RollRight"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=37]
-blend_point_0/node = SubResource( 33 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=50]
+blend_point_0/node = SubResource( 46 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 34 )
+blend_point_1/node = SubResource( 47 )
 blend_point_1/pos = Vector2( -1.1, 0 )
-blend_point_2/node = SubResource( 35 )
+blend_point_2/node = SubResource( 48 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 36 )
+blend_point_3/node = SubResource( 49 )
 blend_point_3/pos = Vector2( 1.1, 0 )
 min_space = Vector2( -1.1, -1 )
 max_space = Vector2( 1.1, 1 )
 snap = Vector2( 0.01, 0.01 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "TalkLeft"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+[sub_resource type="AnimationNodeAnimation" id=52]
+animation = "TalkDown"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "TalkRight"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+[sub_resource type="AnimationNodeAnimation" id=54]
+animation = "TalkUp"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+[sub_resource type="AnimationNodeBlendSpace2D" id=55]
+blend_point_0/node = SubResource( 51 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 52 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 53 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 54 )
+blend_point_3/pos = Vector2( 0, -1 )
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
 
-[sub_resource type="AnimationNodeStateMachine" id=44]
-states/Attack/node = SubResource( 22 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+
+[sub_resource type="AnimationNodeStateMachine" id=66]
+states/Attack/node = SubResource( 30 )
 states/Attack/position = Vector2( -425.511, 152 )
-states/Idle/node = SubResource( 27 )
+states/Idle/node = SubResource( 35 )
 states/Idle/position = Vector2( -425.511, 70 )
-states/Move/node = SubResource( 32 )
+states/Move/node = SubResource( 40 )
 states/Move/position = Vector2( -226.511, 70 )
-states/Roll/node = SubResource( 37 )
+states/Question/node = SubResource( 45 )
+states/Question/position = Vector2( -658.827, -43.9633 )
+states/Roll/node = SubResource( 50 )
 states/Roll/position = Vector2( -425.511, -43.9633 )
-transitions = [ "Idle", "Move", SubResource( 38 ), "Move", "Idle", SubResource( 39 ), "Idle", "Attack", SubResource( 40 ), "Attack", "Idle", SubResource( 41 ), "Roll", "Idle", SubResource( 42 ), "Idle", "Roll", SubResource( 43 ) ]
+states/Talk/node = SubResource( 55 )
+states/Talk/position = Vector2( -658.827, 70 )
+transitions = [ "Idle", "Move", SubResource( 56 ), "Move", "Idle", SubResource( 57 ), "Idle", "Attack", SubResource( 58 ), "Attack", "Idle", SubResource( 59 ), "Roll", "Idle", SubResource( 60 ), "Idle", "Roll", SubResource( 61 ), "Idle", "Talk", SubResource( 62 ), "Talk", "Idle", SubResource( 63 ), "Idle", "Question", SubResource( 64 ), "Question", "Idle", SubResource( 65 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -970.827, -49.5759 )
+graph_offset = Vector2( -970.827, -63.1675 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=45]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=67]
 
-[sub_resource type="CapsuleShape2D" id=46]
+[sub_resource type="CapsuleShape2D" id=68]
 radius = 8.625
 height = 14.25
 
-[sub_resource type="CapsuleShape2D" id=47]
+[sub_resource type="CapsuleShape2D" id=69]
 radius = 4.28881
 height = 4.49369
 
@@ -619,12 +1080,16 @@ script = ExtResource( 1 )
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 59
+frame = 18
 
 [node name="dotdotdot" type="Sprite" parent="."]
 visible = false
 position = Vector2( 0, -24 )
 texture = ExtResource( 7 )
+
+[node name="Question" type="Sprite" parent="."]
+position = Vector2( 0, -28.5 )
+texture = ExtResource( 8 )
 
 [node name="Shadow" type="Sprite" parent="."]
 z_index = -1
@@ -648,22 +1113,33 @@ anims/MoveDown = SubResource( 10 )
 anims/MoveLeft = SubResource( 11 )
 anims/MoveRight = SubResource( 12 )
 anims/MoveUp = SubResource( 13 )
-anims/RollDown = SubResource( 14 )
-anims/RollLeft = SubResource( 15 )
-anims/RollRight = SubResource( 16 )
-anims/RollUp = SubResource( 17 )
+anims/QuestDown = SubResource( 14 )
+anims/QuestLeft = SubResource( 15 )
+anims/QuestRight = SubResource( 16 )
+anims/QuestUp = SubResource( 17 )
+anims/RollDown = SubResource( 18 )
+anims/RollLeft = SubResource( 19 )
+anims/RollRight = SubResource( 20 )
+anims/RollUp = SubResource( 21 )
+anims/TalkDown = SubResource( 22 )
+anims/TalkLeft = SubResource( 23 )
+anims/TalkRight = SubResource( 24 )
+anims/TalkUp = SubResource( 25 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 44 )
+tree_root = SubResource( 66 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 45 )
+parameters/playback = SubResource( 67 )
 parameters/Attack/blend_position = Vector2( 0, 1 )
-parameters/Idle/blend_position = Vector2( 0, 1 )
+parameters/Idle/blend_position = Vector2( -0.231034, -0.421965 )
 parameters/Move/blend_position = Vector2( 0, 1 )
+parameters/Question/blend_position = Vector2( 0, 0 )
 parameters/Roll/blend_position = Vector2( 0, 1 )
+parameters/Talk/blend_position = Vector2( -0.00156742, 0.00578034 )
 
 [node name="Sword" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
+rotation = 1.5708
 
 [node name="Sword" parent="Sword" instance=ExtResource( 3 )]
 position = Vector2( 15, 0 )
@@ -671,7 +1147,7 @@ collision_mask = 8
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="Sword/Sword" index="0"]
-shape = SubResource( 46 )
+shape = SubResource( 68 )
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
@@ -679,7 +1155,7 @@ collision_layer = 2147483652
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -6.40901 )
-shape = SubResource( 47 )
+shape = SubResource( 69 )
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 
