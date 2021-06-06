@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dotdotdot.png-6a87bd5a253e68ceff2f2c29da964de5.stex"
+path="res://.import/dotdotdot.png-1ab2cc0eed95e054c9de8c2cc684ba35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Action RPG Resources/Music and Sounds/dotdotdot.png"
-dest_files=[ "res://.import/dotdotdot.png-6a87bd5a253e68ceff2f2c29da964de5.stex" ]
+source_file="res://Action RPG Resources/Player/dotdotdot.png"
+dest_files=[ "res://.import/dotdotdot.png-1ab2cc0eed95e054c9de8c2cc684ba35.stex" ]
 
 [params]
 

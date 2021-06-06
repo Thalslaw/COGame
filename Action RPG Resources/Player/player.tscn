@@ -6,7 +6,7 @@
 [ext_resource path="res://Action RPG Resources/Player/SwordHitbox.gd" type="Script" id=4]
 [ext_resource path="res://Action RPG Resources/HitandHurt boxes/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=6]
-[ext_resource path="res://Action RPG Resources/Music and Sounds/dotdotdot.png" type="Texture" id=7]
+[ext_resource path="res://Action RPG Resources/Player/dotdotdot.png" type="Texture" id=7]
 [ext_resource path="res://Action RPG Resources/Player/whodat.png" type="Texture" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -1060,7 +1060,7 @@ states/Talk/node = SubResource( 55 )
 states/Talk/position = Vector2( -658.827, 70 )
 transitions = [ "Idle", "Move", SubResource( 56 ), "Move", "Idle", SubResource( 57 ), "Idle", "Attack", SubResource( 58 ), "Attack", "Idle", SubResource( 59 ), "Roll", "Idle", SubResource( 60 ), "Idle", "Roll", SubResource( 61 ), "Idle", "Talk", SubResource( 62 ), "Talk", "Idle", SubResource( 63 ), "Idle", "Question", SubResource( 64 ), "Question", "Idle", SubResource( 65 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -970.827, -63.1675 )
+graph_offset = Vector2( -970.827, -103.942 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=67]
 
@@ -1080,7 +1080,7 @@ script = ExtResource( 1 )
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 18
+frame = 12
 
 [node name="dotdotdot" type="Sprite" parent="."]
 visible = false
@@ -1088,6 +1088,7 @@ position = Vector2( 0, -24 )
 texture = ExtResource( 7 )
 
 [node name="Question" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -28.5 )
 texture = ExtResource( 8 )
 
@@ -1139,7 +1140,7 @@ parameters/Talk/blend_position = Vector2( -0.00156742, 0.00578034 )
 
 [node name="Sword" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
-rotation = 1.5708
+rotation = 3.14159
 
 [node name="Sword" parent="Sword" instance=ExtResource( 3 )]
 position = Vector2( 15, 0 )
