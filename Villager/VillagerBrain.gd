@@ -35,13 +35,13 @@ var agencers = [1,3,6,8,9,10,11,12,14,15,16,17]
 var arousers = [1,2,3,4,5,7,8,9,10,13,16]
 var egoers = [2,4,5,6,7,11,12,13,14,15,17]
 
+var wantList = []
+var want
+
 #Mid level intentions analogous to basic instincts that are necessary to survive.
 #Creature existing in just this state is stressed and in panic ohshitgunnadie mode
 #set of directives they are trying to calculate. Short term needs over abstract goals.
-#haveSex,
-#goForAWalk,
-#eatSomething,
-#doAThing
+
 
 #Low level physical layer actions that the entity is doing or about to do
 enum {
@@ -84,9 +84,89 @@ func think_state(delta):
 	#include minimum bound for sex drive. We have a genetic algorithm working here!
 	
 	#identify high level goals:
-	brain.think(urges)#input a list of satisfiers	
-	
-	pass
+	wantList = brain.think(urges)#input a list of satisfiers, output a list of vague wants.	
+	want = 0
+	var i = 0
+	for wants in wantList:
+		i = i + 1
+		if (wants.getBias() >= wantList[want].getBias()):
+			want = i
+	#want now corresponds to the drive the agent wants to do.
+	if want == 0:
+		#have a hissy fit and die. Just kidding, just throw confused warnings.
+		print("An entity had a confusing want. This shouldn't ordinarily happen. Test more quietly.")
+	elif want == 1:
+		#exploration, 
+		#Check when you have explored a previously unknown place, provided you encountered some kind of danger there.
+		pass
+	elif want == 2:
+		#fame, 
+		#Check when an NPC who knows your name sees you achieve something noteworthy or remarkable.
+		pass
+	elif want == 3:
+		#fun, 
+		#Choose an activity you enjoy.  Check when you disregard your duties and responsibilities to carry out that activity.
+		pass
+	elif want == 4:
+		#fury, 
+		#Check when an NPC sees you react to a significant setback or insult with anger and/or unusual violence.  No benefit if they see you fight a monster.
+		pass
+	elif want == 5:
+		#jealousy, 
+		#Choose a named person you are jealous of.  Check when they know that you have achieved more than they did. or have done better than them.
+		pass
+	elif want == 6:
+		#justice, 
+		#Choose a significant wrong or harm as your cause.  Check when a significant step is taken towards righting it.
+		pass
+	elif want == 7:
+		#love, 
+		#Choose an NPC (or with player’s permission, a PC) whom you love.  Check when they receive a benefit which is mainly or solely attributable to you.
+		pass
+	elif want == 8:
+		#lust, 
+		#Check the first time you have sexual intercourse with someone.  No benefit the second and subsequent times.
+		pass
+	elif want == 9:
+		#malice,
+		#Check when you watch someone suffer a significant wrong or harm which is mainly or solely attributable to you, provided they did not deserve it.
+		pass
+	elif want == 10:
+		#plunder, 
+		#Check when you obtain something of value from someone or something who was unwilling to let you take it.
+		pass
+	elif want == 11:
+		#pride, 
+		#Check when you publicly condescend to someone of your own social rank or higher.
+		pass
+	elif want == 12:
+		#respect, 
+		#Check when someone of your own social rank or higher publicly thanks you or apologises to you for some significant reason.
+		pass
+	elif want == 13:
+		#revenge, 
+		#Check when you cause or help to cause a significant harm to someone who has significantly harmed you in the past.
+		pass
+	elif want == 14:
+		#solution, 
+		#Check when you solve or help to solve a problem or conundrum, or take a significant step towards the same (e.g. find a clue).
+		pass
+	elif want == 15:
+		#status, 
+		#Check when you receive a significant promotion, or, when an NPC who was formerly of higher status than you, treats you as an equal or superior.
+		pass
+	elif want == 16:
+		#victory, 
+		#Check when you defeat a significant or powerful foe in battle.
+		pass
+	elif want == 17:
+		#wealth
+		#Check when you acquire something valuable or desirable, which significantly exceeds in value the rewards earned by your peers.
+		pass
+	else:
+		#Throw a hissy fit and die
+		print("An entity had a confusing want. This shouldn't ordinarily happen. Test more quietly.")
+		pass
 
 func idle_state(delta):
 	#this is a catch-all for if things get weird and they dunno what to do. Low level.

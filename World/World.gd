@@ -7,6 +7,7 @@ var bigBorders = Rect2(1,1,36,36) ## keep these twice the size of borders, for u
 
 onready var cliffTileMap = $Cliff_Tile
 onready var pathTileMap	= $Path_Tile
+onready var things = $Things
 const grazz = preload("res://Action RPG Resources/World/Grass.tscn")
 
 func _ready():
@@ -25,11 +26,13 @@ func generate_Grazz():
 	var map = walker.walk(DISTANCE)
 	walker.queue_free()
 	for location in map:
-		location = location*16
-		if randf() >= 0.9:
-			var grass = grazz.instance()
-			add_child(grass)
-			grass.global_position = location
+		if (cliffTileMap.get_cellv(location/2) == -1):
+			location = location*16
+			if randf() >= 0.9:
+				var grass = grazz.instance()
+				#find the ysort, add the grass there
+				things.add_child(grass)				
+				grass.global_position = location
 	
 func generate_Cliffs():
 	var walker = Walker.new(Vector2(18,18), borders)
@@ -44,5 +47,6 @@ func generate_Paths():
 	var map = walker.walk(DISTANCE)
 	walker.queue_free()
 	for location in map:
-		pathTileMap.set_cellv(location, 0)
+		if (cliffTileMap.get_cellv(location/2) == -1):
+			pathTileMap.set_cellv(location, 0)
 	pathTileMap.update_bitmask_region(bigBorders.position, bigBorders.end)
