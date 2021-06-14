@@ -263,3 +263,5 @@ func attack_animation_finished():
 	
 func talk_end():
 	state = IDLE
+	
+
