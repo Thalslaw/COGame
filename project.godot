@@ -116,6 +116,17 @@ chat={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="WorldLayer"
+2d_physics/layer_2="PlayerLayer"
+2d_physics/layer_3="PlayerHurtLayer"
+2d_physics/layer_4="EnemyHurtLayer"
+2d_physics/layer_5="EnemyLayer"
+2d_physics/layer_6="InteractableLayer"
+2d_physics/layer_7="VillagerLayer"
+2d_physics/layer_8="VillagerHurtLayer"
+
 [physics]
 
 common/enable_pause_aware_picking=true

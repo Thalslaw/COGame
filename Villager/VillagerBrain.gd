@@ -17,6 +17,7 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $Sword/Sword
 onready var playerhurt = $Hurtbox
 onready var speech = $dotdotdot
+onready var huntZone = $HuntZone
 
 #Villagers need brains. This is not optional.
 var brain = NeuralNet.new(5)#init args: layercount
@@ -51,7 +52,8 @@ enum {
 	MOVE,
 	ROLL,
 	ATTACK
-	TALK
+	TALK,
+	CHASE
 }
 var state = IDLE
 
@@ -176,7 +178,12 @@ func idle_state(delta):
 		state = THINK
 	else:
 		print("has stuff to do.")
-		pass
+		
+		#BUT CLEAR IF SUDDENLY/CONVENIENTLY CAN SATISFY:
+		#Hungry, thirsty?
+		#Horny?
+		#Scared?
+		
 	print("finished the idle state")
 	
 
@@ -249,6 +256,15 @@ func _physics_process(delta):
 			pass
 		TALK:
 			#talk_state(delta)
+			pass
+		CHASE:
+			#var food = Hunting.isTasty
+			#if food != null:
+			#	var chase = (food.global_position - global_position).normalized()
+			#	velocity = velocity.move_toward(chase * MAX_SPEED, ACCELERATION * delta)
+			#	bat.flip_h = velocity.x < 0
+			#else:
+			#	state = IDLE
 			pass
 	
 func move(): #tells physics to work i think?

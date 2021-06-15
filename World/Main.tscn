@@ -11,7 +11,6 @@
 [ext_resource path="res://Action RPG Resources/World/Tree.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Action RPG Resources/World/Grass.tscn" type="PackedScene" id=10]
 
-
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
 0/texture = ExtResource( 1 )

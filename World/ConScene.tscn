@@ -554,3 +554,4 @@ position = Vector2( 263.43, 132.977 )
 [editable path="Things/player/Sword/Sword"]
 [editable path="Things/player/Hurtbox"]
 [editable path="Things/Villager"]
+[editable path="Things/Villager/HuntZone"]
