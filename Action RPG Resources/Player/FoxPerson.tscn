@@ -5,7 +5,7 @@
 [ext_resource path="res://Action RPG Resources/Shadows/MediumShadow.png" type="Texture" id=3]
 [ext_resource path="res://Villager/VillagerBrain.gd" type="Script" id=4]
 [ext_resource path="res://Action RPG Resources/Player/dotdotdot.png" type="Texture" id=5]
-[ext_resource path="res://Action RPG Resources/Player/whodat.png" type="Texture" id=6]
+[ext_resource path="res://Action RPG Resources/Player/Question.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Action RPG Resources/Enemies/HuntZone.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -511,36 +511,24 @@ tracks/0/keys = {
 "values": [ 18 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Question:visible")
+tracks/1/path = NodePath("Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -90.0 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -562,36 +550,24 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Question:visible")
+tracks/1/path = NodePath("Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -612,36 +588,24 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Question:visible")
+tracks/1/path = NodePath("Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 180.0 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -663,36 +627,24 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Question:visible")
+tracks/1/path = NodePath("Sword:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:z_index")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.1, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -1061,7 +1013,7 @@ radius = 16.0
 height = 23.5718
 
 [sub_resource type="CircleShape2D" id=70]
-radius = 79.4906
+radius = 134.365
 
 [node name="FoxPerson" type="KinematicBody2D"]
 collision_layer = 64
@@ -1078,11 +1030,6 @@ visible = false
 position = Vector2( 0, -24 )
 scale = Vector2( 1, 1.21333 )
 texture = ExtResource( 5 )
-
-[node name="Question" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0, -24 )
-texture = ExtResource( 6 )
 
 [node name="ShadowSprite" type="Sprite" parent="."]
 position = Vector2( 0, 3.41897 )
@@ -1158,4 +1105,13 @@ disabled = true
 [node name="CollisionShape2D" parent="HuntZone" index="0"]
 shape = SubResource( 70 )
 
+[node name="whodat" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( -0.717133, -26.1826 )
+
+[node name="CollisionShape2D" parent="whodat/ActionBox" index="0"]
+position = Vector2( 1, 26 )
+
 [editable path="HuntZone"]
+[editable path="whodat"]
+[editable path="whodat/ActionBox"]

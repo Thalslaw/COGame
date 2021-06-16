@@ -517,7 +517,7 @@ tile_data = PoolIntArray( -131064, 0, 4, -131063, 0, 196609, -131062, 0, 196609,
 [node name="player" parent="Things" instance=ExtResource( 5 )]
 position = Vector2( 96, 96 )
 
-[node name="AnimationTree" parent="Things/player" index="6"]
+[node name="AnimationTree" parent="Things/player" index="5"]
 parameters/playback = SubResource( 50 )
 
 [node name="Bush" parent="Things" instance=ExtResource( 6 )]
@@ -532,7 +532,7 @@ position = Vector2( 128, 192 )
 [node name="Villager" parent="Things" instance=ExtResource( 10 )]
 position = Vector2( 239, 222 )
 
-[node name="AnimationTree" parent="Things/Villager" index="7"]
+[node name="AnimationTree" parent="Things/Villager" index="6"]
 parameters/playback = SubResource( 51 )
 
 [node name="Bush2" parent="Things" instance=ExtResource( 6 )]
@@ -553,5 +553,9 @@ position = Vector2( 263.43, 132.977 )
 [editable path="Things/player"]
 [editable path="Things/player/Sword/Sword"]
 [editable path="Things/player/Hurtbox"]
+[editable path="Things/player/Question"]
+[editable path="Things/player/Question/ActionBox"]
 [editable path="Things/Villager"]
 [editable path="Things/Villager/HuntZone"]
+[editable path="Things/Villager/whodat"]
+[editable path="Things/Villager/whodat/ActionBox"]

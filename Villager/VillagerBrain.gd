@@ -21,11 +21,10 @@ onready var huntZone = $HuntZone
 
 #Villagers need brains. This is not optional.
 var brain = NeuralNet.new(5)#init args: layercount
-var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer.
+var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer or ambient music.
 var urges = []
 
 var nextThingToDo = []
-
 
 #High level abstract goals that correspond to life fulfilling goals
 #A creature existing doing these things is driving narratives. 
@@ -69,21 +68,14 @@ func _ready():
 	
 func think_state(delta):
 	#this state should be reached if the entity has finished its list of tasks. 
-	#this could also take a while so getting the vars for this loop is sensible.
-	
-	#clear the mind.
 	urges.clear()
-	
-	#low level stuff shouldn't be returned just on their own. So:
-	#identify mid level goals and stuff: TODO! 
+
 	var agenticness = sates.getAg()
 	urges.append(agenticness)
 	var arousalness = sates.getAr()
 	urges.append(arousalness)
 	var egoicness = sates.getEg()
 	urges.append(egoicness)
-	#include addressing low health! That's a fairly primal urge!
-	#include minimum bound for sex drive. We have a genetic algorithm working here!
 	
 	#identify high level goals:
 	wantList = brain.think(urges)#input a list of satisfiers, output a list of vague wants.	
@@ -100,95 +92,141 @@ func think_state(delta):
 	elif want == 1:
 		#exploration, 
 		#Check when you have explored a previously unknown place, provided you encountered some kind of danger there.
-		pass
+		print("w1: can explore?")
+		nextThingToDo.append("explore") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 2:
 		#fame, 
 		#Check when an NPC who knows your name sees you achieve something noteworthy or remarkable.
-		pass
+		print("w2: can fame?")
+		nextThingToDo.append("fame") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 3:
 		#fun, 
 		#Choose an activity you enjoy.  Check when you disregard your duties and responsibilities to carry out that activity.
-		pass
+		print("w3: can fun?")
+		nextThingToDo.append("fun") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 4:
 		#fury, 
 		#Check when an NPC sees you react to a significant setback or insult with anger and/or unusual violence.  No benefit if they see you fight a monster.
-		pass
+		print("w4: can fury?")
+		nextThingToDo.append("fury") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 5:
 		#jealousy, 
 		#Choose a named person you are jealous of.  Check when they know that you have achieved more than they did. or have done better than them.
-		pass
+		print("w5: can jelly?")
+		nextThingToDo.append("jealousy") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 6:
 		#justice, 
 		#Choose a significant wrong or harm as your cause.  Check when a significant step is taken towards righting it.
-		pass
+		print("w6: can justice?")
+		nextThingToDo.append("justice") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 7:
 		#love, 
 		#Choose an NPC (or with player’s permission, a PC) whom you love.  Check when they receive a benefit which is mainly or solely attributable to you.
-		pass
+		print("w7: can love?")
+		nextThingToDo.append("love") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 8:
 		#lust, 
 		#Check the first time you have sexual intercourse with someone.  No benefit the second and subsequent times.
-		pass
+		print("w8: can lust?")
+		nextThingToDo.append("lust") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 9:
 		#malice,
 		#Check when you watch someone suffer a significant wrong or harm which is mainly or solely attributable to you, provided they did not deserve it.
-		pass
+		print("w9: can malice?")
+		nextThingToDo.append("malice") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 10:
 		#plunder, 
 		#Check when you obtain something of value from someone or something who was unwilling to let you take it.
-		pass
+		print("w10: can plunder?")
+		nextThingToDo.append("plunder") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 11:
 		#pride, 
 		#Check when you publicly condescend to someone of your own social rank or higher.
-		pass
+		print("w11: can pride?")
+		nextThingToDo.append("pride") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 12:
 		#respect, 
 		#Check when someone of your own social rank or higher publicly thanks you or apologises to you for some significant reason.
-		pass
+		print("w12: can respect?")
+		nextThingToDo.append("respect") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 13:
 		#revenge, 
 		#Check when you cause or help to cause a significant harm to someone who has significantly harmed you in the past.
-		pass
+		print("w13: can revenge?")
+		nextThingToDo.append("revenge") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 14:
 		#solution, 
 		#Check when you solve or help to solve a problem or conundrum, or take a significant step towards the same (e.g. find a clue).
-		pass
+		print("w14: can solution?")
+		nextThingToDo.append("solution") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 15:
 		#status, 
 		#Check when you receive a significant promotion, or, when an NPC who was formerly of higher status than you, treats you as an equal or superior.
-		pass
+		print("w15: can status?")
+		nextThingToDo.append("status") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 16:
 		#victory, 
 		#Check when you defeat a significant or powerful foe in battle.
-		pass
+		print("w16: can victory?")
+		nextThingToDo.append("victory") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	elif want == 17:
 		#wealth
 		#Check when you acquire something valuable or desirable, which significantly exceeds in value the rewards earned by your peers.
-		pass
+		print("w17: can wealth?")
+		nextThingToDo.append("wealth") #this is here because I haven't decomposed what that necessarily means yet
+		state = IDLE
 	else:
 		#Throw a hissy fit and die
 		print("An entity had a confusing want. This shouldn't ordinarily happen. Test more quietly.")
-		pass
 
 func idle_state(delta):
-	#this is a catch-all for if things get weird and they dunno what to do. Low level.
-	print("entered the idle state")
+	#print("entered the idle state")
 	if (nextThingToDo.empty()):
 		print("has started to think about what to do.")
 		state = THINK
 	else:
-		print("has stuff to do.")
+		#print("has stuff to do.")
 		
-		#BUT CLEAR IF SUDDENLY/CONVENIENTLY CAN SATISFY:
-		#Hungry, thirsty?
-		#Horny?
-		#Scared?
+		#OLIVIAAAA. This little section here immediately following is the bit that I want you to fiddle with. <3
+		#----
+		#BUT nextThingToDo.Clear() IF SUDDENLY/CONVENIENTLY CAN SATISFY:
+		#Hungry, thirsty or want treeets?
+			#detect if low hp or ego is super low
+			#find leef as target
+			#chase leef
+			#consume leef
+		#Horny or depressed?
+			#detect if pop count is too low or arousal is super low
+			#find person as target
+			#chase person
+			#consum-... uh, spawn flash and new person.
+		#Scared or anxious?
+			#detect if threat is near or agency is super low
+			#Panik and wiggle
+			
+		#mission complete if done, mission 'accomplished' if I has a chase template I can trivially boop in (plz <3).
+		#----
+		pass
 		
-	print("finished the idle state")
-	
+	#print("finished the idle state")
 
 func move_state(delta):
-	#replace inputs with neural net to get movement. 
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -240,6 +278,9 @@ func talk_state(delta): #my junky talk command thingy...
 
 
 func _physics_process(delta):
+	
+	#decriment satisfiers by delta
+	sates.depress(delta)
 	
 	match state:
 		THINK:

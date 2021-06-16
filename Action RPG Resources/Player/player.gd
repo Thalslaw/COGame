@@ -22,7 +22,8 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $Sword/Sword
 onready var playerhurt = $Hurtbox
-onready var speech = $dotdotdot
+onready var talking = $dotdotdot
+onready var speech = $Question
 
 func _ready():
 	stats.connect("no_hp", self, "queue_free")

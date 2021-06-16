@@ -62,3 +62,9 @@ func getAr():
 func getEg():
 	#here, have an eg. :P 
 	return egoic_satisfaction
+	
+func depress(value):
+	#drop in satisfaction over time.
+	agentic_satisfaction = agentic_satisfaction - value
+	arousal_satisfaction = arousal_satisfaction - value
+	egoic_satisfaction = egoic_satisfaction - value
