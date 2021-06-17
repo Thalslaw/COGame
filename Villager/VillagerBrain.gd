@@ -90,139 +90,266 @@ func think_state(delta):
 		#have a hissy fit and die. Just kidding, just throw confused warnings.
 		print("An entity had a confusing want. This shouldn't ordinarily happen. Test more quietly.")
 	elif want == 1:
-		#exploration, 
-		#Check when you have explored a previously unknown place, provided you encountered some kind of danger there.
-		print("w1: can explore?")
-		nextThingToDo.append("explore") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("explore") #this is here because long term strategic goals can be interrupted and such. Same with the rest.
 		state = IDLE
 	elif want == 2:
-		#fame, 
-		#Check when an NPC who knows your name sees you achieve something noteworthy or remarkable.
-		print("w2: can fame?")
-		nextThingToDo.append("fame") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("fame") 
 		state = IDLE
 	elif want == 3:
-		#fun, 
-		#Choose an activity you enjoy.  Check when you disregard your duties and responsibilities to carry out that activity.
-		print("w3: can fun?")
-		nextThingToDo.append("fun") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("fun") 
 		state = IDLE
 	elif want == 4:
-		#fury, 
-		#Check when an NPC sees you react to a significant setback or insult with anger and/or unusual violence.  No benefit if they see you fight a monster.
-		print("w4: can fury?")
-		nextThingToDo.append("fury") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("fury") 
 		state = IDLE
 	elif want == 5:
-		#jealousy, 
-		#Choose a named person you are jealous of.  Check when they know that you have achieved more than they did. or have done better than them.
-		print("w5: can jelly?")
-		nextThingToDo.append("jealousy") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("jealousy")
 		state = IDLE
 	elif want == 6:
-		#justice, 
-		#Choose a significant wrong or harm as your cause.  Check when a significant step is taken towards righting it.
-		print("w6: can justice?")
-		nextThingToDo.append("justice") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("justice") 
 		state = IDLE
 	elif want == 7:
-		#love, 
-		#Choose an NPC (or with player’s permission, a PC) whom you love.  Check when they receive a benefit which is mainly or solely attributable to you.
-		print("w7: can love?")
-		nextThingToDo.append("love") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("love")
 		state = IDLE
 	elif want == 8:
-		#lust, 
-		#Check the first time you have sexual intercourse with someone.  No benefit the second and subsequent times.
-		print("w8: can lust?")
-		nextThingToDo.append("lust") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("lust")
 		state = IDLE
 	elif want == 9:
-		#malice,
-		#Check when you watch someone suffer a significant wrong or harm which is mainly or solely attributable to you, provided they did not deserve it.
-		print("w9: can malice?")
-		nextThingToDo.append("malice") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("malice") 
 		state = IDLE
 	elif want == 10:
-		#plunder, 
-		#Check when you obtain something of value from someone or something who was unwilling to let you take it.
-		print("w10: can plunder?")
-		nextThingToDo.append("plunder") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("plunder")
 		state = IDLE
 	elif want == 11:
-		#pride, 
-		#Check when you publicly condescend to someone of your own social rank or higher.
-		print("w11: can pride?")
-		nextThingToDo.append("pride") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("pride") 
 		state = IDLE
 	elif want == 12:
-		#respect, 
-		#Check when someone of your own social rank or higher publicly thanks you or apologises to you for some significant reason.
-		print("w12: can respect?")
-		nextThingToDo.append("respect") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("respect") 
 		state = IDLE
 	elif want == 13:
-		#revenge, 
-		#Check when you cause or help to cause a significant harm to someone who has significantly harmed you in the past.
-		print("w13: can revenge?")
-		nextThingToDo.append("revenge") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("revenge")
 		state = IDLE
 	elif want == 14:
-		#solution, 
-		#Check when you solve or help to solve a problem or conundrum, or take a significant step towards the same (e.g. find a clue).
-		print("w14: can solution?")
-		nextThingToDo.append("solution") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("solution") 
 		state = IDLE
 	elif want == 15:
-		#status, 
-		#Check when you receive a significant promotion, or, when an NPC who was formerly of higher status than you, treats you as an equal or superior.
-		print("w15: can status?")
-		nextThingToDo.append("status") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("status")
 		state = IDLE
 	elif want == 16:
-		#victory, 
-		#Check when you defeat a significant or powerful foe in battle.
-		print("w16: can victory?")
-		nextThingToDo.append("victory") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("victory")
 		state = IDLE
 	elif want == 17:
-		#wealth
-		#Check when you acquire something valuable or desirable, which significantly exceeds in value the rewards earned by your peers.
-		print("w17: can wealth?")
-		nextThingToDo.append("wealth") #this is here because I haven't decomposed what that necessarily means yet
+		nextThingToDo.append("wealth")
 		state = IDLE
 	else:
 		#Throw a hissy fit and die
 		print("An entity had a confusing want. This shouldn't ordinarily happen. Test more quietly.")
 
 func idle_state(delta):
-	#print("entered the idle state")
+	
+	#this is where we put overriding reactions to things!
+	#if hungry:
+		#nextthingtodo == feeeeed meeeeee
+	#if horny: 
+		#nextthingtodo == lust?
+	#if threatened:
+		#if not doing a fighty drive
+			#flee!
+	
+	
+	#this is where we put longer term drive goals:
 	if (nextThingToDo.empty()):
-		print("has started to think about what to do.")
+		#print("has started to think about what to do.")
 		state = THINK
+	elif (nextThingToDo[0] == "exploration"):
+		#if it assesses it can do the thing:
+			#if (too far to interact):
+				#set target as suitable interactables	
+				#state = chase
+			#else
+				#interact with the thing
+				#then give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "fame"):
+		#if it assesses it can do the thing:
+			#if (too far to talk):
+				#set target as suitable talkables	
+				#state = chase
+			#else
+				#talk with the thing
+				#then give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "fun"):
+		#if it assesses it can do the thing:
+			#if (too far to interact):
+				#set target as suitable interactables
+				#state = chase
+			#else
+				#interact with the thing
+				#then give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "fury"):
+		#if it assesses it can do the thing:
+			#if (too far to attack):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = attack
+				#then give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "jealousy"):
+		#if it assesses it can do the thing:
+			#if (too far to talk):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = TALK
+				#give it a cookie
+		#else:
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "justice"):
+		#if it assesses it can do the thing:
+			#if (too far to interact):
+				#set target as suitable interactables
+				#state = chase
+			#else
+				#interact with the thing
+				#give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "love"):
+		#if it assesses it can do the thing:
+			#if (too far to talk):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = TALK
+				#give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "lust"):
+		#if it assesses it can do the thing:
+			#if (too far to talk):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = TALK
+				#give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "malice"):
+		#if it assesses it can do the thing:
+			#if (too far to attack):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = attack
+				#give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "plunder"):
+		#if it assesses it can do the thing:
+			#if (too far to attack):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = attack
+				#give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "pride"):
+		#if it assesses it can do the thing:
+			#if (too far to talk):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = TALK
+				#give it a cookie
+		#else:
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "respect"):
+		#if it assesses it can do the thing:
+			#if (too far to talk):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = TALK
+				#give it a cookie
+		#else:
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "revenge"):
+		#if it assesses it can do the thing
+			#if (too far to attack):
+				#set target as villagers or player
+				#state = chase
+			#else:
+				#state = attack
+				#give it a cookie
+		#else:
+			#Give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "solution"):
+		#if it assesses it can do the thing:
+			#if (too far to interact):
+				#set target as suitable interactables
+				#state = chase
+			#else
+				#interact with the thing
+				#give it a cookie
+		#else:
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "status"):
+		#if it assesses it can do the thing
+			#if (too far to talk):
+				#set target as suitable villagers or player
+				#state = chase
+			#else:
+				#state = TALK
+				#give it a cookie
+		#else:
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "victory"):
+		#if it assesses it can do the thing
+			#if (too far to attack):
+				#set target as enemies
+				#state = chase
+			#else:
+				#state = attack
+				#give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
+	elif (nextThingToDo[0] == "wealth"):
+		#if it assesses it can do the thing
+			#if (too far to talk):
+				#set target as suitable villagers or player
+				#state = chase
+			#else:
+				#state = TALK
+				#give it a cookie
+		#else
+			#give it a slap
+		nextThingToDo.pop_front()
 	else:
-		#print("has stuff to do.")
-		
-		#OLIVIAAAA. This little section here immediately following is the bit that I want you to fiddle with. <3
-		#----
-		#BUT nextThingToDo.Clear() IF SUDDENLY/CONVENIENTLY CAN SATISFY:
-		#Hungry, thirsty or want treeets?
-			#detect if low hp or ego is super low
-			#find leef as target
-			#chase leef
-			#consume leef
-		#Horny or depressed?
-			#detect if pop count is too low or arousal is super low
-			#find person as target
-			#chase person
-			#consum-... uh, spawn flash and new person.
-		#Scared or anxious?
-			#detect if threat is near or agency is super low
-			#Panik and wiggle
-			
-		#mission complete if done, mission 'accomplished' if I has a chase template I can trivially boop in (plz <3).
-		#----
-		pass
+		print("has stuff to do but wigs the fuck out and has no clue how to do the " + nextThingToDo[0])
+		nextThingToDo.Pop()
 		
 	#print("finished the idle state")
 

@@ -6,8 +6,6 @@ const EULER = 2.718 #It's irrational, but deal with it.
 var output = []
 var layerList = []
 var learningRate = 0.0
-var i #this is to address a known hole in GDscript
-var j
 
 func _init(layerCount):
 	for n in layerCount:
@@ -27,19 +25,40 @@ func _init(layerCount):
 func think(satisfiers):
 	##logic catching in case the neural net is garbage goes here
 	output.clear()
-	i = 0
-	j = 0
+	var j = 0
 	#for loop through l layers
 	for l in layerList:
 		if (l == layerList[0]):
 			l.setContents(satisfiers)
-			i = i + 1
 		else:
 			var previousLayer = layerList[j].getContents()
 			for neuron in l.getContents():
 				for previousNeuron in previousLayer:
-					neuron.setBias(1/(1+(pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
-			i = i + 1
+					neuron.setBias(1 / ( 1 + (pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
 			j = j + 1
 	output = layerList[j].getContents()
 	return output
+
+func train(satisfiers, wantedOutput):
+	#work backwards from the output and correct for difference from outputs
+	var j = 0
+	#for loop through l layers
+	layerList.invert() ##reverse the list so we can work backwards trivially
+	
+	for l in layerList:
+		if (l == layerList[0]):
+			l.setContents(wantedOutput)
+		else:
+			var previousLayer = layerList[j].getContents()
+			for neuron in l.getContents():
+				for previousNeuron in previousLayer:
+					#neuron.setBias(1/(1+(pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
+					
+					#set bias to adjust in the direction of difference by a factor of learning rate
+					neuron.setBias(neuron.getBias() + ((previousNeuron.getBias() - neuron.getBias()) * learningRate))
+					
+			j = j + 1
+	#something about corresponding to the satisfiers.
+	
+	layerList.invert() ##now back to the right way round
+	
