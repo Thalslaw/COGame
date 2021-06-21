@@ -16,11 +16,13 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $Sword/Sword
 onready var playerhurt = $Hurtbox
-onready var speech = $dotdotdot
+onready var convo = $dotdotdot
+onready var speech = $whodat
 onready var Hunting = $HuntZone
+onready var acting = $ActionZone
 
 #Villagers need brains. This is not optional.
-var brain = NeuralNet.new(5)#init args: layercount
+var brain = NeuralNet.new(3)#init args: layercount
 var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer or ambient music.
 var urges = []
 
@@ -30,7 +32,7 @@ var nextThingToDo = []
 #A creature existing doing these things is driving narratives. 
 #Abstract goals can be impossible to satisfy safely
 #Enumerate drives and their corresponding satisfiers lists
-enum {null, exploration, fame, fun, fury, jealousy, justice, love, lust, malice, plunder, pride, respect, revenge, solution, status, victory, wealth}
+#enum {null, exploration, fame, fun, fury, jealousy, justice, love, lust, malice, plunder, pride, respect, revenge, solution, status, victory, wealth}
 var agencers = [1,3,6,8,9,10,11,12,14,15,16,17]
 var arousers = [1,2,3,4,5,7,8,9,10,13,16]
 var egoers = [2,4,5,6,7,11,12,13,14,15,17]
@@ -41,7 +43,6 @@ var want
 #Mid level intentions analogous to basic instincts that are necessary to survive.
 #Creature existing in just this state is stressed and in panic ohshitgunnadie mode
 #set of directives they are trying to calculate. Short term needs over abstract goals.
-
 
 #Low level physical layer actions that the entity is doing or about to do
 enum {
@@ -54,8 +55,15 @@ enum {
 	TALK,
 	CHASE
 }
-var state = MOVE
+var state = IDLE
 
+enum {
+	#set of stances. If they are intending to be friendly or unfriendly
+	FRIENDLY,
+	CAUTIOUS,
+	HOSTILE
+}
+var stance = CAUTIOUS
 
 #get base agentic satisfaction
 
@@ -65,6 +73,39 @@ var state = MOVE
 
 func _ready():
 	pass
+	
+func reward(doneThis,passFail):
+	#configure reward strength,
+	#aka, change the learning rate so that greater time between satisfaction = greater change
+	if passFail:
+		#train with yes		
+		#make rewardTowardsWant include just the want
+		var rewardTowardsWant = []
+		if doneThis in agencers:
+			rewardTowardsWant.append(doneThis)
+		if doneThis in arousers:
+			if rewardTowardsWant.find(doneThis):
+				#do nothing
+				pass
+			else:
+				rewardTowardsWant.append(doneThis)
+		if doneThis in egoers:
+			if rewardTowardsWant.find(doneThis):
+				#do nothing
+				pass
+			else:
+				rewardTowardsWant.append(doneThis)
+		
+		#brain.train(urges, rewardTowardsWant)
+		#reward with satisfaction
+		#sates.setagencysatisfaction(sates.getag()+rewardstrength)
+		#sates.setarousalsatisfaction(sates.getar()+rewardstrength)
+		#sates.setegosatisfaction(sates.geteg()+rewardstrength)
+		pass
+	else:
+		#train with no
+		#make wanted output include everything but the want
+		pass
 	
 func think_state(delta):
 	#this state should be reached if the entity has finished its list of tasks. 
@@ -146,7 +187,7 @@ func think_state(delta):
 
 func idle_state(delta):
 	
-	#this is where we put overriding reactions to things!
+	#this is where we put overriding reactions to things! stances and whims and stuff!
 	#if hungry:
 		#nextthingtodo == feeeeed meeeeee
 	#if horny: 
@@ -158,9 +199,9 @@ func idle_state(delta):
 	
 	#this is where we put longer term drive goals:
 	if (nextThingToDo.empty()):
-		#print("has started to think about what to do.")
+		print("has started to think about what to do.")
 		state = THINK
-	elif (nextThingToDo[0] == "exploration"):
+	#elif (nextThingToDo[0] == "exploration"):
 		#if it assesses it can do the thing:
 			#if (too far to interact):
 				#set target as suitable interactables	
@@ -170,8 +211,8 @@ func idle_state(delta):
 				#then give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "fame"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "fame"):
 		#if it assesses it can do the thing:
 			#if (too far to talk):
 				#set target as suitable talkables	
@@ -181,8 +222,8 @@ func idle_state(delta):
 				#then give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "fun"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "fun"):
 		#if it assesses it can do the thing:
 			#if (too far to interact):
 				#set target as suitable interactables
@@ -192,8 +233,8 @@ func idle_state(delta):
 				#then give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "fury"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "fury"):
 		#if it assesses it can do the thing:
 			#if (too far to attack):
 				#set target as villagers or player
@@ -203,19 +244,28 @@ func idle_state(delta):
 				#then give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
+		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "jealousy"):
-		#if it assesses it can do the thing:
-			#if (too far to talk):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = TALK
-				#give it a cookie
-		#else:
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				print("Yay! cookie!")
+				reward(want,true)
+				print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
+			print("Nu! *slaps self*")
+			reward(want,false)
+			print("Am sad.")
 		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "justice"):
+	#elif (nextThingToDo[0] == "justice"):
 		#if it assesses it can do the thing:
 			#if (too far to interact):
 				#set target as suitable interactables
@@ -225,8 +275,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "love"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "love"):
 		#if it assesses it can do the thing:
 			#if (too far to talk):
 				#set target as villagers or player
@@ -236,8 +286,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "lust"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "lust"):
 		#if it assesses it can do the thing:
 			#if (too far to talk):
 				#set target as villagers or player
@@ -247,8 +297,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "malice"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "malice"):
 		#if it assesses it can do the thing:
 			#if (too far to attack):
 				#set target as villagers or player
@@ -258,8 +308,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "plunder"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "plunder"):
 		#if it assesses it can do the thing:
 			#if (too far to attack):
 				#set target as villagers or player
@@ -269,8 +319,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "pride"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "pride"):
 		#if it assesses it can do the thing:
 			#if (too far to talk):
 				#set target as villagers or player
@@ -280,8 +330,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else:
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "respect"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "respect"):
 		#if it assesses it can do the thing:
 			#if (too far to talk):
 				#set target as villagers or player
@@ -291,8 +341,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else:
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "revenge"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "revenge"):
 		#if it assesses it can do the thing
 			#if (too far to attack):
 				#set target as villagers or player
@@ -302,8 +352,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else:
 			#Give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "solution"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "solution"):
 		#if it assesses it can do the thing:
 			#if (too far to interact):
 				#set target as suitable interactables
@@ -313,8 +363,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else:
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "status"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "status"):
 		#if it assesses it can do the thing
 			#if (too far to talk):
 				#set target as suitable villagers or player
@@ -324,8 +374,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else:
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "victory"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "victory"):
 		#if it assesses it can do the thing
 			#if (too far to attack):
 				#set target as enemies
@@ -335,8 +385,8 @@ func idle_state(delta):
 				#give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "wealth"):
+		#nextThingToDo.pop_front()
+	#elif (nextThingToDo[0] == "wealth"):
 		#if it assesses it can do the thing
 			#if (too far to talk):
 				#set target as suitable villagers or player
@@ -346,10 +396,10 @@ func idle_state(delta):
 				#give it a cookie
 		#else
 			#give it a slap
-		nextThingToDo.pop_front()
+		#nextThingToDo.pop_front()
 	else:
 		print("has stuff to do but wigs the fuck out and has no clue how to do the " + nextThingToDo[0])
-		nextThingToDo.Pop()
+		nextThingToDo.pop_front()
 		
 	#print("finished the idle state")
 
@@ -408,18 +458,26 @@ func hungry():
 	if Hunting.smell_noms():
 		state = MOVE
 
+func check_arrived():
+	if acting.seems_Interesting():
+		return true
+
 func _physics_process(delta):
-	
+
 	#decriment satisfiers by delta
 	sates.depress(delta)
-	
+
 	match state:
 		THINK:
 			think_state(delta)
 		IDLE:
 			idle_state(delta)
 		MOVE:
-			move_state(delta)
+			#check if they're arrived:
+			if check_arrived():
+				state = IDLE
+			else:
+				move_state(delta)
 		ROLL:
 			#roll_state(delta)
 			pass
@@ -427,7 +485,7 @@ func _physics_process(delta):
 			#attack_state(delta)
 			pass
 		TALK:
-			#talk_state(delta)
+			talk_state(delta)
 			pass
 		CHASE:
 			#var food = Hunting.isTasty
@@ -452,4 +510,5 @@ func attack_animation_finished():
 func talk_end():
 	state = IDLE
 	
+
 

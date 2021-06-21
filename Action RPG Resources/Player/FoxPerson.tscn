@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://Action RPG Resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Action RPG Resources/HitandHurt boxes/Hurtbox.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Action RPG Resources/Player/dotdotdot.png" type="Texture" id=5]
 [ext_resource path="res://Action RPG Resources/Player/Question.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Action RPG Resources/Enemies/HuntZone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Action RPG Resources/HitandHurt boxes/ActionBox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.57217
@@ -1015,6 +1016,9 @@ height = 23.5718
 [sub_resource type="CircleShape2D" id=70]
 radius = 134.365
 
+[sub_resource type="CircleShape2D" id=71]
+radius = 30.2882
+
 [node name="FoxPerson" type="KinematicBody2D"]
 collision_layer = 64
 script = ExtResource( 4 )
@@ -1113,6 +1117,18 @@ position = Vector2( -0.717133, -26.1826 )
 [node name="CollisionShape2D" parent="whodat/ActionBox" index="0"]
 position = Vector2( 1, 26 )
 
+[node name="ActionZone" parent="." instance=ExtResource( 8 )]
+position = Vector2( -0.478607, -5.30901 )
+collision_layer = 0
+collision_mask = 66
+
+[node name="CollisionShape2D" parent="ActionZone" index="0"]
+shape = SubResource( 71 )
+
+[connection signal="body_entered" from="ActionZone" to="ActionZone" method="_on_ActionZone_body_entered"]
+[connection signal="body_exited" from="ActionZone" to="ActionZone" method="_on_ActionZone_body_exited"]
+
 [editable path="HuntZone"]
 [editable path="whodat"]
 [editable path="whodat/ActionBox"]
+[editable path="ActionZone"]

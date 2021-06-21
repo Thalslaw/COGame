@@ -52,11 +52,9 @@ func train(satisfiers, wantedOutput):
 			var previousLayer = layerList[j].getContents()
 			for neuron in l.getContents():
 				for previousNeuron in previousLayer:
-					#neuron.setBias(1/(1+(pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
-					
-					#set bias to adjust in the direction of difference by a factor of learning rate
-					neuron.setBias(neuron.getBias() + ((previousNeuron.getBias() - neuron.getBias()) * learningRate))
-					
+					#opposite of neuron.setBias(1/(1+(pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
+					#so set bias to adjust in the direction of difference by a factor of learning rate
+					previousNeuron.setBias(previousNeuron.getBias() + ((neuron.getBias() - previousNeuron.getBias()) * learningRate))
 			j = j + 1
 	#something about corresponding to the satisfiers.
 	
