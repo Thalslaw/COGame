@@ -1,5 +1,8 @@
 extends KinematicBody2D #kinematic body so it can kinetic!
 
+#export vars for seeing if we care about listening to this one:
+export var vocal = false
+
 #export vars for movement. allows fine tuning of the character's movement.
 export var 	ACCELERATION = 500
 export var 	MAX_SPEED = 80
@@ -33,9 +36,9 @@ var nextThingToDo = []
 #Abstract goals can be impossible to satisfy safely
 #Enumerate drives and their corresponding satisfiers lists
 #enum {null, exploration, fame, fun, fury, jealousy, justice, love, lust, malice, plunder, pride, respect, revenge, solution, status, victory, wealth}
-var agencers = [1,3,6,8,9,10,11,12,14,15,16,17]
-var arousers = [1,2,3,4,5,7,8,9,10,13,16]
-var egoers = [2,4,5,6,7,11,12,13,14,15,17]
+var agencers = [0,2,5,7,8,9,10,11,13,14,15,16]
+var arousers = [0,1,2,3,4,6,7,8,9,12,15]
+var egoers = [1,3,4,5,6,10,11,12,13,14,16]
 
 var wantList = []
 var want
@@ -123,67 +126,69 @@ func think_state(delta):
 	want = 0
 	var i = 0
 	for wants in wantList:
-		i = i + 1
-		if (wants.getBias() >= wantList[want].getBias()):
+		if (wants.threshold >= wantList[i].threshold)&&(wantList[i].fired):
 			want = i
+		i += 1
 	#want now corresponds to the drive the agent wants to do.
 	if want == 0:
-		#have a hissy fit and die. Just kidding, just throw confused warnings.
-		print("An entity had a confusing want. This shouldn't ordinarily happen. Test more quietly.")
-	elif want == 1:
 		nextThingToDo.append("explore") #this is here because long term strategic goals can be interrupted and such. Same with the rest.
 		state = IDLE
-	elif want == 2:
+	elif want == 1:
 		nextThingToDo.append("fame") 
 		state = IDLE
-	elif want == 3:
+	elif want == 2:
 		nextThingToDo.append("fun") 
 		state = IDLE
-	elif want == 4:
+	elif want == 3:
 		nextThingToDo.append("fury") 
 		state = IDLE
-	elif want == 5:
+	elif want == 4:
 		nextThingToDo.append("jealousy")
 		state = IDLE
-	elif want == 6:
+	elif want == 5:
 		nextThingToDo.append("justice") 
 		state = IDLE
-	elif want == 7:
+	elif want == 6:
 		nextThingToDo.append("love")
 		state = IDLE
-	elif want == 8:
+	elif want == 7:
 		nextThingToDo.append("lust")
 		state = IDLE
-	elif want == 9:
+	elif want == 8:
 		nextThingToDo.append("malice") 
 		state = IDLE
-	elif want == 10:
+	elif want == 9:
 		nextThingToDo.append("plunder")
 		state = IDLE
-	elif want == 11:
+	elif want == 10:
 		nextThingToDo.append("pride") 
 		state = IDLE
-	elif want == 12:
+	elif want == 11:
 		nextThingToDo.append("respect") 
 		state = IDLE
-	elif want == 13:
+	elif want == 12:
 		nextThingToDo.append("revenge")
 		state = IDLE
-	elif want == 14:
+	elif want == 13:
 		nextThingToDo.append("solution") 
 		state = IDLE
-	elif want == 15:
+	elif want == 14:
 		nextThingToDo.append("status")
 		state = IDLE
-	elif want == 16:
+	elif want == 15:
 		nextThingToDo.append("victory")
 		state = IDLE
-	elif want == 17:
+	elif want == 16:
 		nextThingToDo.append("wealth")
 		state = IDLE
 	else:
 		#Throw a hissy fit and die
 		print("An entity had a confusing want. This shouldn't ordinarily happen. Test more quietly.")
+		if vocal:
+			print("Nu! *slaps self*")
+		reward(want,false)
+		if vocal:
+			print("Am sad.")
 
 func idle_state(delta):
 	
@@ -199,7 +204,8 @@ func idle_state(delta):
 	
 	#this is where we put longer term drive goals:
 	if (nextThingToDo.empty()):
-		print("has started to think about what to do.")
+		if vocal:
+			print("has started to think about what to do.")
 		state = THINK
 	#elif (nextThingToDo[0] == "exploration"):
 		#if it assesses it can do the thing:
@@ -213,16 +219,28 @@ func idle_state(delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "fame"):
-		#if it assesses it can do the thing:
-			#if (too far to talk):
-				#set target as suitable talkables	
-				#state = chase
-			#else
-				#talk with the thing
-				#then give it a cookie
-		#else
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				if vocal:
+					print("Yay! cookie!")
+				reward(want,true)
+				if vocal:
+					print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
-		#nextThingToDo.pop_front()
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			if vocal:
+				print("Am sad.")
 	#elif (nextThingToDo[0] == "fun"):
 		#if it assesses it can do the thing:
 			#if (too far to interact):
@@ -253,17 +271,21 @@ func idle_state(delta):
 			if acting.seems_Interesting():
 				# short range
 				#reward
-				print("Yay! cookie!")
+				if vocal:
+					print("Yay! cookie!")
 				reward(want,true)
-				print("Cookie nommed.")
+				if vocal:
+					print("Cookie nommed.")
 				state = TALK
 			else:
 				state = MOVE
 		else:
 			#give it a slap
-			print("Nu! *slaps self*")
+			if vocal:
+				print("Nu! *slaps self*")
 			reward(want,false)
-			print("Am sad.")
+			if vocal:
+				print("Am sad.")
 		nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "justice"):
 		#if it assesses it can do the thing:
@@ -277,27 +299,51 @@ func idle_state(delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "love"):
-		#if it assesses it can do the thing:
-			#if (too far to talk):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = TALK
-				#give it a cookie
-		#else
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				if vocal:
+					print("Yay! cookie!")
+				reward(want,true)
+				if vocal:
+					print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
-		#nextThingToDo.pop_front()
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			if vocal:
+				print("Am sad.")
 	#elif (nextThingToDo[0] == "lust"):
-		#if it assesses it can do the thing:
-			#if (too far to talk):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = TALK
-				#give it a cookie
-		#else
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				if vocal:
+					print("Yay! cookie!")
+				reward(want,true)
+				if vocal:
+					print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
-		#nextThingToDo.pop_front()
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			if vocal:
+				print("Am sad.")
 	#elif (nextThingToDo[0] == "malice"):
 		#if it assesses it can do the thing:
 			#if (too far to attack):
@@ -321,27 +367,51 @@ func idle_state(delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "pride"):
-		#if it assesses it can do the thing:
-			#if (too far to talk):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = TALK
-				#give it a cookie
-		#else:
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				if vocal:
+					print("Yay! cookie!")
+				reward(want,true)
+				if vocal:
+					print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
-		#nextThingToDo.pop_front()
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			if vocal:
+				print("Am sad.")
 	#elif (nextThingToDo[0] == "respect"):
-		#if it assesses it can do the thing:
-			#if (too far to talk):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = TALK
-				#give it a cookie
-		#else:
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				if vocal:
+					print("Yay! cookie!")
+				reward(want,true)
+				if vocal:
+					print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
-		#nextThingToDo.pop_front()
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			if vocal:
+				print("Am sad.")
 	#elif (nextThingToDo[0] == "revenge"):
 		#if it assesses it can do the thing
 			#if (too far to attack):
@@ -365,16 +435,28 @@ func idle_state(delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "status"):
-		#if it assesses it can do the thing
-			#if (too far to talk):
-				#set target as suitable villagers or player
-				#state = chase
-			#else:
-				#state = TALK
-				#give it a cookie
-		#else:
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				if vocal:
+					print("Yay! cookie!")
+				reward(want,true)
+				if vocal:
+					print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
-		#nextThingToDo.pop_front()
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			if vocal:
+				print("Am sad.")
 	#elif (nextThingToDo[0] == "victory"):
 		#if it assesses it can do the thing
 			#if (too far to attack):
@@ -387,16 +469,28 @@ func idle_state(delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "wealth"):
-		#if it assesses it can do the thing
-			#if (too far to talk):
-				#set target as suitable villagers or player
-				#state = chase
-			#else:
-				#state = TALK
-				#give it a cookie
-		#else
+		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#if talkable = hunting.isTalkable?
+		if Hunting.smell_noms():
+			#at least long range
+			if acting.seems_Interesting():
+				# short range
+				#reward
+				if vocal:
+					print("Yay! cookie!")
+				reward(want,true)
+				if vocal:
+					print("Cookie nommed.")
+				state = TALK
+			else:
+				state = MOVE
+		else:
 			#give it a slap
-		#nextThingToDo.pop_front()
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			if vocal:
+				print("Am sad.")
 	else:
 		print("has stuff to do but wigs the fuck out and has no clue how to do the " + nextThingToDo[0])
 		nextThingToDo.pop_front()

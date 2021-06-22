@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Dendrite",
+"language": "GDScript",
+"path": "res://Dendrite.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://World/Walker.gd"
 } ]
 _global_script_class_icons={
+"Dendrite": "",
 "GitAPI": "",
 "Layer": "",
 "NeuralNet": "",

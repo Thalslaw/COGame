@@ -1,42 +1,45 @@
 extends Node
 class_name NeuralNet
 
-const EULER = 2.718 #It's irrational, but deal with it.
+#const EULER = 2.718 #It's irrational, but deal with it.
 
 var output = []
 var layerList = []
-var learningRate = 0.0
+var learningRate = 0.05
 
 func _init(layerCount):
 	for n in layerCount:
+		var la = []
 		if n == 0:
 			#reserved for input neurons
-			var la = Layer.new(3) #the number of input neurons
-			layerList.append(la)
+			la = Layer.new(3,0) #the number of input neurons
 		elif n == layerCount: #else if. Not "file" backwards, brain... you so silly.
 			#reserved for output neurons
-			var la = Layer.new(17) #the number of output neurons
-			layerList.append(la)
+			la = Layer.new(17, la.count()) #the number of output neurons
 		else:
-			var la = Layer.new(5) #the number of hidden layer neurons. 
-			layerList.append(la)
+			if (la.size() >= 1):
+				la = Layer.new(5, la.count()) #the number of hidden layer neurons. 
+			else:
+				la = Layer.new(5, 3) #the number of hidden layer neurons. 
+		layerList.append(la)
 
-	
 func think(satisfiers):
-	##logic catching in case the neural net is garbage goes here
 	output.clear()
 	var j = 0
 	#for loop through l layers
 	for l in layerList:
 		if (l == layerList[0]):
-			l.setContents(satisfiers)
+			#input layer
+			l.setNeurons(satisfiers)
 		else:
-			var previousLayer = layerList[j].getContents()
-			for neuron in l.getContents():
+			#not input layer
+			var previousLayer = layerList[j].getNeurons()
+			for neuron in l.getNeurons():
 				for previousNeuron in previousLayer:
-					neuron.setBias(1 / ( 1 + (pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
+					if (previousNeuron.fired == true):
+						neuron.trigger(previousLayer.find(previousNeuron))
 			j = j + 1
-	output = layerList[j].getContents()
+	output = layerList[j].getNeurons()
 	return output
 
 func train(satisfiers, wantedOutput):
@@ -47,14 +50,25 @@ func train(satisfiers, wantedOutput):
 	
 	for l in layerList:
 		if (l == layerList[0]):
-			l.setContents(wantedOutput)
+			l.setNeurons(wantedOutput)
 		else:
-			var previousLayer = layerList[j].getContents()
-			for neuron in l.getContents():
-				for previousNeuron in previousLayer:
+			var forwardLayer = layerList[j].getNeurons()
+			for neuron in l.getNeurons():
+				var k = forwardLayer.Count()
+				for forwardNeuron in forwardLayer:
+					while (k >= 0):
+						
+						#random very small walk of quadratically small amount
+						forwardNeuron.dendriteList[k].strength -= (randf()-0.5)*(learningRate * learningRate)
+						
+						#reinforce good behaviour
+						if neuron.fired == true:
+							#set strength to adjust in the direction of difference by a factor of learning rate
+							forwardNeuron.dendriteList[k].strength += learningRate
+						k -= 1
 					#opposite of neuron.setBias(1/(1+(pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
-					#so set bias to adjust in the direction of difference by a factor of learning rate
-					previousNeuron.setBias(previousNeuron.getBias() + ((neuron.getBias() - previousNeuron.getBias()) * learningRate))
+					#so set threshold to adjust in the direction of difference by a factor of learning rate
+					forwardNeuron.setThreshold(forwardNeuron.threshold + ((neuron.threshold - forwardNeuron.threshold) * learningRate))
 			j = j + 1
 	#something about corresponding to the satisfiers.
 	

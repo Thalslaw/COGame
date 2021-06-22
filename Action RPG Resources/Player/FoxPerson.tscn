@@ -20,7 +20,7 @@ height = 11.8985
 [sub_resource type="Animation" id=3]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "values": [ 36, 37, 38, 39 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -44,7 +44,7 @@ tracks/1/keys = {
 "values": [ -90.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -73,7 +73,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -85,7 +85,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -97,7 +97,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -126,7 +126,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -138,7 +138,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -150,7 +150,7 @@ tracks/1/keys = {
 "values": [ 180.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -179,7 +179,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=6]
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -191,7 +191,7 @@ tracks/0/keys = {
 "values": [ 28, 29, 30, 31 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -203,7 +203,7 @@ tracks/1/keys = {
 "values": [ 90.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -232,7 +232,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=7]
 resource_name = "Chat Down"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -244,7 +244,7 @@ tracks/0/keys = {
 "values": [ 18 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -256,7 +256,7 @@ tracks/1/keys = {
 "values": [ -90.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("dotdotdot:visible")
+tracks/2/path = NodePath("../FoxPerson/dotdotdot:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -268,7 +268,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -283,7 +283,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=8]
 resource_name = "Chat Left"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -295,7 +295,7 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("dotdotdot:visible")
+tracks/1/path = NodePath("../FoxPerson/dotdotdot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -307,7 +307,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -319,7 +319,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -334,7 +334,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=9]
 resource_name = "Chat Right"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -346,7 +346,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("dotdotdot:visible")
+tracks/1/path = NodePath("../FoxPerson/dotdotdot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -358,7 +358,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -370,7 +370,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -385,7 +385,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=10]
 resource_name = "Chat Up"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -397,7 +397,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("dotdotdot:visible")
+tracks/1/path = NodePath("../FoxPerson/dotdotdot:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -409,7 +409,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword:rotation_degrees")
+tracks/2/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -421,7 +421,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/3/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -437,7 +437,7 @@ tracks/3/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -453,7 +453,7 @@ tracks/0/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -469,7 +469,7 @@ tracks/0/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -485,7 +485,7 @@ tracks/0/keys = {
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -500,7 +500,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=15]
 resource_name = "Quest Down"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -512,7 +512,7 @@ tracks/0/keys = {
 "values": [ 18 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -524,7 +524,7 @@ tracks/1/keys = {
 "values": [ -90.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -539,7 +539,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=16]
 resource_name = "Quest Left"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -551,7 +551,7 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -563,7 +563,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -577,7 +577,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=17]
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -589,7 +589,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:rotation_degrees")
+tracks/1/path = NodePath("../FoxPerson/Sword:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -601,7 +601,7 @@ tracks/1/keys = {
 "values": [ 180.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -616,7 +616,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=18]
 resource_name = "Quest Up"
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -628,7 +628,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sword:z_index")
+tracks/1/path = NodePath("../FoxPerson/Sword:z_index")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -640,7 +640,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sword/Sword/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../FoxPerson/Sword/Sword/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -655,7 +655,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=19]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -684,7 +684,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=20]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -713,7 +713,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=21]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -742,7 +742,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=22]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -772,7 +772,7 @@ tracks/1/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -788,7 +788,7 @@ tracks/0/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -804,7 +804,7 @@ tracks/0/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -820,7 +820,7 @@ tracks/0/keys = {
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FoxSprite:frame")
+tracks/0/path = NodePath("../FoxPerson/FoxSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false

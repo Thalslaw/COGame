@@ -538,6 +538,7 @@ position = Vector2( 160, 192 )
 
 [node name="FoxPerson" parent="Things" instance=ExtResource( 10 )]
 position = Vector2( 304.017, 172.619 )
+vocal = true
 
 [editable path="Things/player"]
 [editable path="Things/player/Sword/Sword"]
