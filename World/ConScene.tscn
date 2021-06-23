@@ -518,6 +518,10 @@ position = Vector2( 96, 96 )
 [node name="AnimationTree" parent="Things/player" index="5"]
 parameters/playback = SubResource( 50 )
 
+[node name="Camera2D" type="Camera2D" parent="Things/player"]
+current = true
+zoom = Vector2( 2, 2 )
+
 [node name="Bush" parent="Things" instance=ExtResource( 6 )]
 position = Vector2( 208, 152 )
 
