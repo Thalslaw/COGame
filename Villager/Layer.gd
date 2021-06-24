@@ -13,7 +13,7 @@ func getNeurons():
 func setNeurons(inputList):
 	var i = 0
 	for n in neuronList:
-		n.setBias(inputList[i])
+		n.setThreshold(inputList[i])
 		i = i + 1
 
 func _init(neuronCount, prevLa):

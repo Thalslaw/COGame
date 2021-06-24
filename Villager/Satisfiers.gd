@@ -2,13 +2,13 @@ extends Node
 class_name Satisfiers
 
 export var max_agentic_satisfaction = 1.0 setget set_max_agentic_satisfaction
-var agentic_satisfaction = max_agentic_satisfaction setget set_agentic_satisfaction
+var agentic_satisfaction = max_agentic_satisfaction/2
 
 export var max_arousal_satisfaction = 1.0 setget set_max_arousal_satisfaction
-var arousal_satisfaction = max_arousal_satisfaction setget set_arousal_satisfaction
+var arousal_satisfaction = max_arousal_satisfaction/2
 
 export var max_egoic_satisfaction = 1.0 setget set_max_egoic_satisfaction
-var egoic_satisfaction = max_egoic_satisfaction setget set_egoic_satisfaction
+var egoic_satisfaction = max_egoic_satisfaction/2
 
 
 

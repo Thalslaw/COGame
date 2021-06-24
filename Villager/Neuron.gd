@@ -3,9 +3,9 @@ class_name Neuron
 
 var dendriteList = [] #these are input dendrites
 
-var bias = 0.0
-var threshold = 0.0
-var strength = 0.0
+var bias = 0.01
+var threshold = 0.01
+var strength = 0.01
 var fired = false
 
 func addDendrite():

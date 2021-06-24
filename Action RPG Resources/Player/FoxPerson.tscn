@@ -1125,6 +1125,42 @@ collision_mask = 66
 [node name="CollisionShape2D" parent="ActionZone" index="0"]
 shape = SubResource( 71 )
 
+[node name="EgoBox" type="SpinBox" parent="."]
+margin_left = -13.3599
+margin_top = -31.7142
+margin_right = 60.6401
+margin_bottom = -7.71416
+rect_scale = Vector2( 0.34989, 0.351568 )
+align = 1
+prefix = "Eg"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArousalBox" type="SpinBox" parent="."]
+margin_left = -12.9933
+margin_top = -40.8324
+margin_right = 61.0067
+margin_bottom = -16.8324
+rect_scale = Vector2( 0.34989, 0.351568 )
+align = 1
+prefix = "Ar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AgencyBox" type="SpinBox" parent="."]
+margin_left = -13.04
+margin_top = -49.5874
+margin_right = 60.96
+margin_bottom = -25.5874
+rect_scale = Vector2( 0.34989, 0.351568 )
+align = 1
+prefix = "Ag"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="body_entered" from="ActionZone" to="ActionZone" method="_on_ActionZone_body_entered"]
 [connection signal="body_exited" from="ActionZone" to="ActionZone" method="_on_ActionZone_body_exited"]
 

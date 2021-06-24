@@ -54,7 +54,7 @@ func train(satisfiers, wantedOutput):
 		else:
 			var forwardLayer = layerList[j].getNeurons()
 			for neuron in l.getNeurons():
-				var k = forwardLayer.Count()
+				var k = (layerList.size() - 1)
 				for forwardNeuron in forwardLayer:
 					while (k >= 0):
 						

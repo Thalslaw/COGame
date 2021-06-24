@@ -24,6 +24,10 @@ onready var speech = $whodat
 onready var Hunting = $HuntZone
 onready var acting = $ActionZone
 
+onready var agSpinBox = $AgencyBox
+onready var arSpinBox = $ArousalBox
+onready var egSpinBox = $EgoBox
+
 #Villagers need brains. This is not optional.
 var brain = NeuralNet.new(3)#init args: layercount
 var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer or ambient music.
@@ -78,37 +82,38 @@ func _ready():
 	pass
 	
 func reward(doneThis,passFail):
-	#configure reward strength,
-	#aka, change the learning rate so that greater time between satisfaction = greater change
+	#configure reward strength to include gland fatigue
+	var rewardStrength = 0.1
+	
+	var rewardTowardsWant = []
 	if passFail:
 		#train with yes		
 		#make rewardTowardsWant include just the want
-		var rewardTowardsWant = []
-		if doneThis in agencers:
-			rewardTowardsWant.append(doneThis)
-		if doneThis in arousers:
-			if rewardTowardsWant.find(doneThis):
-				#do nothing
-				pass
+		var i = 16
+		while i >= 0:
+			if (i == doneThis):
+				rewardTowardsWant.append(1.0)
 			else:
-				rewardTowardsWant.append(doneThis)
-		if doneThis in egoers:
-			if rewardTowardsWant.find(doneThis):
-				#do nothing
-				pass
-			else:
-				rewardTowardsWant.append(doneThis)
+				rewardTowardsWant.append(0.0)
+			i -= 1
+		brain.train(urges, rewardTowardsWant)
 		
-		#brain.train(urges, rewardTowardsWant)
 		#reward with satisfaction
-		#sates.setagencysatisfaction(sates.getag()+rewardstrength)
-		#sates.setarousalsatisfaction(sates.getar()+rewardstrength)
-		#sates.setegosatisfaction(sates.geteg()+rewardstrength)
-		pass
+		sates.set_agentic_satisfaction(sates.getAg() + rewardStrength)
+		sates.set_arousal_satisfaction(sates.getAr() + rewardStrength)
+		sates.set_egoic_satisfaction(sates.getEg() + rewardStrength)
 	else:
 		#train with no
-		#make wanted output include everything but the want
-		pass
+		#make wanted output include a random seizure set
+		var i = 16
+		while i >= 0:
+			if (i == doneThis):
+				rewardTowardsWant.append(0.0)
+			else:
+				rewardTowardsWant.append(0.06)
+			i -= 1
+		brain.train(urges, rewardTowardsWant)
+	
 	
 func think_state(delta):
 	#this state should be reached if the entity has finished its list of tasks. 
@@ -126,7 +131,7 @@ func think_state(delta):
 	want = 0
 	var i = 0
 	for wants in wantList:
-		if (wants.threshold >= wantList[i].threshold)&&(wantList[i].fired):
+		if (wants.strength >= wantList[i].strength):
 			want = i
 		i += 1
 	#want now corresponds to the drive the agent wants to do.
@@ -218,7 +223,7 @@ func idle_state(delta):
 		#else
 			#give it a slap
 		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "fame"):
+	elif (nextThingToDo[0] == "fame"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
@@ -298,7 +303,7 @@ func idle_state(delta):
 		#else
 			#give it a slap
 		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "love"):
+	elif (nextThingToDo[0] == "love"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
@@ -321,7 +326,7 @@ func idle_state(delta):
 			reward(want,false)
 			if vocal:
 				print("Am sad.")
-	#elif (nextThingToDo[0] == "lust"):
+	elif (nextThingToDo[0] == "lust"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
@@ -366,7 +371,7 @@ func idle_state(delta):
 		#else
 			#give it a slap
 		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "pride"):
+	elif (nextThingToDo[0] == "pride"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
@@ -389,7 +394,7 @@ func idle_state(delta):
 			reward(want,false)
 			if vocal:
 				print("Am sad.")
-	#elif (nextThingToDo[0] == "respect"):
+	elif (nextThingToDo[0] == "respect"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
@@ -434,7 +439,7 @@ func idle_state(delta):
 		#else:
 			#give it a slap
 		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "status"):
+	elif (nextThingToDo[0] == "status"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
@@ -468,7 +473,7 @@ func idle_state(delta):
 		#else
 			#give it a slap
 		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "wealth"):
+	elif (nextThingToDo[0] == "wealth"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
@@ -493,6 +498,7 @@ func idle_state(delta):
 				print("Am sad.")
 	else:
 		print("has stuff to do but wigs the fuck out and has no clue how to do the " + nextThingToDo[0])
+		reward(want,false)
 		nextThingToDo.pop_front()
 		
 	#print("finished the idle state")
@@ -560,6 +566,15 @@ func _physics_process(delta):
 
 	#decriment satisfiers by delta
 	sates.depress(delta)
+	
+	#if vocal, display information
+	if vocal:
+		agSpinBox.set_value(sates.getAg()*100)
+		agSpinBox.apply()
+		arSpinBox.set_value(sates.getAr()*100)
+		arSpinBox.apply()
+		egSpinBox.set_value(sates.getEg()*100)
+		egSpinBox.apply()
 
 	match state:
 		THINK:
