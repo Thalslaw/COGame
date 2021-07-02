@@ -214,6 +214,7 @@ func idle_state(delta):
 		state = THINK
 	#elif (nextThingToDo[0] == "exploration"):
 		#if it assesses it can do the thing:
+		#aka, if it's in a valley or a dungeon:
 			#if (too far to interact):
 				#set target as suitable interactables	
 				#state = chase
@@ -221,10 +222,11 @@ func idle_state(delta):
 				#interact with the thing
 				#then give it a cookie
 		#else
-			#give it a slap
+			#nextThingToDo.append("GoTo_ValleyOrDungeon")
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "fame"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka, if it is in a village
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -248,6 +250,7 @@ func idle_state(delta):
 				print("Am sad.")
 	#elif (nextThingToDo[0] == "fun"):
 		#if it assesses it can do the thing:
+		#aka, if it is in a village
 			#if (too far to interact):
 				#set target as suitable interactables
 				#state = chase
@@ -259,6 +262,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "fury"):
 		#if it assesses it can do the thing:
+		#aka, if it is in a village or a dwelling
 			#if (too far to attack):
 				#set target as villagers or player
 				#state = chase
@@ -270,6 +274,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "jealousy"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka, if it is in a village or a dwelling
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -294,6 +299,7 @@ func idle_state(delta):
 		nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "justice"):
 		#if it assesses it can do the thing:
+		#aka, if it is in a dwelling
 			#if (too far to interact):
 				#set target as suitable interactables
 				#state = chase
@@ -305,6 +311,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "love"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka, if it is in a village or a dwelling
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -328,6 +335,7 @@ func idle_state(delta):
 				print("Am sad.")
 	elif (nextThingToDo[0] == "lust"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka, if it is in a dwelling
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -351,6 +359,7 @@ func idle_state(delta):
 				print("Am sad.")
 	#elif (nextThingToDo[0] == "malice"):
 		#if it assesses it can do the thing:
+		#aka, if it is in a valley or a village
 			#if (too far to attack):
 				#set target as villagers or player
 				#state = chase
@@ -362,6 +371,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "plunder"):
 		#if it assesses it can do the thing:
+		#aka, if it is in a dungeon or a dwelling
 			#if (too far to attack):
 				#set target as villagers or player
 				#state = chase
@@ -373,6 +383,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "pride"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka, if it is in a village
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -396,6 +407,7 @@ func idle_state(delta):
 				print("Am sad.")
 	elif (nextThingToDo[0] == "respect"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka if it is in a village
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -419,6 +431,7 @@ func idle_state(delta):
 				print("Am sad.")
 	#elif (nextThingToDo[0] == "revenge"):
 		#if it assesses it can do the thing
+		#aka if it is within a dwelling
 			#if (too far to attack):
 				#set target as villagers or player
 				#state = chase
@@ -430,6 +443,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	#elif (nextThingToDo[0] == "solution"):
 		#if it assesses it can do the thing:
+		#aka if it is within a dwelling or a dungeon
 			#if (too far to interact):
 				#set target as suitable interactables
 				#state = chase
@@ -441,6 +455,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "status"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka if it is within a dwelling
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -464,6 +479,7 @@ func idle_state(delta):
 				print("Am sad.")
 	#elif (nextThingToDo[0] == "victory"):
 		#if it assesses it can do the thing
+		#aka if it is within a valley or a dungeon
 			#if (too far to attack):
 				#set target as enemies
 				#state = chase
@@ -475,6 +491,7 @@ func idle_state(delta):
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "wealth"):
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+		#aka if it is within a dungeon
 		#if talkable = hunting.isTalkable?
 		if Hunting.smell_noms():
 			#at least long range
@@ -503,7 +520,7 @@ func idle_state(delta):
 		
 	#print("finished the idle state")
 
-func move_state(delta):
+func hunt_state(delta):
 	var velocity = Vector2.ZERO
 	var food = Hunting.isTasty
 	if food != null:
@@ -527,17 +544,17 @@ func move_state(delta):
 	move()
 	
 	#replace iInput.x to whatever mechanism to trigger the appropiate actions
-	if Input.is_action_just_pressed("attack"):
-		state = ATTACK
-		speech.visible = false
-		
-	if Input.is_action_just_pressed("roll"):
-		state = ROLL
-		speech.visible = false
-		
-	if Input.is_action_just_pressed("chat"):
-		state = TALK
-		speech.visible = false
+	#if Input.is_action_just_pressed("attack"):
+	#	state = ATTACK
+	#	speech.visible = false
+	#	
+	#if Input.is_action_just_pressed("roll"):
+	#	state = ROLL
+	#	speech.visible = false
+	#	
+	#if Input.is_action_just_pressed("chat"):
+	#	state = TALK
+	#	speech.visible = false
 	
 	
 func roll_state(delta): #dey be rollin' dey hatin'. no Iframes though
@@ -559,6 +576,7 @@ func hungry():
 		state = MOVE
 
 func check_arrived():
+	#simple implementation right now. doesn't behave as wanted.
 	if acting.seems_Interesting():
 		return true
 
@@ -582,11 +600,11 @@ func _physics_process(delta):
 		IDLE:
 			idle_state(delta)
 		MOVE:
-			#check if they're arrived:
+			#check if they're arrived
 			if check_arrived():
 				state = IDLE
 			else:
-				move_state(delta)
+				hunt_state(delta)
 		ROLL:
 			#roll_state(delta)
 			pass

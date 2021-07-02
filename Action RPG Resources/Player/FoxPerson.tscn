@@ -1126,6 +1126,7 @@ collision_mask = 66
 shape = SubResource( 71 )
 
 [node name="EgoBox" type="SpinBox" parent="."]
+visible = false
 margin_left = -13.3599
 margin_top = -31.7142
 margin_right = 60.6401
@@ -1138,6 +1139,7 @@ __meta__ = {
 }
 
 [node name="ArousalBox" type="SpinBox" parent="."]
+visible = false
 margin_left = -12.9933
 margin_top = -40.8324
 margin_right = 61.0067
@@ -1150,6 +1152,7 @@ __meta__ = {
 }
 
 [node name="AgencyBox" type="SpinBox" parent="."]
+visible = false
 margin_left = -13.04
 margin_top = -49.5874
 margin_right = 60.96

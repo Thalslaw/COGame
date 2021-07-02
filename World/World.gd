@@ -10,12 +10,35 @@ onready var pathTileMap	= $Path_Tile
 onready var things = $Things
 const grazz = preload("res://Action RPG Resources/World/Grass.tscn")
 
+enum {VALLEY, VILLAGE, DUNGEON, DWELLING}
+var environment = VALLEY
+
+func saveEnvironment():
+	#turn this entire environment into a CSV file.
+	pass
+
+func loadEnvironment():
+	#pass in global coords
+	#get corresponding CSV file
+	#turn CSV file into environment.
+	pass
+
 func _ready():
 	randomize()
-	generate_Cliffs()
-	generate_Paths()	
-	generate_Grazz()
-	generate_Exits()
+	if(environment == VALLEY):
+		generate_Cliffs()
+		generate_Paths()	
+		generate_Grazz()
+		generate_Exits()
+	elif(environment == VILLAGE):
+		#the same as a valley but with dwellings
+		pass
+	elif(environment == DUNGEON):
+		#make a dungeon!
+		pass
+	elif(environment == DWELLING):
+		#the same as a dungeon but with dwelling dressing... people live here!
+		pass
 	
 func generate_Exits():
 	##the purpose of this is to give the tile some exits that can be reached by the playable area.
@@ -31,6 +54,7 @@ func generate_Exits():
 	for location in map:
 		cliffTileMap.set_cellv(location, -1)
 	cliffTileMap.update_bitmask_region(borders.position, borders.end)
+	#TODO next search for some south facing cliffs to shove cave entrances on
 
 func generate_Grazz():
 	var walker = Walker.new(Vector2(36,36), bigBorders)
@@ -61,3 +85,10 @@ func generate_Paths():
 		if (cliffTileMap.get_cellv(location/2) == -1):
 			pathTileMap.set_cellv(location, 0)
 	pathTileMap.update_bitmask_region(bigBorders.position, bigBorders.end)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#decrement a timer by delta.
+	#every timer loop, take the top global location in the list, and advance it as many time steps since its last elapse.
+	#move thing from the top of the list to the bottom of the list, reset the timer.
+	pass
