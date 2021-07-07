@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cavehole.png-e5656a4459a54c947939acc9af6a384e.stex"
+path="res://.import/ROC.png-2d953108c9e699118610b2f0bafa954a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Action RPG Resources/World/Cavehole.png"
-dest_files=[ "res://.import/Cavehole.png-e5656a4459a54c947939acc9af6a384e.stex" ]
+source_file="res://Action RPG Resources/World/ROC.png"
+dest_files=[ "res://.import/ROC.png-2d953108c9e699118610b2f0bafa954a.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
