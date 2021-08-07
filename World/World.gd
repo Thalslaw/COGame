@@ -36,7 +36,7 @@ func _ready():
 			cliffTileMap.set_cellv(location, -1)
 			cliffTileMap.update_bitmask_region(borders.position, borders.end)
 		## TO DO in the perimeter of 'map', make some exit caves
-		generate_Paths() #this ought to be between the exit caves, so pass in the data.
+		#generate_Paths() #this ought to be between the exit caves, so pass in the data.
 		generate_Grazz() #dressings
 	elif(environment == VILLAGE):
 		#the same as a valley but with dwellings

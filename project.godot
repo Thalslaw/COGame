@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Dendrite",
 "language": "GDScript",
-"path": "res://Dendrite.gd"
+"path": "res://Villager/Dendrite.gd"
 }, {
 "base": "",
 "class": "GitAPI",

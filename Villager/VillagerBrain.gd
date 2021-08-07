@@ -28,6 +28,8 @@ onready var agSpinBox = $AgencyBox
 onready var arSpinBox = $ArousalBox
 onready var egSpinBox = $EgoBox
 
+const footstep = preload("res://Villager/footprint.tscn")
+
 #Villagers need brains. This is not optional.
 var brain = NeuralNet.new(3)#init args: layercount
 var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer or ambient music.
@@ -541,7 +543,9 @@ func hunt_state(delta):
 	
 	velocity = move_and_slide(velocity)
 	
-	move()
+	move(delta)
+	
+	#take in the movement distance and drop a footprint using "var foo = footstep.instance()"
 	
 	#replace iInput.x to whatever mechanism to trigger the appropiate actions
 	#if Input.is_action_just_pressed("attack"):
@@ -560,7 +564,7 @@ func hunt_state(delta):
 func roll_state(delta): #dey be rollin' dey hatin'. no Iframes though
 	velocity = roll_vector * ROLL_SPEED
 	animationState.travel("Roll")
-	move()
+	move(delta)
 	
 func attack_state(delta): #currently non lethal and non-hitty. hitboxes man.
 	velocity = Vector2.ZERO
@@ -624,10 +628,13 @@ func _physics_process(delta):
 			#	state = IDLE
 			pass
 	
-func move(): #tells physics to work i think?
+func move(delta):
 	velocity = move_and_slide(velocity)
-	
-#mandatory to reset the character so they can move again.
+	#decrement a timer by delta
+	#if timer <= 0,
+		#drop a footprint using "var foo = footstep.instance()"
+
+
 func roll_animation_finished():
 	state = IDLE
 

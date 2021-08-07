@@ -25,6 +25,8 @@ onready var playerhurt = $Hurtbox
 onready var talking = $dotdotdot
 onready var speech = $Question
 
+const footstep = preload("res://Villager/footprint.tscn")
+
 func _ready():
 	stats.connect("no_hp", self, "queue_free")
 	animationTree.active = true
@@ -67,7 +69,7 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	
-	move()
+	move(delta)
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
@@ -88,11 +90,14 @@ func attack_state(delta):
 func roll_state(delta):
 	velocity = roll_vector * ROLL_SPEED
 	animationState.travel("Roll")
-	move()
+	move(delta)
 	
-func move():
+func move(delta):
 	velocity = move_and_slide(velocity)
-	
+	#decrement a timer by delta
+	#if timer <= 0,
+		#drop a footprint using "var foo = footstep.instance()"
+
 func talk_state(delta):
 	velocity = Vector2.ZERO
 	speech.visible = true
