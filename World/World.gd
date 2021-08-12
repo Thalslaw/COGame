@@ -10,6 +10,7 @@ onready var cliffTileMap = $Cliff_Tile
 onready var pathTileMap	= $Path_Tile
 onready var things = $Things
 const grazz = preload("res://Action RPG Resources/World/Grass.tscn")
+const roc = preload("res://Action RPG Resources/World/Rock.tscn")
 
 enum {VALLEY, VILLAGE, DUNGEON, DWELLING}
 ## valley is notionally the default startpoint. Arranged this way in case we want to have different kinds of start point in the future.
@@ -48,7 +49,7 @@ func _ready():
 		#the same as a dungeon but with dwelling dressing... people live here!
 		pass
 
-func generate_Grazz():
+func generate_Grazz(): #is 8x8 grid dummy!
 	var walker = Walker.new(Vector2(36,36), bigBorders)
 	var map = walker.walk(DISTANCE)
 	walker.queue_free()
@@ -60,6 +61,19 @@ func generate_Grazz():
 				#find the ysort, add the grass there
 				things.add_child(grass)				
 				grass.global_position = location
+				
+func generate_Roc():
+	var walker = Walker.new(Vector2(36,36), bigBorders)
+	var map = walker.walk(DISTANCE)
+	walker.queue_free()
+	for location in map:
+		if (cliffTileMap.get_cellv(location/2) == -1):
+			location = location*16
+			if randf() >= 0.9:
+				var pebble = roc.instance()
+				#find the ysort, add the gr- sorry, stone there
+				things.add_child(pebble)				
+				pebble.global_position = location
 
 func generate_Paths():
 	#currently randomly walks, intent is to pass in locations to try to get between.

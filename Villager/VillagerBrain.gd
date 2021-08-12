@@ -23,6 +23,7 @@ onready var convo = $dotdotdot
 onready var speech = $whodat
 onready var Hunting = $HuntZone
 onready var acting = $ActionZone
+onready var foottime = $footTimer
 
 onready var agSpinBox = $AgencyBox
 onready var arSpinBox = $ArousalBox
