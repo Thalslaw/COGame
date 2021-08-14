@@ -8,11 +8,12 @@ export var 	FRICTION = 500
 enum {
 	MOVE,
 	ROLL,
-	ATTACK
-	TALK
+	ATTACK,
+	TALK,
+	IDLE
 }
 
-var state = MOVE
+var state = IDLE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
@@ -45,7 +46,27 @@ func _physics_process(delta):
 		
 		TALK:
 			talk_state(delta)
-	
+		
+		IDLE:
+			idle_state(delta)
+
+func idle_state(delta):
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
+		speech.visible = false
+		
+	if Input.is_action_just_pressed("roll"):
+		state = ROLL
+		speech.visible = false
+		
+	if Input.is_action_just_pressed("chat"):
+		if(speech.visible):
+			state = IDLE
+			speech.visible = false
+		else:
+			state = TALK
+			speech.visible = true
+
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -68,20 +89,8 @@ func move_state(delta):
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
-	
 	move(delta)
-	
-	if Input.is_action_just_pressed("attack"):
-		state = ATTACK
-		speech.visible = false
-		
-	if Input.is_action_just_pressed("roll"):
-		state = ROLL
-		speech.visible = false
-		
-	if Input.is_action_just_pressed("chat"):
-		state = TALK
-		speech.visible = false
+	idle_state(delta)
 	
 func attack_state(delta):
 	velocity = Vector2.ZERO
@@ -101,16 +110,13 @@ func move(delta):
 func talk_state(delta):
 	velocity = Vector2.ZERO
 	speech.visible = true
-	talk_end()
+	state = IDLE
 	
 func roll_animation_finished():
-	state = MOVE
+	state = IDLE
 
 func attack_animation_finished():
-	state = MOVE
-	
-func talk_end():
-	state = MOVE
+	state = IDLE
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= 1

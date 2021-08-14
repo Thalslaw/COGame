@@ -8,6 +8,7 @@ export var 	ACCELERATION = 500
 export var 	MAX_SPEED = 80
 export var 	ROLL_SPEED = 125
 export var 	FRICTION = 500
+export var 	STRIDELENGTH = 10
 
 #vector variables for movement.
 var velocity = Vector2.ZERO
@@ -30,6 +31,10 @@ onready var arSpinBox = $ArousalBox
 onready var egSpinBox = $EgoBox
 
 const footstep = preload("res://Villager/footprint.tscn")
+
+#vars for internal logic of the villager.
+var leaveFootprint = true
+var stride = STRIDELENGTH
 
 #Villagers need brains. This is not optional.
 var brain = NeuralNet.new(3)#init args: layercount
@@ -632,9 +637,16 @@ func _physics_process(delta):
 func move(delta):
 	velocity = move_and_slide(velocity)
 	#decrement a timer by delta
+	stride = stride - delta
 	#if timer <= 0,
 		#drop a footprint using "var foo = footstep.instance()"
-
+	if(stride <= 0):
+		var tracks = footstep.Instance()
+		#make tracks align to a 16px grid.
+		tracks.global_position.x -= (tracks.global_position.x % 16)
+		tracks.global_position.y -= (tracks.global_position.y % 16)
+		get_parent().add_child(tracks)
+		stride = STRIDELENGTH
 
 func roll_animation_finished():
 	state = IDLE

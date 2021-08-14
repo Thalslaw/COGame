@@ -1164,8 +1164,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="footTimer" type="Timer" parent="."]
-
 [connection signal="body_entered" from="ActionZone" to="ActionZone" method="_on_ActionZone_body_entered"]
 [connection signal="body_exited" from="ActionZone" to="ActionZone" method="_on_ActionZone_body_exited"]
 
