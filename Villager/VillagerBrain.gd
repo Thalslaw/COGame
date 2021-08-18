@@ -37,8 +37,10 @@ var leaveFootprint = true
 var stride = STRIDELENGTH
 
 #Villagers need brains. This is not optional.
+
 var brain = NeuralNet.new(3)#init args: layercount
 var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer or ambient music.
+#var instincts = Instincts.new()#init args: inputs (senseDataThatMightBeUseful + satisfaction + health + shoesize + likelinessToFeedACroissantToAHedgehog%)
 var urges = []
 
 var nextThingToDo = []
@@ -88,6 +90,8 @@ var stance = CAUTIOUS
 
 func _ready():
 	pass
+	
+
 	
 func reward(doneThis,passFail):
 	#configure reward strength to include gland fatigue
@@ -356,6 +360,7 @@ func idle_state(delta):
 				if vocal:
 					print("Cookie nommed.")
 				state = TALK
+				#instincts.getBreedData MEKKE DE BEBBE
 			else:
 				state = MOVE
 		else:
