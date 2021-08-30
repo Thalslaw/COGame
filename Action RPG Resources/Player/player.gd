@@ -50,15 +50,13 @@ func _physics_process(delta):
 		IDLE:
 			idle_state(delta)
 
-func idle_state(delta):
+func idle_state(_delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 		speech.visible = false
-		
 	if Input.is_action_just_pressed("roll"):
 		state = ROLL
 		speech.visible = false
-		
 	if Input.is_action_just_pressed("chat"):
 		if(speech.visible):
 			state = IDLE
@@ -66,6 +64,9 @@ func idle_state(delta):
 		else:
 			state = TALK
 			speech.visible = true
+	if (Input.get_action_strength("ui_left")||Input.get_action_strength("ui_right")||Input.get_action_strength("ui_up")||Input.get_action_strength("ui_down")):
+		state = MOVE
+	#
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -92,7 +93,7 @@ func move_state(delta):
 	move(delta)
 	idle_state(delta)
 	
-func attack_state(delta):
+func attack_state(_delta):
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
 	
@@ -101,13 +102,14 @@ func roll_state(delta):
 	animationState.travel("Roll")
 	move(delta)
 	
-func move(delta):
+func move(_delta):
 	velocity = move_and_slide(velocity)
-	#decrement a timer by delta
+	#decrement a timer by delta. Is to remain underscored until this value is used.
 	#if timer <= 0,
 		#drop a footprint using "var foo = footstep.instance()"
 
-func talk_state(delta):
+func talk_state(_delta):
+	#Delta goes unused. It is to remain underscored until this value is used.
 	velocity = Vector2.ZERO
 	speech.visible = true
 	state = IDLE
@@ -118,7 +120,8 @@ func roll_animation_finished():
 func attack_animation_finished():
 	state = IDLE
 
-func _on_Hurtbox_area_entered(area):
+func _on_Hurtbox_area_entered(_area):
+	#Area goes unused. It is to remain underscored until this value is used.
 	stats.health -= 1
 	playerhurt.start_iframes(0.5)
 	playerhurt.create_flash()

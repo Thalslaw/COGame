@@ -13,7 +13,7 @@ func create_leef():
 	get_parent().add_child(leef)
 	leef.global_position = global_position
 
-func _on_Hurtbox_area_entered(area):
+func _on_Hurtbox_area_entered(_area):
 	create_dedgrass()
 	create_leef()
 	queue_free()

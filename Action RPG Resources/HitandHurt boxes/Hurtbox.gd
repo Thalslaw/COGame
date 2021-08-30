@@ -6,7 +6,7 @@ var iframes = false setget set_iframes
 
 onready var timer = $Timer
 
-signal Invinc_start
+signal invinc_start
 signal invinc_end
 
 func set_iframes(value):
@@ -31,7 +31,7 @@ func _on_Timer_timeout():
 	self.iframes = false
 
 
-func _on_Hurtbox_Invinc_start():
+func _on_Hurtbox_invinc_start():
 	set_deferred("monitorable", false)
 
 

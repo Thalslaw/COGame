@@ -24,7 +24,6 @@ onready var convo = $dotdotdot
 onready var speech = $whodat
 onready var Hunting = $HuntZone
 onready var acting = $ActionZone
-onready var foottime = $footTimer
 
 onready var agSpinBox = $AgencyBox
 onready var arSpinBox = $ArousalBox
@@ -127,8 +126,9 @@ func reward(doneThis,passFail):
 		brain.train(urges, rewardTowardsWant)
 	
 	
-func think_state(delta):
+func think_state(_delta):
 	#this state should be reached if the entity has finished its list of tasks. 
+	#delta is not used in this function. It is to remain underscored until it is used.
 	urges.clear()
 
 	var agenticness = sates.getAg()
@@ -207,9 +207,9 @@ func think_state(delta):
 		if vocal:
 			print("Am sad.")
 
-func idle_state(delta):
-	
-	#this is where we put overriding reactions to things! stances and whims and stuff!
+func idle_state(_delta):
+	#this is where we put instinct and unfocussed behaviour.
+	#delta is not used in this function. It will remain underscored until it is used.
 	#if hungry:
 		#nextthingtodo == feeeeed meeeeee
 	#if horny: 
@@ -534,7 +534,7 @@ func idle_state(delta):
 	#print("finished the idle state")
 
 func hunt_state(delta):
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	var food = Hunting.isTasty
 	if food != null:
 		var chase = (food.global_position - global_position).normalized()
@@ -577,11 +577,13 @@ func roll_state(delta): #dey be rollin' dey hatin'. no Iframes though
 	animationState.travel("Roll")
 	move(delta)
 	
-func attack_state(delta): #currently non lethal and non-hitty. hitboxes man.
+func attack_state(_delta):
+	#delta is not used in this function. It is to remain underscored until it is used.
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
 
-func talk_state(delta): #my junky talk command thingy...
+func talk_state(_delta):
+	#delta is not used in this function. It is to remain underscored until it is used.
 	velocity = Vector2.ZERO
 	speech.visible = true
 	talk_end()

@@ -1032,10 +1032,9 @@ script = ExtResource( 1 )
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 60
-frame = 12
+frame = 18
 
 [node name="dotdotdot" type="Sprite" parent="."]
-visible = false
 position = Vector2( 0, -24 )
 texture = ExtResource( 7 )
 
@@ -1087,7 +1086,7 @@ parameters/Talk/blend_position = Vector2( -0.00156742, 0.00578034 )
 
 [node name="Sword" type="Position2D" parent="."]
 position = Vector2( 0, -6 )
-rotation = 3.14159
+rotation = 1.5708
 
 [node name="Sword" parent="Sword" instance=ExtResource( 3 )]
 position = Vector2( 15, 0 )

@@ -26,7 +26,7 @@ func _process(delta):
 		queue_free()
 
 
-func _on_FootprintListener_body_entered(body):
+func _on_FootprintListener_body_entered(_body):
 	timer += TIMER
 	if(timer >= THRESHOLD):
 		#Make the world issue a path here. This may be a bit complicated

@@ -86,9 +86,9 @@ func generate_Paths():
 			pathTileMap.set_cellv(location, 0)
 	pathTileMap.update_bitmask_region(bigBorders.position, bigBorders.end)
 
-func _process(delta):
+func _process(_delta):
 	#this will handle elapsing time within the game.
-	#decrement a timer by delta.
+	#decrement a timer by delta. Delta is underscored until it's used.
 	#everything in the current zone is loaded, therefore doesn't require processing.
 	#computationally arranged:
 	#every timer loop, take the top global location in the list, and advance it as many time steps since its last elapse.

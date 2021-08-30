@@ -21,5 +21,6 @@ func set_max_hearts(value):
 func _ready():
 	self.max_hearts = PlayerStats.max_health
 	self.hearts = PlayerStats.health
-	PlayerStats.connect("hp_modified", self, "set_hearts")
-	PlayerStats.connect("mhp_modified", self, "set_max_hearts")
+	var _loggable = PlayerStats.connect("hp_modified", self, "set_hearts")
+	_loggable = PlayerStats.connect("mhp_modified", self, "set_max_hearts")
+	#The loggable variable is to remain underscored until it is used.

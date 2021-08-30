@@ -42,7 +42,7 @@ func think(satisfiers):
 	output = layerList[j].getNeurons()
 	return output
 
-func train(satisfiers, wantedOutput):
+func train(_satisfiers, wantedOutput):
 	#work backwards from the output and correct for difference from outputs
 	var j = 0
 	#for loop through l layers
@@ -70,7 +70,7 @@ func train(satisfiers, wantedOutput):
 					#so set threshold to adjust in the direction of difference by a factor of learning rate
 					forwardNeuron.setThreshold(forwardNeuron.threshold + ((neuron.threshold - forwardNeuron.threshold) * learningRate))
 			j = j + 1
-	#something about corresponding to the satisfiers.
+	#At this point, a check against their satisfiers would be appropriate. satisfiers is to remain underscored until this value is used.
 	
 	layerList.invert() ##now back to the right way round
 	

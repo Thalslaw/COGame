@@ -65,7 +65,6 @@ func getEg():
 	
 func depress(value):
 	#drop in satisfaction over time.
-	var foo = value/100
 	agentic_satisfaction = agentic_satisfaction - value
 	arousal_satisfaction = arousal_satisfaction - value
 	egoic_satisfaction = egoic_satisfaction - value
