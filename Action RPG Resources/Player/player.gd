@@ -54,19 +54,20 @@ func idle_state(_delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 		speech.visible = false
-	if Input.is_action_just_pressed("roll"):
+	elif Input.is_action_just_pressed("roll"):
 		state = ROLL
 		speech.visible = false
-	if Input.is_action_just_pressed("chat"):
+	elif Input.is_action_just_pressed("chat"):
 		if(speech.visible):
 			state = IDLE
 			speech.visible = false
 		else:
 			state = TALK
 			speech.visible = true
-	if (Input.get_action_strength("ui_left")||Input.get_action_strength("ui_right")||Input.get_action_strength("ui_up")||Input.get_action_strength("ui_down")):
+	elif (Input.get_action_strength("ui_left")||Input.get_action_strength("ui_right")||Input.get_action_strength("ui_up")||Input.get_action_strength("ui_down")):
 		state = MOVE
-	#
+	else:
+		animationState.travel("Idle")
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO

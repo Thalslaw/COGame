@@ -1,6 +1,6 @@
-extends KinematicBody2D #kinematic body so it can kinetic!
+extends KinematicBody2D
 
-#export vars for seeing if we care about listening to this one:
+#vocal is a developer option. It prints a lot of output to the log.
 export var vocal = false
 
 #export vars for movement. allows fine tuning of the character's movement.
@@ -19,21 +19,24 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $Sword/Sword
-onready var playerhurt = $Hurtbox
+onready var villagerHurt = $Hurtbox
 onready var convo = $dotdotdot
 onready var speech = $whodat
 onready var Hunting = $HuntZone
 onready var acting = $ActionZone
+onready var stats = $Stats
 
 onready var agSpinBox = $AgencyBox
 onready var arSpinBox = $ArousalBox
 onready var egSpinBox = $EgoBox
 
 const footstep = preload("res://Villager/footprint.tscn")
+const deathFlash = preload("res://Action RPG Resources/Effects/Batded.tscn")
 
 #vars for internal logic of the villager.
 var leaveFootprint = true
 var stride = STRIDELENGTH
+var knockback = Vector2.ZERO
 
 #Villagers need brains. This is not optional.
 
@@ -90,7 +93,17 @@ var stance = CAUTIOUS
 func _ready():
 	pass
 	
+func _on_Hurtbox_area_entered(area):
+	knockback = area.knockback_vector * 120
+	stats.health -= area.damage
+	villagerHurt.create_flash()
 
+
+func _on_Stats_no_hp():
+	var villagerDie = deathFlash.instance()
+	get_parent().add_child(villagerDie)
+	villagerDie.global_position = global_position
+	queue_free()
 	
 func reward(doneThis,passFail):
 	#configure reward strength to include gland fatigue
@@ -546,9 +559,14 @@ func hunt_state(delta):
 		animationTree.set("parameters/Move/blend_position", velocity)
 		animationTree.set("parameters/Attack/blend_position", velocity)
 		animationTree.set("parameters/Roll/blend_position", velocity)
-		animationState.travel("Move")
+		self.animationState.travel("Move")
 	else:
-		animationState.travel("Idle")
+		speech.visible = false
+		animationTree.set("parameters/Idle/blend_position", velocity)
+		animationTree.set("parameters/Move/blend_position", velocity)
+		animationTree.set("parameters/Attack/blend_position", velocity)
+		animationTree.set("parameters/Roll/blend_position", velocity)
+		self.animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		hungry()
 	
@@ -574,13 +592,13 @@ func hunt_state(delta):
 	
 func roll_state(delta): #dey be rollin' dey hatin'. no Iframes though
 	velocity = roll_vector * ROLL_SPEED
-	animationState.travel("Roll")
+	self.animationState.travel("Roll")
 	move(delta)
 	
 func attack_state(_delta):
 	#delta is not used in this function. It is to remain underscored until it is used.
 	velocity = Vector2.ZERO
-	animationState.travel("Attack")
+	self.animationState.travel("Attack")
 
 func talk_state(_delta):
 	#delta is not used in this function. It is to remain underscored until it is used.
@@ -650,8 +668,8 @@ func move(delta):
 	if(stride <= 0):
 		var tracks = footstep.instance()
 		#make tracks align to a 16px grid.
-		tracks.global_position.x -= fmod(tracks.global_position.x, 16.0) #fmod(x,y) == x%y, for floats though. 
-		tracks.global_position.y -= fmod(tracks.global_position.y, 16.0)
+		#tracks.global_position.x -= fmod(tracks.global_position.x, 16.0) #fmod(x,y) == x%y, for floats though. 
+		#tracks.global_position.y -= fmod(tracks.global_position.y, 16.0)
 		get_parent().add_child(tracks)
 		stride = STRIDELENGTH
 
