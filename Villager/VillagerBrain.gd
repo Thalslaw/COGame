@@ -648,10 +648,10 @@ func move(delta):
 	#if timer <= 0,
 		#drop a footprint using "var foo = footstep.instance()"
 	if(stride <= 0):
-		var tracks = footstep.Instance()
+		var tracks = footstep.instance()
 		#make tracks align to a 16px grid.
-		tracks.global_position.x -= (tracks.global_position.x % 16)
-		tracks.global_position.y -= (tracks.global_position.y % 16)
+		tracks.global_position.x -= fmod(tracks.global_position.x, 16.0) #fmod(x,y) == x%y, for floats though. 
+		tracks.global_position.y -= fmod(tracks.global_position.y, 16.0)
 		get_parent().add_child(tracks)
 		stride = STRIDELENGTH
 

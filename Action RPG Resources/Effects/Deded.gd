@@ -2,7 +2,8 @@ extends AnimatedSprite
 
 
 func _ready():
-	var loggable = connect("animation_finished", self, "_on_animation_finished")
+	var _loggable = connect("animation_finished", self, "_on_animation_finished")
+	#loggable is to remain underscore until the variable is used.
 	frame = 0
 	play("deding")
 
