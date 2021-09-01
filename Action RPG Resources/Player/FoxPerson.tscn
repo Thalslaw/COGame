@@ -1315,9 +1315,10 @@ script = ExtResource( 4 )
 position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 7
+frame = 12
 
 [node name="dotdotdot" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -24 )
 scale = Vector2( 1, 1.21333 )
 texture = ExtResource( 5 )
@@ -1369,6 +1370,7 @@ shape = SubResource( 2 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 67 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 68 )
 parameters/Attack/blend_position = Vector2( -0.00313479, 0 )
 parameters/Chat/blend_position = Vector2( -0.0172414, -0.810345 )
@@ -1379,7 +1381,7 @@ parameters/Roll/blend_position = Vector2( -0.246082, -0.12931 )
 
 [node name="Sword" type="Position2D" parent="."]
 position = Vector2( 0, -4 )
-rotation = 3.14159
+rotation = -1.5708
 
 [node name="Sword" type="Area2D" parent="Sword"]
 collision_layer = 0
@@ -1389,6 +1391,7 @@ collision_mask = 140
 position = Vector2( -16, 0 )
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 69 )
+disabled = true
 
 [node name="HuntZone" parent="." instance=ExtResource( 7 )]
 collision_mask = 66
@@ -1452,7 +1455,7 @@ __meta__ = {
 
 [node name="activeLook" type="Position2D" parent="."]
 position = Vector2( 0.282867, -4 )
-rotation = 3.14159
+rotation = 1.5708
 
 [node name="Area2D" type="Area2D" parent="activeLook"]
 
