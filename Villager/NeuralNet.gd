@@ -7,20 +7,20 @@ var output = []
 var layerList = []
 var learningRate = 0.05
 
-func _init(layerCount):
+func _init(layerCount,inputCount,outputCount):
 	for n in layerCount:
 		var la = []
 		if n == 0:
 			#reserved for input neurons
-			la = Layer.new(3,0) #the number of input neurons
+			la = Layer.new(inputCount,0) #the number of input neurons
 		elif n == layerCount: #else if. Not "file" backwards, brain... you so silly.
 			#reserved for output neurons
-			la = Layer.new(17, la.count()) #the number of output neurons
+			la = Layer.new(outputCount, la.count()) #the number of output neurons
 		else:
 			if (la.size() >= 1):
 				la = Layer.new(5, la.count()) #the number of hidden layer neurons. 
 			else:
-				la = Layer.new(5, 3) #the number of hidden layer neurons. 
+				la = Layer.new(5, inputCount) #the number of hidden layer neurons. 
 		layerList.append(la)
 
 func think(satisfiers):

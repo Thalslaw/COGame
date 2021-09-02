@@ -83,8 +83,12 @@ func generate_Paths():
 	walker.queue_free()
 	for location in map:
 		if (cliffTileMap.get_cellv(location/2) == -1):
-			pathTileMap.set_cellv(location, 0)
+			pathTileMap.set_cellv(location,0)
 	pathTileMap.update_bitmask_region(bigBorders.position, bigBorders.end)
+
+func addPathTile(location):
+	pathTileMap.set_cellv(location,0)
+	pathTileMap.update_bitmask_region(location, location)
 
 func _process(_delta):
 	#this will handle elapsing time within the game.

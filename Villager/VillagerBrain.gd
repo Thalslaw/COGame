@@ -2,13 +2,14 @@ extends KinematicBody2D
 
 #vocal is a developer option. It prints a lot of output to the log.
 export var vocal = false
+var worldData = WorldData
 
 #export vars for movement. allows fine tuning of the character's movement.
-export var 	ACCELERATION = 500
-export var 	MAX_SPEED = 80
-export var 	ROLL_SPEED = 125
-export var 	FRICTION = 500
-export var 	STRIDELENGTH = 10
+export var ACCELERATION = 500
+export var MAX_SPEED = 80
+export var ROLL_SPEED = 125
+export var FRICTION = 500
+export var STRIDELENGTH = 1
 
 #vector variables for movement.
 var velocity = Vector2.ZERO
@@ -40,10 +41,14 @@ var knockback = Vector2.ZERO
 
 #Villagers need brains. This is not optional.
 
-var brain = NeuralNet.new(3)#init args: layercount
+var brain = NeuralNet.new(3,3,17)#init args: layercount,input,output
 var sates = Satisfiers.new()#this is something that signals, because OTHER things might satisfy the villager. Like beer or ambient music.
 #var instincts = Instincts.new()#init args: inputs (senseDataThatMightBeUseful + satisfaction + health + shoesize + likelinessToFeedACroissantToAHedgehog%)
 var urges = []
+
+#var instincts = NeuralNet.new(layercount,input,output)
+#inputs count from set of: health from stats, 
+#outputs operated by brain.think(inputList)
 
 var nextThingToDo = []
 
@@ -79,6 +84,7 @@ var state = IDLE
 enum {
 	#set of stances. If they are intending to be friendly or unfriendly
 	FRIENDLY,
+	NEUTRAL,
 	CAUTIOUS,
 	HOSTILE
 }
@@ -91,7 +97,7 @@ var stance = CAUTIOUS
 #get base egoic satisfaction
 
 func _ready():
-	pass
+	worldData.addVillager(self)
 	
 func _on_Hurtbox_area_entered(area):
 	knockback = area.knockback_vector * 120
@@ -250,6 +256,7 @@ func idle_state(_delta):
 			#nextThingToDo.append("GoTo_ValleyOrDungeon")
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "fame"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka, if it is in a village
 		#if talkable = hunting.isTalkable?
@@ -298,6 +305,7 @@ func idle_state(_delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "jealousy"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka, if it is in a village or a dwelling
 		#if talkable = hunting.isTalkable?
@@ -335,6 +343,7 @@ func idle_state(_delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "love"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka, if it is in a village or a dwelling
 		#if talkable = hunting.isTalkable?
@@ -359,6 +368,7 @@ func idle_state(_delta):
 			if vocal:
 				print("Am sad.")
 	elif (nextThingToDo[0] == "lust"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka, if it is in a dwelling
 		#if talkable = hunting.isTalkable?
@@ -408,6 +418,7 @@ func idle_state(_delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "pride"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka, if it is in a village
 		#if talkable = hunting.isTalkable?
@@ -432,6 +443,7 @@ func idle_state(_delta):
 			if vocal:
 				print("Am sad.")
 	elif (nextThingToDo[0] == "respect"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka if it is in a village
 		#if talkable = hunting.isTalkable?
@@ -480,6 +492,7 @@ func idle_state(_delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "status"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka if it is within a dwelling
 		#if talkable = hunting.isTalkable?
@@ -516,6 +529,7 @@ func idle_state(_delta):
 			#give it a slap
 		#nextThingToDo.pop_front()
 	elif (nextThingToDo[0] == "wealth"):
+		stance = FRIENDLY
 		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
 		#aka if it is within a dungeon
 		#if talkable = hunting.isTalkable?
@@ -667,9 +681,7 @@ func move(delta):
 		#drop a footprint using "var foo = footstep.instance()"
 	if(stride <= 0):
 		var tracks = footstep.instance()
-		#make tracks align to a 16px grid.
-		#tracks.global_position.x -= fmod(tracks.global_position.x, 16.0) #fmod(x,y) == x%y, for floats though. 
-		#tracks.global_position.y -= fmod(tracks.global_position.y, 16.0)
+		tracks.global_position = self.global_position
 		get_parent().add_child(tracks)
 		stride = STRIDELENGTH
 

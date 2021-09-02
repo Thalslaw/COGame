@@ -537,6 +537,9 @@ position = Vector2( 96, 96 )
 [node name="AnimationTree" parent="Things/player" index="5"]
 parameters/playback = SubResource( 51 )
 
+[node name="CollisionShape2D" parent="Things/player/Question/ActionBox" index="0"]
+position = Vector2( 0, 32.7234 )
+
 [node name="Camera2D" type="Camera2D" parent="Things/player"]
 current = true
 
@@ -559,7 +562,7 @@ position = Vector2( 128, 176 )
 position = Vector2( 160, 192 )
 
 [node name="Cave_Hole" parent="Things" instance=ExtResource( 11 )]
-position = Vector2( 304, -40 )
+position = Vector2( 304, -39.581 )
 
 [node name="Bat" parent="Things" instance=ExtResource( 12 )]
 position = Vector2( 456, 120 )
@@ -568,7 +571,7 @@ position = Vector2( 456, 120 )
 position = Vector2( 272, 160 )
 
 [node name="FoxPerson2" parent="Things" instance=ExtResource( 10 )]
-position = Vector2( 112, -80 )
+position = Vector2( 32, -120 )
 
 [node name="FoxPerson3" parent="Things" instance=ExtResource( 10 )]
 position = Vector2( -240, 32 )

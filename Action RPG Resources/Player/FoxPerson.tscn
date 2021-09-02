@@ -556,9 +556,9 @@ max_health = 4
 position = Vector2( 0.282867, -4 )
 rotation = 1.5708
 
-[node name="Area2D" type="Area2D" parent="activeLook"]
+[node name="ForwardViewCone" type="Area2D" parent="activeLook"]
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="activeLook/Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="activeLook/ForwardViewCone"]
 position = Vector2( 0, 16.9917 )
 rotation = 1.5708
 polygon = PoolVector2Array( -11.7171, 0.282867, 115.008, 55.717, 115.008, -56.283 )

@@ -69,6 +69,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerStats="*res://Action RPG Resources/Player/PlayerStats.tscn"
+WorldData="*res://World/WorldData.tscn"
 
 [display]
 
