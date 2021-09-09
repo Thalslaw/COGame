@@ -5,10 +5,10 @@ export var vocal = false
 var worldData = WorldData
 
 #export vars for movement. allows fine tuning of the character's movement.
-export var ACCELERATION = 500
-export var MAX_SPEED = 80
-export var ROLL_SPEED = 125
-export var FRICTION = 500
+export var 	ACCELERATION = 500
+export var 	MAX_SPEED = 80
+export var 	ROLL_SPEED = 125
+export var 	FRICTION = 500
 export var STRIDELENGTH = 1
 
 #vector variables for movement.
@@ -77,7 +77,6 @@ enum {
 	ROLL,
 	ATTACK
 	TALK,
-	CHASE
 }
 var state = IDLE
 
@@ -226,347 +225,254 @@ func think_state(_delta):
 		if vocal:
 			print("Am sad.")
 
-func idle_state(_delta):
+func idle_state(delta):
 	#this is where we put instinct and unfocussed behaviour.
-	#delta is not used in this function. It will remain underscored until it is used.
-	#if hungry:
+	var panic = false
+	#if hungry: 
 		#nextthingtodo == feeeeed meeeeee
 	#if horny: 
 		#nextthingtodo == lust?
 	#if threatened:
-		#if not doing a fighty drive
-			#flee!
-	
-	
+	if stance != HOSTILE:
+		if (stats.health <= (stats.max_health/2)): 
+			if Hunting.smell_noms():
+				stance = CAUTIOUS
+				state = MOVE
+				panic = true
+			else:
+				panic = false
+			#try to find grass to eat
+		#otherwise continue
 	#this is where we put longer term drive goals:
-	if (nextThingToDo.empty()):
-		if vocal:
-			print("has started to think about what to do.")
-		state = THINK
-	#elif (nextThingToDo[0] == "exploration"):
-		#if it assesses it can do the thing:
-		#aka, if it's in a valley or a dungeon:
-			#if (too far to interact):
-				#set target as suitable interactables	
-				#state = chase
+	if panic == false:
+		if (nextThingToDo.empty()):
+			if vocal:
+				print("has started to think about what to do.")
+			state = THINK
+		#elif (nextThingToDo[0] == "exploration"):
+			#if it assesses it can do the thing:
+			#aka, if it's in a valley or a dungeon:
+				#if (too far to interact):
+					#set target as suitable interactables	
+					#state = chase
+				#else
+					#interact with the thing
+					#then give it a cookie
 			#else
-				#interact with the thing
-				#then give it a cookie
-		#else
-			#nextThingToDo.append("GoTo_ValleyOrDungeon")
-		#nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "fame"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka, if it is in a village
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
-			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-			else:
-				state = MOVE
-		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
-			reward(want,false)
-			if vocal:
-				print("Am sad.")
-	#elif (nextThingToDo[0] == "fun"):
-		#if it assesses it can do the thing:
-		#aka, if it is in a village
-			#if (too far to interact):
-				#set target as suitable interactables
-				#state = chase
+				#nextThingToDo.append("GoTo_ValleyOrDungeon")
+			#nextThingToDo.pop_front()
+		elif (nextThingToDo[0] == "fame"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka, if it is in a village
+			#if talkable = hunting.isTalkable?
+			friendly_behaviour(delta)
+		#elif (nextThingToDo[0] == "fun"):
+			#if it assesses it can do the thing:
+			#aka, if it is in a village
+				#if (too far to interact):
+					#set target as suitable interactables
+					#state = chase
+				#else
+					#interact with the thing
+					#then give it a cookie
 			#else
-				#interact with the thing
-				#then give it a cookie
-		#else
-			#give it a slap
-		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "fury"):
-		#if it assesses it can do the thing:
-		#aka, if it is in a village or a dwelling
-			#if (too far to attack):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = attack
-				#then give it a cookie
-		#else
-			#give it a slap
-		#nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "jealousy"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka, if it is in a village or a dwelling
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
-			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-			else:
-				state = MOVE
-		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
-			reward(want,false)
-			if vocal:
-				print("Am sad.")
-		nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "justice"):
-		#if it assesses it can do the thing:
-		#aka, if it is in a dwelling
-			#if (too far to interact):
-				#set target as suitable interactables
-				#state = chase
+				#give it a slap
+			#nextThingToDo.pop_front()
+		elif (nextThingToDo[0] == "fury"):
+			stance = HOSTILE
+			#if it assesses it can do the thing:
+			#aka, if it is in a village or a dwelling
+			unfriendly_behaviour(delta)
+		elif (nextThingToDo[0] == "jealousy"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka, if it is in a village or a dwelling
+			#if talkable = hunting.isTalkable?
+			friendly_behaviour(delta)
+			nextThingToDo.pop_front()
+		#elif (nextThingToDo[0] == "justice"):
+			#if it assesses it can do the thing:
+			#aka, if it is in a dwelling
+				#if (too far to interact):
+					#set target as suitable interactables
+					#state = chase
+				#else
+					#interact with the thing
+					#give it a cookie
 			#else
-				#interact with the thing
-				#give it a cookie
-		#else
-			#give it a slap
-		#nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "love"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka, if it is in a village or a dwelling
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
+				#give it a slap
+			#nextThingToDo.pop_front()
+		elif (nextThingToDo[0] == "love"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka, if it is in a village or a dwelling
+			#if talkable = hunting.isTalkable?
+			friendly_behaviour(delta)
+		elif (nextThingToDo[0] == "lust"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka, if it is in a dwelling
+			#if talkable = hunting.isTalkable?
+			friendly_behaviour(delta)
 			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-			else:
-				state = MOVE
-		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
-			reward(want,false)
-			if vocal:
-				print("Am sad.")
-	elif (nextThingToDo[0] == "lust"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka, if it is in a dwelling
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
-			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-				#instincts.getBreedData MEKKE DE BEBBE
-			else:
-				state = MOVE
-		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
-			reward(want,false)
-			if vocal:
-				print("Am sad.")
-	#elif (nextThingToDo[0] == "malice"):
-		#if it assesses it can do the thing:
-		#aka, if it is in a valley or a village
-			#if (too far to attack):
-				#set target as villagers or player
-				#state = chase
+				var bebbe = load("res://Action RPG Resources/Player/FoxPerson.tscn").instance()
+				get_parent().add_child(bebbe)
+		elif (nextThingToDo[0] == "malice"):
+			stance = HOSTILE
+			#if it assesses it can do the thing:
+			#aka, if it is in a valley or a village
+			unfriendly_behaviour(delta)
+		elif (nextThingToDo[0] == "plunder"):
+			stance = HOSTILE
+			#if it assesses it can do the thing:
+			#aka, if it is in a dungeon or a dwelling
+			unfriendly_behaviour(delta)
+		elif (nextThingToDo[0] == "pride"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka, if it is in a village
+			#if talkable = hunting.isTalkable?
+			friendly_behaviour(delta)
+		elif (nextThingToDo[0] == "respect"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka if it is in a village
+			#if talkable = hunting.isTalkable?
+			friendly_behaviour(delta)
+		elif (nextThingToDo[0] == "revenge"):
+			stance = HOSTILE
+			#if it assesses it can do the thing
+			#aka if it is within a dwelling
+			unfriendly_behaviour(delta)
+		#elif (nextThingToDo[0] == "solution"):
+			#if it assesses it can do the thing:
+			#aka if it is within a dwelling or a dungeon
+				#if (too far to interact):
+					#set target as suitable interactables
+					#state = chase
+				#else
+					#interact with the thing
+					#give it a cookie
 			#else:
-				#state = attack
-				#give it a cookie
-		#else
-			#give it a slap
-		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "plunder"):
-		#if it assesses it can do the thing:
-		#aka, if it is in a dungeon or a dwelling
-			#if (too far to attack):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = attack
-				#give it a cookie
-		#else
-			#give it a slap
-		#nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "pride"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka, if it is in a village
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
-			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-			else:
-				state = MOVE
+				#give it a slap
+			#nextThingToDo.pop_front()
+		elif (nextThingToDo[0] == "status"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka if it is within a dwelling
+			friendly_behaviour(delta)
+		elif (nextThingToDo[0] == "victory"):
+			stance = HOSTILE
+			#if it assesses it can do the thing
+			#aka if it is within a valley or a dungeon
+			unfriendly_behaviour(delta)
+		elif (nextThingToDo[0] == "wealth"):
+			stance = FRIENDLY
+			#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
+			#aka if it is within a dungeon
+			#if talkable = hunting.isTalkable?
+			friendly_behaviour(delta)
 		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
+			print("has stuff to do but wigs the fuck out and has no clue how to do the " + nextThingToDo[0])
 			reward(want,false)
-			if vocal:
-				print("Am sad.")
-	elif (nextThingToDo[0] == "respect"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka if it is in a village
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
-			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-			else:
-				state = MOVE
-		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
-			reward(want,false)
-			if vocal:
-				print("Am sad.")
-	#elif (nextThingToDo[0] == "revenge"):
-		#if it assesses it can do the thing
-		#aka if it is within a dwelling
-			#if (too far to attack):
-				#set target as villagers or player
-				#state = chase
-			#else:
-				#state = attack
-				#give it a cookie
-		#else:
-			#Give it a slap
-		#nextThingToDo.pop_front()
-	#elif (nextThingToDo[0] == "solution"):
-		#if it assesses it can do the thing:
-		#aka if it is within a dwelling or a dungeon
-			#if (too far to interact):
-				#set target as suitable interactables
-				#state = chase
-			#else
-				#interact with the thing
-				#give it a cookie
-		#else:
-			#give it a slap
-		#nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "status"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka if it is within a dwelling
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
-			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-			else:
-				state = MOVE
-		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
-			reward(want,false)
-			if vocal:
-				print("Am sad.")
-	#elif (nextThingToDo[0] == "victory"):
-		#if it assesses it can do the thing
-		#aka if it is within a valley or a dungeon
-			#if (too far to attack):
-				#set target as enemies
-				#state = chase
-			#else:
-				#state = attack
-				#give it a cookie
-		#else
-			#give it a slap
-		#nextThingToDo.pop_front()
-	elif (nextThingToDo[0] == "wealth"):
-		stance = FRIENDLY
-		#if it assesses it can do the thing, and there is a talkable thing in the long range search zone:
-		#aka if it is within a dungeon
-		#if talkable = hunting.isTalkable?
-		if Hunting.smell_noms():
-			#at least long range
-			if acting.seems_Interesting():
-				# short range
-				#reward
-				if vocal:
-					print("Yay! cookie!")
-				reward(want,true)
-				if vocal:
-					print("Cookie nommed.")
-				state = TALK
-			else:
-				state = MOVE
-		else:
-			#give it a slap
-			if vocal:
-				print("Nu! *slaps self*")
-			reward(want,false)
-			if vocal:
-				print("Am sad.")
-	else:
-		print("has stuff to do but wigs the fuck out and has no clue how to do the " + nextThingToDo[0])
-		reward(want,false)
-		nextThingToDo.pop_front()
-		
+			nextThingToDo.pop_front()
+			
 	#print("finished the idle state")
+
+func unfriendly_behaviour(delta):
+	speech.visible = false
+	if Hunting.smell_noms():
+		#at least long range
+		if acting.seems_Interesting():
+			# short range
+			# give it a reward
+			if vocal:
+				print("Yay! cookie!")
+			reward(want,true)
+			state = IDLE
+			nextThingToDo.pop_front()
+			if vocal:
+				print("Cookie nommed.")
+			state = ATTACK
+		else:
+			state = MOVE
+	else:
+		#if sad,give it a slap
+		if (sates.getAg() <= 0.1 || sates.getAr() <= 0.1 || sates.getEg() <= 0.1):
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			state = IDLE
+			nextThingToDo.pop_front()
+			if vocal:
+				print("Am sad.")
+		else:
+			#wander somewhere
+			velocity = (self.global_position - global_position).normalized().rotated((2*PI*randf()))
+			velocity = velocity.move_toward(velocity * MAX_SPEED, ACCELERATION * delta)
+			roll_vector = velocity
+			#swordHitbox.knockback_vector =
+			animationTree.set("parameters/Idle/blend_position", velocity)
+			animationTree.set("parameters/Move/blend_position", velocity)
+			animationTree.set("parameters/Attack/blend_position", velocity)
+			animationTree.set("parameters/Roll/blend_position", velocity)
+			self.animationState.travel("Move")
+			move(delta)
+
+func friendly_behaviour(delta):
+	if Hunting.smell_noms():
+		speech.visible = true
+		#at least long range
+		if acting.seems_Interesting():
+			# short range
+			# give it a reward
+			if vocal:
+				print("Yay! cookie!")
+			reward(want,true)
+			state = IDLE
+			nextThingToDo.pop_front()
+			if vocal:
+				print("Cookie nommed.")
+			state = TALK
+		else:
+			state = MOVE
+	else:
+		speech.visible = false
+		#if sad,give it a slap
+		if (sates.getAg() <= 0.1 || sates.getAr() <= 0.1 || sates.getEg() <= 0.1):
+			if vocal:
+				print("Nu! *slaps self*")
+			reward(want,false)
+			state = IDLE
+			nextThingToDo.pop_front()
+			if vocal:
+				print("Am sad.")
+		else:
+			#wander somewhere
+			velocity = (self.global_position - global_position).normalized().rotated((2*PI*randf()))
+			velocity = velocity.move_toward(velocity * MAX_SPEED, ACCELERATION * delta)
+			speech.visible = false
+			roll_vector = velocity
+			#swordHitbox.knockback_vector =
+			animationTree.set("parameters/Idle/blend_position", velocity)
+			animationTree.set("parameters/Move/blend_position", velocity)
+			animationTree.set("parameters/Attack/blend_position", velocity)
+			animationTree.set("parameters/Roll/blend_position", velocity)
+			self.animationState.travel("Move")
+			move(delta)
 
 func hunt_state(delta):
 	velocity = Vector2.ZERO
-	var food = Hunting.isTasty
-	if food != null:
-		var chase = (food.global_position - global_position).normalized()
+	var target = Hunting.isTasty
+	if target != null:
+		var chase = global_position
+		if stance == FRIENDLY:
+			chase = (target.global_position - global_position).normalized()
+		elif stance == CAUTIOUS:
+			chase = (target.global_position - global_position).normalized().rotated(PI)
 		velocity = velocity.move_toward(chase * MAX_SPEED, ACCELERATION * delta)
-		speech.visible = false
+		#this is where you include the movement responses to other stances.
 		roll_vector = velocity
 		#swordHitbox.knockback_vector =
 		animationTree.set("parameters/Idle/blend_position", velocity)
@@ -574,8 +480,8 @@ func hunt_state(delta):
 		animationTree.set("parameters/Attack/blend_position", velocity)
 		animationTree.set("parameters/Roll/blend_position", velocity)
 		self.animationState.travel("Move")
+
 	else:
-		speech.visible = false
 		animationTree.set("parameters/Idle/blend_position", velocity)
 		animationTree.set("parameters/Move/blend_position", velocity)
 		animationTree.set("parameters/Attack/blend_position", velocity)
@@ -584,24 +490,7 @@ func hunt_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		hungry()
 	
-	velocity = move_and_slide(velocity)
-	
 	move(delta)
-	
-	#take in the movement distance and drop a footprint using "var foo = footstep.instance()"
-	
-	#replace iInput.x to whatever mechanism to trigger the appropiate actions
-	#if Input.is_action_just_pressed("attack"):
-	#	state = ATTACK
-	#	speech.visible = false
-	#	
-	#if Input.is_action_just_pressed("roll"):
-	#	state = ROLL
-	#	speech.visible = false
-	#	
-	#if Input.is_action_just_pressed("chat"):
-	#	state = TALK
-	#	speech.visible = false
 	
 	
 func roll_state(delta): #dey be rollin' dey hatin'. no Iframes though
@@ -655,23 +544,11 @@ func _physics_process(delta):
 			else:
 				hunt_state(delta)
 		ROLL:
-			#roll_state(delta)
-			pass
+			roll_state(delta)
 		ATTACK:
-			#attack_state(delta)
-			pass
+			attack_state(delta)
 		TALK:
 			talk_state(delta)
-			pass
-		CHASE:
-			#var food = Hunting.isTasty
-			#if food != null:
-			#	var chase = (food.global_position - global_position).normalized()
-			#	velocity = velocity.move_toward(chase * MAX_SPEED, ACCELERATION * delta)
-			#	bat.flip_h = velocity.x < 0
-			#else:
-			#	state = IDLE
-			pass
 	
 func move(delta):
 	velocity = move_and_slide(velocity)

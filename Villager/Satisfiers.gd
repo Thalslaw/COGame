@@ -65,6 +65,13 @@ func getEg():
 	
 func depress(value):
 	#drop in satisfaction over time.
-	agentic_satisfaction = agentic_satisfaction - value
-	arousal_satisfaction = arousal_satisfaction - value
-	egoic_satisfaction = egoic_satisfaction - value
+	agentic_satisfaction = (agentic_satisfaction - value)
+	if agentic_satisfaction <= 0.0:
+		agentic_satisfaction = 0.1
+	arousal_satisfaction = (arousal_satisfaction - value)
+	if arousal_satisfaction <= 0.0:
+		arousal_satisfaction = 0.1
+	egoic_satisfaction = (egoic_satisfaction - value)
+	if egoic_satisfaction <= 0.0:
+		egoic_satisfaction = 0.1
+	

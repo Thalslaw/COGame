@@ -534,6 +534,9 @@ tile_data = PoolIntArray( -131064, 0, 4, -131063, 0, 196609, -131062, 0, 196609,
 [node name="player" parent="Things" instance=ExtResource( 5 )]
 position = Vector2( 96, 96 )
 
+[node name="dotdotdot" parent="Things/player" index="1"]
+visible = false
+
 [node name="AnimationTree" parent="Things/player" index="5"]
 parameters/playback = SubResource( 51 )
 
