@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+#PLEASE MAKE A DEDICATED SPACE FOR A MOVE AND ANIMATION STATE MACHINE AND CALL IT IN OTHER AREAS OF CODE
 #vocal is a developer option. It prints a lot of output to the log.
 export var vocal = false
 var worldData = WorldData
@@ -408,16 +408,16 @@ func unfriendly_behaviour(delta):
 			if vocal:
 				print("Am sad.")
 		else:
-			#wander somewhere
-			velocity = (self.global_position - global_position).normalized().rotated((2*PI*randf()))
-			velocity = velocity.move_toward(velocity * MAX_SPEED, ACCELERATION * delta)
-			roll_vector = velocity
-			#swordHitbox.knockback_vector =
-			animationTree.set("parameters/Idle/blend_position", velocity)
+			#wander somewhere.
+			velocity = (self.global_position - global_position).normalized().rotated((2*PI*randf())) #input to move
+			velocity = velocity.move_toward(velocity * MAX_SPEED, ACCELERATION * delta) #turns input into movement.
+			roll_vector = velocity #just says 'when roll, this is where we rollin
+			#swordHitbox.knockback_vector = this is for knockback. 
+			animationTree.set("parameters/Idle/blend_position", velocity) #this lot is to establish the animations. should only be needed once
 			animationTree.set("parameters/Move/blend_position", velocity)
 			animationTree.set("parameters/Attack/blend_position", velocity)
 			animationTree.set("parameters/Roll/blend_position", velocity)
-			self.animationState.travel("Move")
+			self.animationState.travel("Move") #gets travelling to happen via the move state section
 			move(delta)
 
 func friendly_behaviour(delta):
