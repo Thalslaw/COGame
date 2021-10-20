@@ -450,7 +450,6 @@ func friendly_behaviour(delta):
 			move(delta)
 
 func hunt_state(delta):
-	velocity = Vector2.ZERO
 	var target = Hunting.isTasty
 	if target != null:
 		var chase = global_position
