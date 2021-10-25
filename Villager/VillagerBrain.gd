@@ -26,6 +26,7 @@ onready var speech = $whodat
 onready var Hunting = $HuntZone
 onready var acting = $ActionZone
 onready var stats = $Stats
+onready var sprite = $FoxSprite
 
 #variables for the displayed data about the villager if dev mode is on. Also the export vars for tweaking AI
 onready var agSpinBox = $AgencyBox
@@ -225,22 +226,22 @@ func idle_state(delta):
 			#move to noms
 			#eat noms
 	#this section handles what to do if experiencing critically high agency.
-		#go green.
+		#sprite.modulate(Color(0.615686, 0.886275, 0.560784)) green
 		#run from people because you are a strong independant villager who don't need no fools.
 	#this section handles what to do if experiencing critically low agency.
-		#go grey.
+		#sprite.modulate(Color(0.505882, 0.505882, 0.505882)) grey
 		#run for people because you're in desperate need of validation from any fool around.
 	#this section handles what to do if experiencing critically high arousal.
-		#go red.
+		#sprite.modulate(Color(1, 0.609375, 0.609375)) red
 		#run from people because otherwise you'll do something precipitous.
 	#this section handles what to do if experiencing critically low arousal.
-		#go grey.
+		#sprite.modulate(Color(0.505882, 0.505882, 0.505882)) grey
 		#run for people because they're better than being mind-numbingly bored.
 	#this section handles what to do if experiencing critically high ego.
-		#go purple.
+		#sprite.modulate(Color(0.654902, 0.388235, 0.92549)) purple
 		#run from people because you're clearly better than any of these numpties.
 	#this section handles what to do if experiencing critically low ego.
-		#go grey.
+		#sprite.modulate(Color(0.505882, 0.505882, 0.505882)) grey
 		#run for people because they can give you a sense of security.
 	#the above could do with encapsulating in a single status									-------------------------------------
 
