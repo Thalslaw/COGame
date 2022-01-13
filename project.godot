@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="COGame"
-run/main_scene="res://World/ConScene.tscn"
+run/main_scene="res://World/Nanotech.tscn"
 config/icon="res://icon.png"
 
 [autoload]
