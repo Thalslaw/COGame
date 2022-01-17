@@ -57,10 +57,10 @@ tile_data = PoolIntArray( -262151, 0, 0, -262150, 0, 0, -262149, 0, 0, -262148, 
 [node name="TextEdit" type="TextEdit" parent="."]
 margin_left = -88.0
 margin_top = -96.0
-margin_right = 120.0
+margin_right = 192.0
 margin_bottom = -76.0
 size_flags_stretch_ratio = 0.34
-text = "Entities move now - c"
+text = "Entities have mouseOver now - c"
 __meta__ = {
 "_edit_use_anchors_": false
 }
