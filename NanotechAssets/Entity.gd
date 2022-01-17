@@ -20,11 +20,21 @@ export var 	FRICTION = 500
 var input_vector = Vector2.ZERO
 var velocity = Vector2.ZERO
 
+#MouseOver variables
+
+onready var mouseSpace = $MouseOverBox
+var mousePos
+
+#childSprites
+var spriteShown = false #so that we know if things have changed and don't send redundant calls
+onready var agSprite = $Ag
+onready var arSprite = $Ar
+onready var egSprite = $Eg
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -40,7 +50,11 @@ func _physics_process(delta):
 		
 	else:
 		#produce the same data as if the entity were a player.
+		
+		#also, respond to player interactions.
+		
 		pass
+		
 
 	#then resolve state dependant variables
 	
@@ -53,5 +67,19 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
-	
-	pass
+
+func _on_MouseOverBox_mouse_entered():
+	if !isPlayer:
+		if !spriteShown:
+			agSprite.visible = true
+			arSprite.visible = true
+			egSprite.visible = true
+			spriteShown = true
+
+func _on_MouseOverBox_mouse_exited():
+	if !isPlayer:
+		if spriteShown:
+			agSprite.visible = false
+			arSprite.visible = false
+			egSprite.visible = false
+			spriteShown = false
