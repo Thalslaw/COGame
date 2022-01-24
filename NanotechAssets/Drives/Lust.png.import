@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pride.png-9113bb9c13178b7b9129a99beb0fad57.stex"
+path="res://.import/Lust.png-0da8c6f370c9064e471b1bd1022adcf5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Drives/Pride.png"
-dest_files=[ "res://.import/Pride.png-9113bb9c13178b7b9129a99beb0fad57.stex" ]
+source_file="res://NanotechAssets/Drives/Lust.png"
+dest_files=[ "res://.import/Lust.png-0da8c6f370c9064e471b1bd1022adcf5.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Respect.png-0e4a3f61ce2ebcd2ac297b10a7c8eb11.stex"
+path="res://.import/Malice.png-6de84da6fc785adbdac95c2fda638e39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Drives/Respect.png"
-dest_files=[ "res://.import/Respect.png-0e4a3f61ce2ebcd2ac297b10a7c8eb11.stex" ]
+source_file="res://NanotechAssets/Drives/Malice.png"
+dest_files=[ "res://.import/Malice.png-6de84da6fc785adbdac95c2fda638e39.stex" ]
 
 [params]
 

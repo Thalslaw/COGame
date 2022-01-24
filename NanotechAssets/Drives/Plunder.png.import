@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Revenge.png-4b11fb8b10ccfe6e82224afbbc9b97fb.stex"
+path="res://.import/Plunder.png-3575d843706e56979856a7bad93a20fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Drives/Revenge.png"
-dest_files=[ "res://.import/Revenge.png-4b11fb8b10ccfe6e82224afbbc9b97fb.stex" ]
+source_file="res://NanotechAssets/Drives/Plunder.png"
+dest_files=[ "res://.import/Plunder.png-3575d843706e56979856a7bad93a20fb.stex" ]
 
 [params]
 

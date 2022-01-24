@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Victory.png-7de3083cd5386b14df362302b9aff8fe.stex"
+path="res://.import/Status.png-2551876a9734c4e17e42f224e8c0dcdd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Drives/Victory.png"
-dest_files=[ "res://.import/Victory.png-7de3083cd5386b14df362302b9aff8fe.stex" ]
+source_file="res://NanotechAssets/Drives/Status.png"
+dest_files=[ "res://.import/Status.png-2551876a9734c4e17e42f224e8c0dcdd.stex" ]
 
 [params]
 

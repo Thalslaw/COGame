@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Solution.png-7132350773ef7c793fbd803ddbf62793.stex"
+path="res://.import/Pride.png-301f506617a93245c70df0f5b9a3e487.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Drives/Solution.png"
-dest_files=[ "res://.import/Solution.png-7132350773ef7c793fbd803ddbf62793.stex" ]
+source_file="res://NanotechAssets/Drives/Pride.png"
+dest_files=[ "res://.import/Pride.png-301f506617a93245c70df0f5b9a3e487.stex" ]
 
 [params]
 

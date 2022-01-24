@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Jealousy.png-3a75d1c2e54616c96416680238e5f216.stex"
+path="res://.import/Fun.png-620ca07d23f70e24b1ca2bc0d04d1833.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Drives/Jealousy.png"
-dest_files=[ "res://.import/Jealousy.png-3a75d1c2e54616c96416680238e5f216.stex" ]
+source_file="res://NanotechAssets/Drives/Fun.png"
+dest_files=[ "res://.import/Fun.png-620ca07d23f70e24b1ca2bc0d04d1833.stex" ]
 
 [params]
 
