@@ -126,7 +126,7 @@ func _on_MouseOverBox_mouse_entered():
 		statusSprite.visible = false
 		victorySprite.visible = false
 		wealthSprite.visible = false
-		satisfierSpriteShown = false
+		satisfierSpriteShown = true
 
 
 func _on_MouseOverBox_mouse_exited():
@@ -157,13 +157,13 @@ func _on_MouseOverBox_mouse_exited():
 func _on_AgencyMouseOverBox_mouse_entered():
 	if (agSprite.visible && !isPlayer):
 		exploreSprite.visible = true
-		fameSprite.Visible = false
+		fameSprite.visible = false
 		funSprite.visible = true
 		furySprite.visible = false
 		jealousySprite.visible = false
 		justiceSprite.visible = true
-		loveSprite.visible = true
-		lustSprite.visible = false
+		loveSprite.visible = false
+		lustSprite.visible = true
 		maliceSprite.visible = true
 		plunderSprite.visible = true
 		prideSprite.visible = true
@@ -177,23 +177,23 @@ func _on_AgencyMouseOverBox_mouse_entered():
 
 func _on_AgencyMouseOverBox_mouse_exited():
 	if (agSprite.visible && !isPlayer):
-		exploreSprite.visible = false
+		exploreSprite.visible = true
 		fameSprite.visible = false
-		funSprite.visible = false
+		funSprite.visible = true
 		furySprite.visible = false
 		jealousySprite.visible = false
-		justiceSprite.visible = false
+		justiceSprite.visible = true
 		loveSprite.visible = false
-		lustSprite.visible = false
-		maliceSprite.visible = false
-		plunderSprite.visible = false
-		prideSprite.visible = false
-		respectSprite.visible = false
+		lustSprite.visible = true
+		maliceSprite.visible = true
+		plunderSprite.visible = true
+		prideSprite.visible = true
+		respectSprite.visible = true
 		revengeSprite.visible = false
-		solutionSprite.visible = false
-		statusSprite.visible = false
-		victorySprite.visible = false
-		wealthSprite.visible = false
+		solutionSprite.visible = true
+		statusSprite.visible = true
+		victorySprite.visible = true
+		wealthSprite.visible = true
 
 
 func _on_ArousalMouseOverBox_mouse_entered():
@@ -219,22 +219,22 @@ func _on_ArousalMouseOverBox_mouse_entered():
 
 func _on_ArousalMouseOverBox_mouse_exited():
 	if (arSprite.visible && !isPlayer):
-		exploreSprite.visible = false
-		fameSprite.visible = false
-		funSprite.visible = false
-		furySprite.visible = false
-		jealousySprite.visible = false
+		exploreSprite.visible = true
+		fameSprite.visible = true
+		funSprite.visible = true
+		furySprite.visible = true
+		jealousySprite.visible = true
 		justiceSprite.visible = false
-		loveSprite.visible = false
-		lustSprite.visible = false
-		maliceSprite.visible = false
-		plunderSprite.visible = false
+		loveSprite.visible = true
+		lustSprite.visible = true
+		maliceSprite.visible = true
+		plunderSprite.visible = true
 		prideSprite.visible = false
 		respectSprite.visible = false
-		revengeSprite.visible = false
+		revengeSprite.visible = true
 		solutionSprite.visible = false
 		statusSprite.visible = false
-		victorySprite.visible = false
+		victorySprite.visible = true
 		wealthSprite.visible = false
 
 
@@ -243,7 +243,7 @@ func _on_EgoMouseOverBox_mouse_entered():
 		exploreSprite.visible = false
 		fameSprite.visible = true
 		funSprite.visible = false
-		furySprite.visible = false
+		furySprite.visible = true
 		jealousySprite.visible = true
 		justiceSprite.visible = true
 		loveSprite.visible = true
@@ -255,29 +255,29 @@ func _on_EgoMouseOverBox_mouse_entered():
 		revengeSprite.visible = true
 		solutionSprite.visible = true
 		statusSprite.visible = true
-		victorySprite.visible = true
+		victorySprite.visible = false
 		wealthSprite.visible = true
 
 
 func _on_EgoMouseOverBox_mouse_exited():
 	if (egSprite.visible && !isPlayer):
 		exploreSprite.visible = false
-		fameSprite.visible = false
+		fameSprite.visible = true
 		funSprite.visible = false
-		furySprite.visible = false
-		jealousySprite.visible = false
-		justiceSprite.visible = false
-		loveSprite.visible = false
+		furySprite.visible = true
+		jealousySprite.visible = true
+		justiceSprite.visible = true
+		loveSprite.visible = true
 		lustSprite.visible = false
 		maliceSprite.visible = false
 		plunderSprite.visible = false
-		prideSprite.visible = false
-		respectSprite.visible = false
-		revengeSprite.visible = false
-		solutionSprite.visible = false
-		statusSprite.visible = false
+		prideSprite.visible = true
+		respectSprite.visible = true
+		revengeSprite.visible = true
+		solutionSprite.visible = true
+		statusSprite.visible = true
 		victorySprite.visible = false
-		wealthSprite.visible = false
+		wealthSprite.visible = true
 
 
 func _on_ExploreMouseOverBox_mouse_entered():

@@ -105,6 +105,7 @@ texture = ExtResource( 2 )
 [node name="Ag" type="Sprite" parent="."]
 visible = false
 position = Vector2( -63.3471, -46.8337 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="AgencyMouseOverBox" type="Area2D" parent="Ag"]
@@ -115,6 +116,7 @@ shape = SubResource( 5 )
 [node name="Ar" type="Sprite" parent="."]
 visible = false
 position = Vector2( 65.3903, -44.7051 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="ArousalMouseOverBox" type="Area2D" parent="Ar"]
@@ -125,6 +127,7 @@ shape = SubResource( 6 )
 [node name="Eg" type="Sprite" parent="."]
 visible = false
 position = Vector2( -0.0886536, 78.6494 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="EgoMouseOverBox" type="Area2D" parent="Eg"]
