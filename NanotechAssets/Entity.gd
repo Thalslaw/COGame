@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+#variables for fileIO go here
+var entityLog = File.New()
+
 #variables to control the nanobot go here
 #the state of the nanobot determines its hueristic path it follows, if it's an AI
 enum{
@@ -9,10 +12,8 @@ enum{
 	CHASE,
 }
 
-
 #Is the entity a player, or is the behaviour artificially intelligent?
 export var isPlayer = false
-
 
 #Movement variables
 export var 	ACCELERATION = 500
@@ -57,7 +58,6 @@ onready var wealthSprite = $Wealth
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	pass # Replace with function body.
 
 
@@ -91,90 +91,97 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 
+func logTransaction(drive, isAPlayer):
+	#the entityLog already exists for this entity and maybe others.
+	entityLog.open("user://entityLog.dat", File.WRITE)
+	var content = ("Drive:" + drive + " Player?:" + isAPlayer)
+	entityLog.store_string(content)
+	entityLog.close()
+	
 
-func triggerExplore():
+func triggerExplore(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Explore", isAPlayer)
 
 
-func triggerFame():
+func triggerFame(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Fame", isAPlayer)
 
 
-func triggerFun():
+func triggerFun(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Fun", isAPlayer)
 
 
-func triggerFury():
+func triggerFury(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Fury", isAPlayer)
 
 
-func triggerJealousy():
+func triggerJealousy(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Jealousy", isAPlayer)
 
 
-func triggerJustice():
+func triggerJustice(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Justice", isAPlayer)
 
 
-func triggerLove():
+func triggerLove(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Love", isAPlayer)
 
 
-func triggerLust():
+func triggerLust(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Love", isAPlayer)
 
 
-func triggerMalice():
+func triggerMalice(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Malice", isAPlayer)
 
 
-func triggerPlunder():
+func triggerPlunder(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Plunder", isAPlayer)
 
 
-func triggerPride():
+func triggerPride(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Pride", isAPlayer)
 
 
-func triggerRespect():
+func triggerRespect(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Respect", isAPlayer)
 
 
-func triggerRevenge():
+func triggerRevenge(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Revenge", isAPlayer)
 
 
-func triggerSolution():
+func triggerSolution(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Solution", isAPlayer)
 
 
-func triggerStatus():
+func triggerStatus(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Status", isAPlayer)
 
 
-func triggerVictory():
+func triggerVictory(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Victory", isAPlayer)
 
 
-func triggerWealth():
+func triggerWealth(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
-	pass
+	logTransaction("Wealth", isAPlayer)
 
 
 func spriteShow(exSp, faSp, fuSp, frSp, jeSp, juSp, loSp, luSp, maSp, plSp, prSp, reSp, rvSp, soSp, stSp, viSp, weSp):
@@ -418,101 +425,101 @@ func _on_WealthMouseOverBox_mouse_exited():
 func _on_ExploreMouseOverBox_input_event(viewport, event, shape_idx):
 	if (exploreSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerExplore()
+		triggerExplore("Player")
 
 
 func _on_FameMouseOverBox_input_event(viewport, event, shape_idx):
 	if (fameSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerFame()
+		triggerFame("Player")
 
 
 func _on_FunMouseOverBox_input_event(viewport, event, shape_idx):
 	if (funSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerFun()
+		triggerFun("Player")
 		
 
 func _on_FuryMouseOverBox_input_event(viewport, event, shape_idx):
 	if (furySprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerFury()
+		triggerFury("Player")
 
 
 func _on_JealousyMouseOverBox_input_event(viewport, event, shape_idx):
 	if (jealousySprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerJealousy()
+		triggerJealousy("Player")
 
 
 func _on_JusticeMouseOverBox_input_event(viewport, event, shape_idx):
 	if (justiceSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerJustice()
+		triggerJustice("Player")
 
 
 func _on_LoveMouseOverBox_input_event(viewport, event, shape_idx):
 	if (loveSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerLove()
+		triggerLove("Player")
 
 
 func _on_LustMouseOverBox_input_event(viewport, event, shape_idx):
 	if (lustSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerLust()
+		triggerLust("Player")
 
 
 func _on_MaliceMouseOverBox_input_event(viewport, event, shape_idx):
 	if (maliceSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerMalice()
+		triggerMalice("Player")
 
 
 func _on_PlunderMouseOverBox_input_event(viewport, event, shape_idx):
 	if (plunderSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerPlunder()
+		triggerPlunder("Player")
 
 
 func _on_PrideMouseOverBox_input_event(viewport, event, shape_idx):
 	if (prideSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerPride()
+		triggerPride("Player")
 
 
 func _on_RespectMouseOverBox_input_event(viewport, event, shape_idx):
 	if (respectSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerRespect()
+		triggerRespect("Player")
 
 
 func _on_RevengeMouseOverBox_input_event(viewport, event, shape_idx):
 	if (revengeSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerRevenge()
+		triggerRevenge("Player")
 
 
 func _on_SolutionMouseOverBox_input_event(viewport, event, shape_idx):
 	if (solutionSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerSolution()
+		triggerSolution("Player")
 
 
 func _on_StatusMouseOverBox_input_event(viewport, event, shape_idx):
 	if (statusSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerStatus()
+		triggerStatus("Player")
 
 
 func _on_VictoryMouseOverBox_input_event(viewport, event, shape_idx):
 	if (victorySprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerVictory()
+		triggerVictory("Player")
 
 
 func _on_WealthMouseOverBox_input_event(viewport, event, shape_idx):
 	if (wealthSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-		triggerWealth()
+		triggerWealth("Player")
 

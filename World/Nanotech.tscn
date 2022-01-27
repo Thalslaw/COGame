@@ -60,11 +60,10 @@ margin_top = -339.0
 margin_right = 471.0
 margin_bottom = -194.0
 size_flags_stretch_ratio = 0.34
-text = "ToDo: click causes signal that bears information to an entityLog. EntityLog is FiFo queue.
-EntityLog sends a copy to the GameLog.
-EntityLog enacts a drive operation based on the drive of the signal that entered the entityLog.
-Behaviour comes later.
-"
+text = "entities now deliver their interactions to an entityLog.
+
+Do A Drive, and let the player interact every one of them. 
+First to do is Lust."
 __meta__ = {
 "_edit_use_anchors_": false
 }
