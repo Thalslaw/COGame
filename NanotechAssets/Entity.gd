@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 #variables for fileIO go here
-var entityLog = File.New()
+var entityLog = File.new()
 
 #variables to control the nanobot go here
 #the state of the nanobot determines its hueristic path it follows, if it's an AI
