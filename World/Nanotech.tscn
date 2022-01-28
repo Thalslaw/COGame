@@ -62,10 +62,7 @@ margin_top = -339.0
 margin_right = 471.0
 margin_bottom = -194.0
 size_flags_stretch_ratio = 0.34
-text = "entities now deliver their interactions to an entityLog.
-
-Do A Drive, and let the player interact every one of them. 
-First to do is Lust."
+text = "Basic spawning and dying implemented. Entities now wiggle"
 __meta__ = {
 "_edit_use_anchors_": false
 }
