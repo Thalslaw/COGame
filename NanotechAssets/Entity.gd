@@ -3,6 +3,9 @@ extends KinematicBody2D
 #variables for fileIO go here
 var entityLog = File.new()
 
+#signals for objectIO go here
+signal spawn(location)
+
 #variables to control the nanobot go here
 #the state of the nanobot determines its hueristic path it follows, if it's an AI
 enum{
@@ -58,7 +61,8 @@ onready var wealthSprite = $Wealth
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	#connect 'spawn' signal to the world
+	connect("spawn", get_parent().get_parent(), "spawnNanobot")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,10 +79,14 @@ func _physics_process(delta):
 		
 	else:
 		#produce the same data as if the entity were a player.
+
+		#basic wiggle
+		input_vector.x = randf() - randf()
+		input_vector.y = randf() - randf()
+		input_vector = input_vector.normalized()
 		
 		#also, respond to player interactions.
-		
-		pass
+
 
 	#then resolve state dependant variables
 	
@@ -94,11 +102,14 @@ func _physics_process(delta):
 func logTransaction(drive, isAPlayer):
 	#the entityLog already exists for this entity and maybe others.
 	entityLog.open("user://entityLog.dat", File.WRITE)
-	var content = ("Drive:" + drive + " Player?:" + isAPlayer)
+	var content = ("Drive: " + drive + " Player?: " + isAPlayer)
 	entityLog.store_string(content)
 	entityLog.close()
 	
-
+func spawnOffspring():
+	#making offspring. Receiver is the one who spawns.
+	emit_signal("spawn", global_position)
+	
 func triggerExplore(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Explore", isAPlayer)
@@ -118,6 +129,8 @@ func triggerFury(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Fury", isAPlayer)
 
+	#die
+	queue_free()
 
 func triggerJealousy(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
@@ -133,16 +146,21 @@ func triggerLove(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Love", isAPlayer)
 
+	spawnOffspring()
 
 func triggerLust(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Love", isAPlayer)
+	
+	spawnOffspring()
 
 
 func triggerMalice(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Malice", isAPlayer)
 
+	#die
+	queue_free()
 
 func triggerPlunder(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
@@ -163,6 +181,8 @@ func triggerRevenge(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Revenge", isAPlayer)
 
+	#die
+	queue_free()
 
 func triggerSolution(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
@@ -177,6 +197,9 @@ func triggerStatus(isAPlayer):
 func triggerVictory(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Victory", isAPlayer)
+	
+	#die
+	queue_free()
 
 
 func triggerWealth(isAPlayer):
