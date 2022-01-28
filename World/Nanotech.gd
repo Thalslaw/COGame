@@ -15,6 +15,15 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func spawnNanobot(location):
+#func spawnNanobot(location):
+#	var newBot = nanobot.instance()
+#	newBot.global_position = location
+
+
+
+
+
+func _on_Nanobot_spawn(location):
 	var newBot = nanobot.instance()
 	newBot.global_position = location
+	#try this!

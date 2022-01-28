@@ -67,4 +67,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="spawn" from="YSort/Nanobot" to="." method="_on_Nanobot_spawn"]
+
 [editable path="YSort/PlayerNanobot"]
