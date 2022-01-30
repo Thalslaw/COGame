@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://NanotechAssets/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NanotechAssets/WIPBGTile.png" type="Texture" id=2]
 [ext_resource path="res://World/Nanotech.gd" type="Script" id=3]
 
@@ -39,15 +38,6 @@ script = ExtResource( 3 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="PlayerNanobot" parent="YSort" instance=ExtResource( 1 )]
-isPlayer = true
-
-[node name="Camera2D" type="Camera2D" parent="YSort/PlayerNanobot"]
-current = true
-
-[node name="Nanobot" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 128, 0 )
-
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 1.28, 1.28 )
 z_index = -10
@@ -66,7 +56,3 @@ text = "Basic spawning and dying implemented. Entities now wiggle"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="spawn" from="YSort/Nanobot" to="." method="_on_Nanobot_spawn"]
-
-[editable path="YSort/PlayerNanobot"]

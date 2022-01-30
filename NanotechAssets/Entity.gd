@@ -61,8 +61,7 @@ onready var wealthSprite = $Wealth
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#connect 'spawn' signal to the world
-	connect("spawn", get_parent().get_parent(), "spawnNanobot")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -338,6 +338,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="gameCamera" type="Camera2D" parent="."]
+
 [connection signal="mouse_entered" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_entered"]
 [connection signal="mouse_exited" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_exited"]
 [connection signal="mouse_entered" from="Ag/AgencyMouseOverBox" to="." method="_on_AgencyMouseOverBox_mouse_entered"]
