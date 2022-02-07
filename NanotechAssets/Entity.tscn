@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
 [ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://NanotechAssets/Drives/Wealth.png" type="Texture" id=20]
 [ext_resource path="res://NanotechAssets/Drives/Revenge.png" type="Texture" id=21]
 [ext_resource path="res://NanotechAssets/Drives/Lust.png" type="Texture" id=22]
+[ext_resource path="res://NanotechAssets/Rocket.png" type="Texture" id=23]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -339,6 +340,11 @@ __meta__ = {
 }
 
 [node name="gameCamera" type="Camera2D" parent="."]
+
+[node name="Rocket" type="Sprite" parent="."]
+position = Vector2( -0.0886536, 21.4477 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 23 )
 
 [connection signal="mouse_entered" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_entered"]
 [connection signal="mouse_exited" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_exited"]
