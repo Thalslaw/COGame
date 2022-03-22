@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
 [ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
@@ -23,6 +23,9 @@
 [ext_resource path="res://NanotechAssets/Drives/Revenge.png" type="Texture" id=21]
 [ext_resource path="res://NanotechAssets/Drives/Lust.png" type="Texture" id=22]
 [ext_resource path="res://NanotechAssets/Rocket.png" type="Texture" id=23]
+[ext_resource path="res://NanotechAssets/NeuralNet.gd" type="Script" id=24]
+[ext_resource path="res://NanotechAssets/empty button.png" type="Texture" id=25]
+[ext_resource path="res://NanotechAssets/filled button.png" type="Texture" id=26]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -339,12 +342,221 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="gameCamera" type="Camera2D" parent="."]
+[node name="NeuralNet" type="Node2D" parent="."]
+position = Vector2( -120, 120 )
+script = ExtResource( 24 )
+
+[node name="NNViewport" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0.209991, -6.92957 )
+
+[node name="True" type="Sprite" parent="NeuralNet/NNViewport"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/NNViewport"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="ExploreTriggered" type="Node2D" parent="NeuralNet"]
+
+[node name="True" type="Sprite" parent="NeuralNet/ExploreTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/ExploreTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FameTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -0.209991, 7.13956 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FameTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FameTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FunTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -0.419968, 14.0691 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FunTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FunTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="True2" type="Sprite" parent="NeuralNet/FunTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False2" type="Sprite" parent="NeuralNet/FunTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FuryTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -0.209976, 21.4187 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FuryTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FuryTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JealousyTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -0.209976, 28.7682 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JealousyTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JealousyTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JusticeTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -0.419983, 35.4878 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JusticeTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JusticeTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LoveTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -0.209991, 42.8373 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LoveTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LoveTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LustTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -1.04994, 50.6068 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LustTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LustTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="MaliceTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -0.629959, 57.1164 )
+
+[node name="True" type="Sprite" parent="NeuralNet/MaliceTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/MaliceTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PlunderTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -1.67989, 65.3059 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PlunderTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PlunderTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PrideTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -1.25992, 74.3353 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PrideTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PrideTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RespectTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -1.25992, 81.2649 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RespectTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RespectTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RevengeTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -1.67989, 89.0344 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RevengeTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RevengeTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="SolutionTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -2.09987, 96.5939 )
+
+[node name="True" type="Sprite" parent="NeuralNet/SolutionTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/SolutionTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="StatusTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -2.30988, 105.413 )
+
+[node name="True" type="Sprite" parent="NeuralNet/StatusTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/StatusTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="VictoryTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -2.30986, 112.763 )
+
+[node name="True" type="Sprite" parent="NeuralNet/VictoryTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/VictoryTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="WealthTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( -2.30986, 121.372 )
+
+[node name="True" type="Sprite" parent="NeuralNet/WealthTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/WealthTriggered"]
+visible = false
+texture = ExtResource( 26 )
 
 [node name="Rocket" type="Sprite" parent="."]
 position = Vector2( -0.0886536, 21.4477 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 23 )
+
+[node name="gameCamera" type="Camera2D" parent="."]
 
 [connection signal="mouse_entered" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_entered"]
 [connection signal="mouse_exited" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_exited"]
