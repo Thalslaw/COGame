@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
 [ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://NanotechAssets/NeuralNet.gd" type="Script" id=24]
 [ext_resource path="res://NanotechAssets/empty button.png" type="Texture" id=25]
 [ext_resource path="res://NanotechAssets/filled button.png" type="Texture" id=26]
+[ext_resource path="res://NanotechAssets/Bias.gd" type="Script" id=27]
+[ext_resource path="res://NanotechAssets/Quotient.gd" type="Script" id=28]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -107,7 +109,6 @@ z_index = 1
 texture = ExtResource( 2 )
 
 [node name="Ag" type="Sprite" parent="."]
-visible = false
 position = Vector2( -63.3471, -46.8337 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
@@ -118,7 +119,6 @@ texture = ExtResource( 3 )
 shape = SubResource( 5 )
 
 [node name="Ar" type="Sprite" parent="."]
-visible = false
 position = Vector2( 65.3903, -44.7051 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
@@ -129,7 +129,6 @@ texture = ExtResource( 4 )
 shape = SubResource( 6 )
 
 [node name="Eg" type="Sprite" parent="."]
-visible = false
 position = Vector2( -0.0886536, 78.6494 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
@@ -140,7 +139,6 @@ texture = ExtResource( 5 )
 shape = SubResource( 7 )
 
 [node name="Explore" type="Sprite" parent="."]
-visible = false
 position = Vector2( -19, -121 )
 texture = ExtResource( 8 )
 
@@ -150,7 +148,6 @@ texture = ExtResource( 8 )
 shape = SubResource( 8 )
 
 [node name="Fame" type="Sprite" parent="."]
-visible = false
 position = Vector2( 109, 57 )
 texture = ExtResource( 12 )
 
@@ -160,7 +157,6 @@ texture = ExtResource( 12 )
 shape = SubResource( 9 )
 
 [node name="Fun" type="Sprite" parent="."]
-visible = false
 position = Vector2( 17, -121 )
 texture = ExtResource( 18 )
 
@@ -170,7 +166,6 @@ texture = ExtResource( 18 )
 shape = SubResource( 10 )
 
 [node name="Fury" type="Sprite" parent="."]
-visible = false
 position = Vector2( 86, 89 )
 texture = ExtResource( 15 )
 
@@ -180,7 +175,6 @@ texture = ExtResource( 15 )
 shape = SubResource( 11 )
 
 [node name="Jealousy" type="Sprite" parent="."]
-visible = false
 position = Vector2( 120, 14 )
 texture = ExtResource( 17 )
 
@@ -190,7 +184,6 @@ texture = ExtResource( 17 )
 shape = SubResource( 12 )
 
 [node name="Justice" type="Sprite" parent="."]
-visible = false
 position = Vector2( -102, 68 )
 texture = ExtResource( 6 )
 
@@ -200,7 +193,6 @@ texture = ExtResource( 6 )
 shape = SubResource( 13 )
 
 [node name="Love" type="Sprite" parent="."]
-visible = false
 position = Vector2( 49, 111 )
 texture = ExtResource( 14 )
 
@@ -210,7 +202,6 @@ texture = ExtResource( 14 )
 shape = SubResource( 14 )
 
 [node name="Lust" type="Sprite" parent="."]
-visible = false
 position = Vector2( -51, -115 )
 texture = ExtResource( 22 )
 
@@ -220,7 +211,6 @@ texture = ExtResource( 22 )
 shape = SubResource( 15 )
 
 [node name="Malice" type="Sprite" parent="."]
-visible = false
 position = Vector2( -76, -97 )
 texture = ExtResource( 7 )
 
@@ -230,7 +220,6 @@ texture = ExtResource( 7 )
 shape = SubResource( 16 )
 
 [node name="Plunder" type="Sprite" parent="."]
-visible = false
 position = Vector2( 49, -112 )
 texture = ExtResource( 11 )
 
@@ -240,7 +229,6 @@ texture = ExtResource( 11 )
 shape = SubResource( 17 )
 
 [node name="Pride" type="Sprite" parent="."]
-visible = false
 position = Vector2( -116, 39 )
 texture = ExtResource( 16 )
 
@@ -250,7 +238,6 @@ texture = ExtResource( 16 )
 shape = SubResource( 18 )
 
 [node name="Respect" type="Sprite" parent="."]
-visible = false
 position = Vector2( -80, 93 )
 texture = ExtResource( 13 )
 
@@ -260,7 +247,6 @@ texture = ExtResource( 13 )
 shape = SubResource( 19 )
 
 [node name="Revenge" type="Sprite" parent="."]
-visible = false
 position = Vector2( 118, -23 )
 texture = ExtResource( 21 )
 
@@ -270,7 +256,6 @@ texture = ExtResource( 21 )
 shape = SubResource( 20 )
 
 [node name="Solution" type="Sprite" parent="."]
-visible = false
 position = Vector2( -53, 110 )
 texture = ExtResource( 10 )
 
@@ -280,7 +265,6 @@ texture = ExtResource( 10 )
 shape = SubResource( 21 )
 
 [node name="Status" type="Sprite" parent="."]
-visible = false
 position = Vector2( -122, 6 )
 texture = ExtResource( 19 )
 
@@ -290,7 +274,6 @@ texture = ExtResource( 19 )
 shape = SubResource( 22 )
 
 [node name="Victory" type="Sprite" parent="."]
-visible = false
 position = Vector2( 74, -96 )
 texture = ExtResource( 9 )
 
@@ -300,7 +283,6 @@ texture = ExtResource( 9 )
 shape = SubResource( 23 )
 
 [node name="Wealth" type="Sprite" parent="."]
-visible = false
 position = Vector2( -117, -26 )
 texture = ExtResource( 20 )
 
@@ -309,45 +291,11 @@ texture = ExtResource( 20 )
 [node name="WealthMouseOverCollider" type="CollisionShape2D" parent="Wealth/WealthMouseOverBox"]
 shape = SubResource( 24 )
 
-[node name="ChoosableToDo" type="RichTextLabel" parent="."]
-visible = false
-margin_left = -92.5913
-margin_top = -179.496
-margin_right = 93.4087
-margin_bottom = -136.496
-text = "lust, malice, exploration, plunder, fun, victory"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ChoosableToDo2" type="RichTextLabel" parent="."]
-visible = false
-margin_left = 112.6
-margin_top = 83.669
-margin_right = 240.601
-margin_bottom = 172.669
-text = "Revenge, Fame, Jealousy, Love, fury"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ChoosableToDo3" type="RichTextLabel" parent="."]
-visible = false
-margin_left = -212.748
-margin_top = 88.1925
-margin_right = -87.7473
-margin_bottom = 165.193
-text = "Justice, Respect, status, solution, pride, wealth"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="NeuralNet" type="Node2D" parent="."]
-position = Vector2( -120, 120 )
+position = Vector2( -140, 60 )
 script = ExtResource( 24 )
 
 [node name="NNViewport" type="Node2D" parent="NeuralNet"]
-position = Vector2( 0.209991, -6.92957 )
 
 [node name="True" type="Sprite" parent="NeuralNet/NNViewport"]
 visible = false
@@ -358,6 +306,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="ExploreTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 5 )
 
 [node name="True" type="Sprite" parent="NeuralNet/ExploreTriggered"]
 visible = false
@@ -368,7 +317,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="FameTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -0.209991, 7.13956 )
+position = Vector2( 0, 10 )
 
 [node name="True" type="Sprite" parent="NeuralNet/FameTriggered"]
 visible = false
@@ -379,7 +328,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="FunTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -0.419968, 14.0691 )
+position = Vector2( 0, 15 )
 
 [node name="True" type="Sprite" parent="NeuralNet/FunTriggered"]
 visible = false
@@ -389,16 +338,8 @@ texture = ExtResource( 25 )
 visible = false
 texture = ExtResource( 26 )
 
-[node name="True2" type="Sprite" parent="NeuralNet/FunTriggered"]
-visible = false
-texture = ExtResource( 25 )
-
-[node name="False2" type="Sprite" parent="NeuralNet/FunTriggered"]
-visible = false
-texture = ExtResource( 26 )
-
 [node name="FuryTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -0.209976, 21.4187 )
+position = Vector2( 0, 20 )
 
 [node name="True" type="Sprite" parent="NeuralNet/FuryTriggered"]
 visible = false
@@ -409,7 +350,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="JealousyTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -0.209976, 28.7682 )
+position = Vector2( 0, 25 )
 
 [node name="True" type="Sprite" parent="NeuralNet/JealousyTriggered"]
 visible = false
@@ -420,7 +361,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="JusticeTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -0.419983, 35.4878 )
+position = Vector2( 0, 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/JusticeTriggered"]
 visible = false
@@ -431,7 +372,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="LoveTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -0.209991, 42.8373 )
+position = Vector2( 0, 35 )
 
 [node name="True" type="Sprite" parent="NeuralNet/LoveTriggered"]
 visible = false
@@ -442,7 +383,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="LustTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -1.04994, 50.6068 )
+position = Vector2( 0, 40 )
 
 [node name="True" type="Sprite" parent="NeuralNet/LustTriggered"]
 visible = false
@@ -453,7 +394,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="MaliceTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -0.629959, 57.1164 )
+position = Vector2( 0, 45 )
 
 [node name="True" type="Sprite" parent="NeuralNet/MaliceTriggered"]
 visible = false
@@ -464,7 +405,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="PlunderTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -1.67989, 65.3059 )
+position = Vector2( 0, 50 )
 
 [node name="True" type="Sprite" parent="NeuralNet/PlunderTriggered"]
 visible = false
@@ -475,7 +416,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="PrideTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -1.25992, 74.3353 )
+position = Vector2( 0, 55 )
 
 [node name="True" type="Sprite" parent="NeuralNet/PrideTriggered"]
 visible = false
@@ -486,7 +427,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="RespectTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -1.25992, 81.2649 )
+position = Vector2( 0, 60 )
 
 [node name="True" type="Sprite" parent="NeuralNet/RespectTriggered"]
 visible = false
@@ -497,7 +438,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="RevengeTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -1.67989, 89.0344 )
+position = Vector2( 0, 65 )
 
 [node name="True" type="Sprite" parent="NeuralNet/RevengeTriggered"]
 visible = false
@@ -508,7 +449,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="SolutionTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -2.09987, 96.5939 )
+position = Vector2( 0, 70 )
 
 [node name="True" type="Sprite" parent="NeuralNet/SolutionTriggered"]
 visible = false
@@ -519,7 +460,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="StatusTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -2.30988, 105.413 )
+position = Vector2( 0, 75 )
 
 [node name="True" type="Sprite" parent="NeuralNet/StatusTriggered"]
 visible = false
@@ -530,7 +471,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="VictoryTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -2.30986, 112.763 )
+position = Vector2( 0, 80 )
 
 [node name="True" type="Sprite" parent="NeuralNet/VictoryTriggered"]
 visible = false
@@ -541,13 +482,244 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="WealthTriggered" type="Node2D" parent="NeuralNet"]
-position = Vector2( -2.30986, 121.372 )
+position = Vector2( 0, 85 )
 
 [node name="True" type="Sprite" parent="NeuralNet/WealthTriggered"]
 visible = false
 texture = ExtResource( 25 )
 
 [node name="False" type="Sprite" parent="NeuralNet/WealthTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="AgQuotient" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 90 )
+script = ExtResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="NeuralNet/AgQuotient"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="ArQuotient" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 95 )
+script = ExtResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="NeuralNet/ArQuotient"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="EgQuotient" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 100 )
+script = ExtResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="NeuralNet/EgQuotient"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="ExploreBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 5 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/ExploreBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/ExploreBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FameBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 10 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FameBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FameBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FunBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 15 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FunBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FunBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FuryBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 20 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FuryBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FuryBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JealousyBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 25 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JealousyBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JealousyBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JusticeBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 30 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JusticeBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JusticeBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LoveBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 35 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LoveBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LoveBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LustBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 40 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LustBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LustBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="MaliceBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 45 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/MaliceBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/MaliceBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PlunderBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 50 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PlunderBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PlunderBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PrideBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 55 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PrideBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PrideBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RespectBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 60 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RespectBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RespectBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RevengeBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 65 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RevengeBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RevengeBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="SolutionBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 70 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/SolutionBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/SolutionBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="StatusBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 75 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/StatusBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/StatusBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="VictoryBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 80 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/VictoryBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/VictoryBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="WealthBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 85 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/WealthBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/WealthBias"]
 visible = false
 texture = ExtResource( 26 )
 

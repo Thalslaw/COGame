@@ -62,6 +62,7 @@ onready var neuralNet = $NeuralNet
 func _ready():
 	if (isPlayer):
 		neuralNet.visible = true
+		neuralNet.decl(isPlayer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

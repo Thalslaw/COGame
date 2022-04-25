@@ -52,7 +52,11 @@ margin_top = -339.0
 margin_right = 471.0
 margin_bottom = -194.0
 size_flags_stretch_ratio = 0.34
-text = "Basic spawning and dying implemented. Entities now wiggle"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Entity Behaviour Learning Frameworked. 
+ToDo: Synapse firing, Hidden Layers, Behaviour Outputs, 
+Then Feedback to the player.
+Then Databasing.
+
+24 days of sustainable coding for core code.
++ Databasing and sciencing
++ aesthetic decisions and design."
