@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
 [ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://NanotechAssets/filled button.png" type="Texture" id=26]
 [ext_resource path="res://NanotechAssets/Bias.gd" type="Script" id=27]
 [ext_resource path="res://NanotechAssets/Quotient.gd" type="Script" id=28]
+[ext_resource path="res://NanotechAssets/hidden layers.gd" type="Script" id=29]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -722,6 +723,10 @@ texture = ExtResource( 25 )
 [node name="False" type="Sprite" parent="NeuralNet/WealthBias"]
 visible = false
 texture = ExtResource( 26 )
+
+[node name="hidden layers" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 0 )
+script = ExtResource( 29 )
 
 [node name="Rocket" type="Sprite" parent="."]
 position = Vector2( -0.0886536, 21.4477 )
