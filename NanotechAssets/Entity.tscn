@@ -28,7 +28,7 @@
 [ext_resource path="res://NanotechAssets/filled button.png" type="Texture" id=26]
 [ext_resource path="res://NanotechAssets/Bias.gd" type="Script" id=27]
 [ext_resource path="res://NanotechAssets/Quotient.gd" type="Script" id=28]
-[ext_resource path="res://NanotechAssets/hidden layers.gd" type="Script" id=29]
+[ext_resource path="res://NanotechAssets/HiddenLayers.gd" type="Script" id=29]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -293,7 +293,7 @@ texture = ExtResource( 20 )
 shape = SubResource( 24 )
 
 [node name="NeuralNet" type="Node2D" parent="."]
-position = Vector2( -140, 60 )
+position = Vector2( -140, 129 )
 script = ExtResource( 24 )
 
 [node name="NNViewport" type="Node2D" parent="NeuralNet"]
@@ -535,6 +535,7 @@ texture = ExtResource( 26 )
 [node name="FameBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 10 )
 script = ExtResource( 27 )
+driveNumber = 1
 
 [node name="True" type="Sprite" parent="NeuralNet/FameBias"]
 visible = false
@@ -547,6 +548,7 @@ texture = ExtResource( 26 )
 [node name="FunBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 15 )
 script = ExtResource( 27 )
+driveNumber = 2
 
 [node name="True" type="Sprite" parent="NeuralNet/FunBias"]
 visible = false
@@ -559,6 +561,7 @@ texture = ExtResource( 26 )
 [node name="FuryBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 20 )
 script = ExtResource( 27 )
+driveNumber = 3
 
 [node name="True" type="Sprite" parent="NeuralNet/FuryBias"]
 visible = false
@@ -571,6 +574,7 @@ texture = ExtResource( 26 )
 [node name="JealousyBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 25 )
 script = ExtResource( 27 )
+driveNumber = 4
 
 [node name="True" type="Sprite" parent="NeuralNet/JealousyBias"]
 visible = false
@@ -583,6 +587,7 @@ texture = ExtResource( 26 )
 [node name="JusticeBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 30 )
 script = ExtResource( 27 )
+driveNumber = 5
 
 [node name="True" type="Sprite" parent="NeuralNet/JusticeBias"]
 visible = false
@@ -595,6 +600,7 @@ texture = ExtResource( 26 )
 [node name="LoveBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 35 )
 script = ExtResource( 27 )
+driveNumber = 6
 
 [node name="True" type="Sprite" parent="NeuralNet/LoveBias"]
 visible = false
@@ -607,6 +613,7 @@ texture = ExtResource( 26 )
 [node name="LustBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 40 )
 script = ExtResource( 27 )
+driveNumber = 7
 
 [node name="True" type="Sprite" parent="NeuralNet/LustBias"]
 visible = false
@@ -619,6 +626,7 @@ texture = ExtResource( 26 )
 [node name="MaliceBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 45 )
 script = ExtResource( 27 )
+driveNumber = 8
 
 [node name="True" type="Sprite" parent="NeuralNet/MaliceBias"]
 visible = false
@@ -631,6 +639,7 @@ texture = ExtResource( 26 )
 [node name="PlunderBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 50 )
 script = ExtResource( 27 )
+driveNumber = 9
 
 [node name="True" type="Sprite" parent="NeuralNet/PlunderBias"]
 visible = false
@@ -643,6 +652,7 @@ texture = ExtResource( 26 )
 [node name="PrideBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 55 )
 script = ExtResource( 27 )
+driveNumber = 10
 
 [node name="True" type="Sprite" parent="NeuralNet/PrideBias"]
 visible = false
@@ -655,6 +665,7 @@ texture = ExtResource( 26 )
 [node name="RespectBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 60 )
 script = ExtResource( 27 )
+driveNumber = 11
 
 [node name="True" type="Sprite" parent="NeuralNet/RespectBias"]
 visible = false
@@ -667,6 +678,7 @@ texture = ExtResource( 26 )
 [node name="RevengeBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 65 )
 script = ExtResource( 27 )
+driveNumber = 12
 
 [node name="True" type="Sprite" parent="NeuralNet/RevengeBias"]
 visible = false
@@ -679,6 +691,7 @@ texture = ExtResource( 26 )
 [node name="SolutionBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 70 )
 script = ExtResource( 27 )
+driveNumber = 13
 
 [node name="True" type="Sprite" parent="NeuralNet/SolutionBias"]
 visible = false
@@ -691,6 +704,7 @@ texture = ExtResource( 26 )
 [node name="StatusBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 75 )
 script = ExtResource( 27 )
+driveNumber = 14
 
 [node name="True" type="Sprite" parent="NeuralNet/StatusBias"]
 visible = false
@@ -703,6 +717,7 @@ texture = ExtResource( 26 )
 [node name="VictoryBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 80 )
 script = ExtResource( 27 )
+driveNumber = 15
 
 [node name="True" type="Sprite" parent="NeuralNet/VictoryBias"]
 visible = false
@@ -715,6 +730,7 @@ texture = ExtResource( 26 )
 [node name="WealthBias" type="Node2D" parent="NeuralNet"]
 position = Vector2( 20, 85 )
 script = ExtResource( 27 )
+driveNumber = 16
 
 [node name="True" type="Sprite" parent="NeuralNet/WealthBias"]
 visible = false
@@ -724,8 +740,8 @@ texture = ExtResource( 25 )
 visible = false
 texture = ExtResource( 26 )
 
-[node name="hidden layers" type="Node2D" parent="NeuralNet"]
-position = Vector2( 20, 0 )
+[node name="HiddenLayers" type="Node2D" parent="NeuralNet"]
+position = Vector2( 40, 5 )
 script = ExtResource( 29 )
 
 [node name="Rocket" type="Sprite" parent="."]
@@ -794,3 +810,20 @@ texture = ExtResource( 23 )
 [connection signal="input_event" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_input_event"]
 [connection signal="mouse_entered" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_mouse_entered"]
 [connection signal="mouse_exited" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_mouse_exited"]
+[connection signal="driveTriggered" from="NeuralNet/ExploreBias" to="NeuralNet" method="_on_ExploreBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/FameBias" to="NeuralNet" method="_on_FameBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/FunBias" to="NeuralNet" method="_on_FunBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/FuryBias" to="NeuralNet" method="_on_FuryBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/JealousyBias" to="NeuralNet" method="_on_JealousyBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/JusticeBias" to="NeuralNet" method="_on_JusticeBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/LoveBias" to="NeuralNet" method="_on_LoveBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/LustBias" to="NeuralNet" method="_on_LustBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/MaliceBias" to="NeuralNet" method="_on_MaliceBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/PlunderBias" to="NeuralNet" method="_on_PlunderBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/PrideBias" to="NeuralNet" method="_on_PrideBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/RespectBias" to="NeuralNet" method="_on_RespectBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/RevengeBias" to="NeuralNet" method="_on_RevengeBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/SolutionBias" to="NeuralNet" method="_on_SolutionBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/StatusBias" to="NeuralNet" method="_on_StatusBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/VictoryBias" to="NeuralNet" method="_on_VictoryBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/WealthBias" to="NeuralNet" method="_on_WealthBias_driveTriggered"]

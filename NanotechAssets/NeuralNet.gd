@@ -112,6 +112,8 @@ onready var WealthBias = $WealthBias
 onready var WealthBiasTrue = $WealthBias/True
 onready var WealthBiasFalse = $WealthBias/False
 
+onready var HiddenLayers = $HiddenLayers
+
 func Explore(isAPlayer):
 	ExploreBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
@@ -246,4 +248,54 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
+func _on_ExploreBias_driveTriggered():
+	HiddenLayers.ISignal(("Explore"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_FameBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Fame"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_FunBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Fun"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_FuryBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Fury"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_JealousyBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Jealousy"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_JusticeBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Justice"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_LoveBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Love"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_LustBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Lust"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_MaliceBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Malice"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_PlunderBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Plunder"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_PrideBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Pride"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_RespectBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Respect"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_RevengeBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Revenge"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_SolutionBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Solution"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_StatusBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Status"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_VictoryBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Victory"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+func _on_WealthBias_driveTriggered(value):
+	HiddenLayers.ISignal(("Wealth"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
