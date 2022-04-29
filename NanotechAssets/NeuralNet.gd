@@ -114,6 +114,58 @@ onready var WealthBiasFalse = $WealthBias/False
 
 onready var HiddenLayers = $HiddenLayers
 
+onready var ExploreWant = $ExploreWant
+onready var ExploreWantTrue = $ExploreWant/True
+onready var ExploreWantFalse = $ExploreWant/False
+onready var FameWant = $FameWant
+onready var FameWantTrue = $FameWant/True
+onready var FameWantFalse = $FameWant/False
+onready var FunWant = $FunWant
+onready var FunWantTrue = $FunWant/True
+onready var FunWantFalse = $FunWant/False
+onready var FuryWant = $FuryWant
+onready var FuryWantTrue = $FuryWant/True
+onready var FuryWantFalse = $FuryWant/False
+onready var JealousyWant = $JealousyWant
+onready var JealousyWantTrue = $JealousyWant/True
+onready var JealousyWantFalse = $JealousyWant/False
+onready var JusticeWant = $JusticeWant
+onready var JusticeWantTrue = $JusticeWant/True
+onready var JusticeWantFalse = $JusticeWant/False
+onready var LoveWant = $LoveWant
+onready var LoveWantTrue = $LoveWant/True
+onready var LoveWantFalse = $LoveWant/False
+onready var LustWant = $LustWant
+onready var LustWantTrue = $LustWant/True
+onready var LustWantFalse = $LustWant/False
+onready var MaliceWant = $MaliceWant
+onready var MaliceWantTrue = $MaliceWant/True
+onready var MaliceWantFalse = $MaliceWant/False
+onready var PlunderWant = $PlunderWant
+onready var PlunderWantTrue = $PlunderWant/True
+onready var PlunderWantFalse = $PlunderWant/False
+onready var PrideWant = $PrideWant
+onready var PrideWantTrue = $PrideWant/True
+onready var PrideWantFalse = $PrideWant/False
+onready var RespectWant = $RespectWant
+onready var RespectWantTrue = $RespectWant/True
+onready var RespectWantFalse = $RespectWant/False
+onready var RevengeWant = $RevengeWant
+onready var RevengeWantTrue = $RevengeWant/True
+onready var RevengeWantFalse = $RevengeWant/False
+onready var SolutionWant = $SolutionWant
+onready var SolutionWantTrue = $SolutionWant/True
+onready var SolutionWantFalse = $SolutionWant/False
+onready var StatusWant = $StatusWant
+onready var StatusWantTrue = $StatusWant/True
+onready var StatusWantFalse = $StatusWant/False
+onready var VictoryWant = $VictoryWant
+onready var VictoryWantTrue = $VictoryWant/True
+onready var VictoryWantFalse = $VictoryWant/False
+onready var WealthWant = $WealthWant
+onready var WealthWantTrue = $WealthWant/True
+onready var WealthWantFalse = $WealthWant/False
+
 func Explore(isAPlayer):
 	ExploreBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
@@ -299,3 +351,127 @@ func _on_VictoryBias_driveTriggered(value):
 
 func _on_WealthBias_driveTriggered(value):
 	HiddenLayers.ISignal(("Wealth"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+
+
+func _on_HiddenLayers_output(want, yn):
+	if want == 1:
+		if yn == true:
+			ExploreWantTrue.visible = true
+			ExploreWantFalse.visible = false
+		else:
+			ExploreWantTrue.visible = false
+			ExploreWantFalse.visible = true
+	if want == 2:
+		if yn == true:
+			FameWantTrue.visible = true
+			FameWantFalse.visible = false
+		else:
+			FameWantTrue.visible = false
+			FameWantFalse.visible = true
+	if want == 3:
+		if yn == true:
+			FunWantTrue.visible = true
+			FunWantFalse.visible = false
+		else:
+			FunWantTrue.visible = false
+			FunWantFalse.visible = true
+	if want == 4:
+		if yn == true:
+			FuryWantTrue.visible = true
+			FuryWantFalse.visible = false
+		else:
+			FuryWantTrue.visible = false
+			FuryWantFalse.visible = true
+	if want == 5:
+		if yn == true:
+			JealousyWantTrue.visible = true
+			JealousyWantFalse.visible = false
+		else:
+			JealousyWantTrue.visible = false
+			JealousyWantFalse.visible = true
+	if want == 6:
+		if yn == true:
+			JusticeWantTrue.visible = true
+			JusticeWantFalse.visible = false
+		else:
+			JusticeWantTrue.visible = false
+			JusticeWantFalse.visible = true
+	if want == 7:
+		if yn == true:
+			LoveWantTrue.visible = true
+			LoveWantFalse.visible = false
+		else:
+			LoveWantTrue.visible = false
+			LoveWantFalse.visible = true
+	if want == 8:
+		if yn == true:
+			LustWantTrue.visible = true
+			LustWantFalse.visible = false
+		else:
+			LustWantTrue.visible = false
+			LustWantFalse.visible = true
+	if want == 9:
+		if yn == true:
+			MaliceWantTrue.visible = true
+			MaliceWantFalse.visible = false
+		else:
+			MaliceWantTrue.visible = false
+			MaliceWantFalse.visible = true
+	if want == 10:
+		if yn == true:
+			PlunderWantTrue.visible = true
+			PlunderWantFalse.visible = false
+		else:
+			PlunderWantTrue.visible = false
+			PlunderWantFalse.visible = true
+	if want == 11:
+		if yn == true:
+			PrideWantTrue.visible = true
+			PrideWantFalse.visible = false
+		else:
+			PrideWantTrue.visible = false
+			PrideWantFalse.visible = true
+	if want == 12:
+		if yn == true:
+			RespectWantTrue.visible = true
+			RespectWantFalse.visible = false
+		else:
+			RespectWantTrue.visible = false
+			RespectWantFalse.visible = true
+	if want == 13:
+		if yn == true:
+			RevengeWantTrue.visible = true
+			RevengeWantFalse.visible = false
+		else:
+			RevengeWantTrue.visible = false
+			RevengeWantFalse.visible = true
+	if want == 14:
+		if yn == true:
+			SolutionWantTrue.visible = true
+			SolutionWantFalse.visible = false
+		else:
+			SolutionWantTrue.visible = false
+			SolutionWantFalse.visible = true
+	if want == 15:
+		if yn == true:
+			StatusWantTrue.visible = true
+			StatusWantFalse.visible = false
+		else:
+			StatusWantTrue.visible = false
+			StatusWantFalse.visible = true
+	if want == 16:
+		if yn == true:
+			VictoryWantTrue.visible = true
+			VictoryWantFalse.visible = false
+		else:
+			VictoryWantTrue.visible = false
+			VictoryWantFalse.visible = true
+	if want == 17:
+		if yn == true:
+			WealthWantTrue.visible = true
+			WealthWantFalse.visible = false
+		else:
+			WealthWantTrue.visible = false
+			WealthWantFalse.visible = true
+	
+	

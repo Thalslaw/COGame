@@ -5,6 +5,8 @@ extends Node
 # var a = 2
 # var b = "text"
 var weight = 0.5
+var dendrites = []
+var triggered
 
 func trigger():
 	pass

@@ -12,52 +12,16 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Dendrite",
 "language": "GDScript",
-"path": "res://Villager/Dendrite.gd"
+"path": "res://NanotechAssets/Dendrite.gd"
 }, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://godot-git-plugin-v1.2.1-x11/git_api.gdns"
-}, {
-"base": "Node",
-"class": "Instincts",
-"language": "GDScript",
-"path": "res://Villager/Instincts.gd"
-}, {
-"base": "Node",
-"class": "Layer",
-"language": "GDScript",
-"path": "res://Villager/Layer.gd"
-}, {
-"base": "Node",
-"class": "NeuralNet",
-"language": "GDScript",
-"path": "res://Villager/NeuralNet.gd"
-}, {
-"base": "Node",
-"class": "Neuron",
-"language": "GDScript",
-"path": "res://Villager/Neuron.gd"
-}, {
-"base": "Node",
-"class": "Satisfiers",
-"language": "GDScript",
-"path": "res://Villager/Satisfiers.gd"
-}, {
-"base": "Node",
-"class": "Walker",
-"language": "GDScript",
-"path": "res://World/Walker.gd"
 } ]
 _global_script_class_icons={
 "Dendrite": "",
-"GitAPI": "",
-"Instincts": "",
-"Layer": "",
-"NeuralNet": "",
-"Neuron": "",
-"Satisfiers": "",
-"Walker": ""
+"GitAPI": ""
 }
 
 [application]

@@ -5,12 +5,14 @@ extends Node2D
 #the purpose of the hidden layers here is to take the inputs and figure out, based on the thing that is done to it, the best drive policy.
 #so if you constantly give someone shit, they become grumpy. Love someone and they could turn narcissistic... Here is the operant conditioning chamber
 
-signal output(result)
-
 var result
 var layerList = []
 var layers = 1 #initialisation value. This changes. Includes layer 0 as input.
+var atLayer
 var nextNode
+var nextLink
+
+signal output(want,yn)
 
 var agencySat
 var arousalSat
@@ -18,8 +20,7 @@ var egoSat
 
 const synapse = preload("res://NanotechAssets/Synapse.gd")
 const layer = preload("res://NanotechAssets/Layer.gd")
-#ADD DENDRITES YOU DERP
-
+const dendrite = preload("res://NanotechAssets/Dendrite.gd")
 
 #these are signals to respond to, and cause 'training' or 'learning' based on everyone else's interactions with this entity.
 func ISignal(inputDrive,agency,arousal,ego):
@@ -35,33 +36,18 @@ func ISignal(inputDrive,agency,arousal,ego):
 		#shallow learn pass
 	#if solution
 		#deep learn pass
-
-
-
+	
+	#outputs!
+	result = layerList[0]
+	for l in range(0,layerList[0].count()):
+		if result.synapses[l].triggered:
+			emit_signal(result.synapses[l],true)
+		else:
+			emit_signal(result.synapses[l],false)
 
 func deepLearn():
 	#these training passes mutate and modify the hidden layer node structure
 	pass
-
-func _ready():
-	while(layers != -1):
-		layerList[layers] = layer.new()
-		layers = layers - 1
-	layers = layerList.count()
-	for l in layerList:
-		if (l is layerList[0]): #as layer 0 is the output
-			for m in range(0,16):
-				nextNode = synapse.new()
-			result = layerList[l]
-			
-		elif(l is layerList.count()):
-			#input layer
-			for m in range(0,16):
-				nextNode = synapse.new()
-				
-		else:
-			#make a node that corresponds to this layer.
-			nextNode = synapse.new()#put things to pass to _init in this line's brackets, like connections.
 
 func shallowLearn():
 	#these training passes are designed to be short and maybe tweak a few biases a tiny bit
@@ -137,12 +123,38 @@ func shallowLearn():
 				l[14].weight = 1.0
 				l[15].weight = 0.0
 				l[16].weight = 1.0
-
+			atLayer = 0
 		else:
 			#we need to correct to allow all the weightings to lean into these results
 			#layerList[l-1] is output of this set of synapses
 			#l is a layerlist element and it needs to tweak towards its output's weights by about 5%
-			#for synapse in layer:
-			#	for dendrite in synapse:
-			#		dendrite.target.weight = ((layer[dendrite.target] - dendrite.target.weight)/20) + dendrite.target.weight
-			pass # but basically right now, don't train yet.
+			atLayer = atLayer + 1
+			for m in range (0,layerList[(atLayer)].count()): #layers of the neural net
+				for n in layerList[m].synapses:#synapses of those layers
+					for o in n:#dendrites of those synapses
+						o.strength = o.strength - ((o.target.weight - o.strength)/20) #go 5% the difference
+			
+func _ready():
+	while(layers != -1):
+		layerList[layers] = layer.new()
+		layers = layers - 1
+	layers = layerList.count()
+	for l in layerList:
+		if (l is layerList[0]): #as layer 0 is the output
+			for _m in range(0,16):
+				nextNode = synapse.new()
+			result = layerList[l]
+			atLayer = 0
+		elif(l is layerList.count()):
+			#input layer
+			for _m in range(0,16):
+				nextNode = synapse.new()
+			
+		else:
+			#make a node that corresponds to this layer.
+			nextNode = synapse.new()
+			for _m in range(0,layerList[atLayer].count()):
+				nextLink = dendrite.new()
+				nextLink.target = nextNode
+				nextNode.dendrites.append(nextLink)
+			atLayer = atLayer + 1
