@@ -8,12 +8,13 @@ extends Node2D
 signal output(result)
 
 var result
-var genes = []
-var nodes = []
 var layerList = []
 var layers = 1 #initialisation value. This changes. Includes layer 0 as input.
-var nextNode #axon
-var biasNode
+var nextNode
+
+var agencySat
+var arousalSat
+var egoSat
 
 const synapse = preload("res://NanotechAssets/Synapse.gd")
 const layer = preload("res://NanotechAssets/Layer.gd")
@@ -21,18 +22,21 @@ const layer = preload("res://NanotechAssets/Layer.gd")
 
 #these are signals to respond to, and cause 'training' or 'learning' based on everyone else's interactions with this entity.
 func ISignal(inputDrive,agency,arousal,ego):
+	agencySat = agency
+	arousalSat = arousal
+	egoSat = ego
 	#in layerList[input],if there is a corresponding synapse, trigger it.
-	layerList[layerList.count()].neuron[inputDrive].trigger()
+	layerList[layerList.count()].Synapse[inputDrive].trigger()
+
+	#for now, just tweak biases
+	shallowLearn()
 	#if anything but solution
 		#shallow learn pass
 	#if solution
 		#deep learn pass
-	pass
 
-func shallowLearn():
-	#these training passes are designed to be short and maybe tweak a few biases a tiny bit
-	
-	pass
+
+
 
 func deepLearn():
 	#these training passes mutate and modify the hidden layer node structure
@@ -44,116 +48,100 @@ func _ready():
 		layers = layers - 1
 	layers = layerList.count()
 	for l in layerList:
-		if (l != 0): #as layer 0 is the output
-			#ignore but initialise instead
-			nextNode = result
-		elif(l == layerList.count()):
+		if (l is layerList[0]): #as layer 0 is the output
+			for m in range(0,16):
+				nextNode = synapse.new()
+			result = layerList[l]
+			
+		elif(l is layerList.count()):
 			#input layer
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
-			synapse.new()
+			for m in range(0,16):
+				nextNode = synapse.new()
+				
 		else:
 			#make a node that corresponds to this layer.
 			nextNode = synapse.new()#put things to pass to _init in this line's brackets, like connections.
 
+func shallowLearn():
+	#these training passes are designed to be short and maybe tweak a few biases a tiny bit
+	for l in layerList:
+		if (l is layerList[0]):
+			#set the outputs to correspond to the outputs that would satisfy the two least satisfied satisfiers
+			if((agencySat >> arousalSat) && (agencySat >> egoSat)):
+				#agency is most
+				#revenge, jealousy, fame, fury, love
+				#[explore, fame, fun,fury, jealousy, justice, love, lust, malice, plunder, pride, respect, revenge, solution, status, victory, wealth]
+				#[0,1,0,1,1,0,1,0,0,0,0,1,0,0,0,0,0]
+				#weight is better viewed as 'threshold'
+				l[0].weight = 1.0 
+				l[1].weight = 0.0 
+				l[2].weight = 1.0 
+				l[3].weight = 0.0
+				l[4].weight = 0.0
+				l[5].weight = 1.0
+				l[6].weight = 0.0
+				l[7].weight = 1.0
+				l[8].weight = 1.0
+				l[9].weight = 1.0
+				l[10].weight = 1.0
+				l[11].weight = 0.0
+				l[12].weight = 1.0
+				l[13].weight = 1.0
+				l[14].weight = 1.0
+				l[15].weight = 1.0
+				l[16].weight = 1.0
+				
+			elif ((arousalSat >> agencySat) && (arousalSat >> egoSat)):
+				#arousal is most
+				#wealth, status, pride, justice, respect, solution
+				#[explore, fame, fun,fury, jealousy, justice, love, lust, malice, plunder, pride, respect, revenge, solution, status, victory, wealth]
+				#[0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1]
+				l[0].weight = 1.0
+				l[1].weight = 1.0
+				l[2].weight = 1.0
+				l[3].weight = 1.0
+				l[4].weight = 1.0
+				l[5].weight = 0.0
+				l[6].weight = 1.0
+				l[7].weight = 1.0
+				l[8].weight = 1.0
+				l[9].weight = 0.0
+				l[10].weight = 0.0
+				l[11].weight = 1.0
+				l[12].weight = 1.0
+				l[13].weight = 0.0
+				l[14].weight = 0.0
+				l[15].weight = 1.0
+				l[16].weight = 0.0
+				
+			elif ((egoSat >> agencySat) && (egoSat >> arousalSat)):
+				#ego is most
+				#malice, lust, exploration, fun, plunder, victory
+				#[explore, fame, fun,fury, jealousy, justice, love, lust, malice, plunder, pride, respect, revenge, solution, status, victory, wealth]
+				#[1,0,1,0,0,0,0,1,1,0,0,0,1,0,0,1,0]
+				l[0].weight = 0.0
+				l[1].weight = 1.0
+				l[2].weight = 0.0
+				l[3].weight = 1.0
+				l[4].weight = 1.0
+				l[5].weight = 1.0
+				l[6].weight = 1.0
+				l[7].weight = 0.0
+				l[8].weight = 0.0
+				l[9].weight = 1.0
+				l[10].weight = 1.0
+				l[11].weight = 1.0
+				l[12].weight = 0.0
+				l[13].weight = 1.0
+				l[14].weight = 1.0
+				l[15].weight = 0.0
+				l[16].weight = 1.0
 
-#func train(_satisfiers, wantedOutput):
-#	#work backwards from the output and correct for difference from outputs
-#	var j = 0
-#	#for loop through l layers
-#	layerList.invert() ##reverse the list so we can work backwards trivially
-#	
-#	for l in layerList:
-#		if (l == layerList[0]):
-#			l.setNeurons(wantedOutput)
-#		else:
-#			var forwardLayer = layerList[j].getNeurons()
-#			for neuron in l.getNeurons():
-#				var k = (layerList.size() - 1)
-#				for forwardNeuron in forwardLayer:
-#					while (k >= 0):
-#						
-#						#random very small walk of quadratically small amount
-#						forwardNeuron.dendriteList[k].strength -= (randf()-0.5)*(learningRate * learningRate)
-#						
-#						#reinforce good behaviour
-#						if neuron.fired == true:
-#							#set strength to adjust in the direction of difference by a factor of learning rate
-#							forwardNeuron.dendriteList[k].strength += learningRate
-#						k -= 1
-#					#opposite of neuron.setBias(1/(1+(pow(EULER, (0.0 - (neuron.getBias() + previousNeuron.getBias()))))))
-#					#so set threshold to adjust in the direction of difference by a factor of learning rate
-#					forwardNeuron.setThreshold(forwardNeuron.threshold + ((neuron.threshold - forwardNeuron.threshold) * learningRate))
-#			j = j + 1
-#	#At this point, a check against their satisfiers would be appropriate. satisfiers is to remain underscored until this value is used.
-#	
-#	layerList.invert() ##now back to the right way round
-	
-
-#func _init(layerCount,inputCount,outputCount):
-#	for n in layerCount:
-#		var la = []
-#		if n == 0:
-#			#reserved for input neurons
-#			la = Layer.new(inputCount,0) #the number of input neurons
-#		elif n == layerCount: #else if. Not "file" backwards, brain... you so silly.
-#			#reserved for output neurons
-#			la = Layer.new(outputCount, la.count()) #the number of output neurons
-#		else:
-#			if (la.size() >= 1):
-#				la = Layer.new(5, la.count()) #the number of hidden layer neurons. 
-#			else:
-#				la = Layer.new(5, inputCount) #the number of hidden layer neurons. 
-#		layerList.append(la)
-
-#Genome crossover(Genome parent2) {
-	#Genome child = new Genome(inputs, outputs, true);
-	#child.genes.clear();
-	#child.nodes.clear();
-	#child.layers = layers;
-	#child.nextNode = nextNode;
-	#child.biasNode = biasNode;
-	#ArrayList<connectionGene> childGenes = new ArrayList<connectionGene>();//list of genes to be inherrited form the parents
-	#ArrayList<Boolean> isEnabled = new ArrayList<Boolean>(); 
-	#//all inherrited genes
-	#for (int i = 0; i< genes.size(); i++) {
-	  #boolean setEnabled = true;//is this node in the chlid going to be enabled
-
-	  #int parent2gene = matchingGene(parent2, genes.get(i).innovationNo);
-	  #if (parent2gene != -1) {//if the genes match
-		#if (!genes.get(i).enabled || !parent2.genes.get(parent2gene).enabled) {//if either of the matching genes are disabled
-
-		  #if (random(1) < 0.75) {//75% of the time disabel the childs gene
-			#setEnabled = false;
-		  #}
-		#}
-		#float rand = random(1);
-		#if (rand<0.5) {
-		  #childGenes.add(genes.get(i));
-
-		  #//get gene from this fucker
-		#} else {
-		  #//get gene from parent2
-		  #childGenes.add(parent2.genes.get(parent2gene));
-		#}
-	  #} else {//disjoint or excess gene
-		#childGenes.add(genes.get(i));
-		#setEnabled = genes.get(i).enabled;
-	  #}
-	  #isEnabled.add(setEnabled);
-	#}
-#https://github.com/Code-Bullet/Asteroids-with-NEAT/blob/master/asteroidsGameNeat/Genome.pde
+		else:
+			#we need to correct to allow all the weightings to lean into these results
+			#layerList[l-1] is output of this set of synapses
+			#l is a layerlist element and it needs to tweak towards its output's weights by about 5%
+			#for synapse in layer:
+			#	for dendrite in synapse:
+			#		dendrite.target.weight = ((layer[dendrite.target] - dendrite.target.weight)/20) + dendrite.target.weight
+			pass # but basically right now, don't train yet.
