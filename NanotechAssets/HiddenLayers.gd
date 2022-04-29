@@ -18,6 +18,7 @@ var egoSat
 
 const synapse = preload("res://NanotechAssets/Synapse.gd")
 const layer = preload("res://NanotechAssets/Layer.gd")
+#ADD DENDRITES YOU DERP
 
 
 #these are signals to respond to, and cause 'training' or 'learning' based on everyone else's interactions with this entity.
