@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
 [ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://NanotechAssets/Quotient.gd" type="Script" id=28]
 [ext_resource path="res://NanotechAssets/HiddenLayers.gd" type="Script" id=29]
 [ext_resource path="res://NanotechAssets/Want.gd" type="Script" id=30]
+[ext_resource path="res://NanotechAssets/Vulnerability.gd" type="Script" id=31]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -746,7 +747,7 @@ position = Vector2( 40, 5 )
 script = ExtResource( 29 )
 
 [node name="ExploreWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 5 )
+position = Vector2( 59, 5 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/ExploreWant"]
@@ -758,7 +759,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="FameWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 10 )
+position = Vector2( 59, 10 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/FameWant"]
@@ -770,7 +771,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="FunWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 15 )
+position = Vector2( 59, 15 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/FunWant"]
@@ -782,7 +783,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="FuryWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 20 )
+position = Vector2( 59, 20 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/FuryWant"]
@@ -794,7 +795,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="JealousyWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 25 )
+position = Vector2( 59, 25 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/JealousyWant"]
@@ -806,7 +807,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="JusticeWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 30 )
+position = Vector2( 59, 30 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/JusticeWant"]
@@ -818,7 +819,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="LoveWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 35 )
+position = Vector2( 59, 35 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/LoveWant"]
@@ -830,7 +831,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="LustWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 40 )
+position = Vector2( 59, 40 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/LustWant"]
@@ -842,7 +843,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="MaliceWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 45 )
+position = Vector2( 59, 45 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/MaliceWant"]
@@ -854,7 +855,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="PlunderWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 50 )
+position = Vector2( 59, 50 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/PlunderWant"]
@@ -866,7 +867,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="PrideWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 55 )
+position = Vector2( 59, 55 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/PrideWant"]
@@ -878,7 +879,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="RespectWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 60 )
+position = Vector2( 59, 60 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/RespectWant"]
@@ -890,7 +891,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="RevengeWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 65 )
+position = Vector2( 59, 65 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/RevengeWant"]
@@ -902,7 +903,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="SolutionWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 70 )
+position = Vector2( 59, 70 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/SolutionWant"]
@@ -914,7 +915,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="StatusWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 75 )
+position = Vector2( 59, 75 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/StatusWant"]
@@ -926,7 +927,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="VictoryWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 80 )
+position = Vector2( 59, 80 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/VictoryWant"]
@@ -938,7 +939,7 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="WealthWant" type="Node2D" parent="NeuralNet"]
-position = Vector2( 280, 85 )
+position = Vector2( 59, 85 )
 script = ExtResource( 30 )
 
 [node name="True" type="Sprite" parent="NeuralNet/WealthWant"]
@@ -946,6 +947,18 @@ visible = false
 texture = ExtResource( 25 )
 
 [node name="False" type="Sprite" parent="NeuralNet/WealthWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="Vulnerability" type="Node2D" parent="NeuralNet"]
+position = Vector2( 78, 5 )
+script = ExtResource( 31 )
+
+[node name="True" type="Sprite" parent="NeuralNet/Vulnerability"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/Vulnerability"]
 visible = false
 texture = ExtResource( 26 )
 
@@ -1015,6 +1028,7 @@ texture = ExtResource( 23 )
 [connection signal="input_event" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_input_event"]
 [connection signal="mouse_entered" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_mouse_entered"]
 [connection signal="mouse_exited" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_mouse_exited"]
+[connection signal="emotionalState" from="NeuralNet" to="." method="_on_NeuralNet_emotionalState"]
 [connection signal="driveTriggered" from="NeuralNet/ExploreBias" to="NeuralNet" method="_on_ExploreBias_driveTriggered"]
 [connection signal="driveTriggered" from="NeuralNet/FameBias" to="NeuralNet" method="_on_FameBias_driveTriggered"]
 [connection signal="driveTriggered" from="NeuralNet/FunBias" to="NeuralNet" method="_on_FunBias_driveTriggered"]

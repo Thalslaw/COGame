@@ -26,6 +26,9 @@ export var 	FRICTION = 500
 var input_vector = Vector2.ZERO
 var velocity = Vector2.ZERO
 
+#behaviour and decision variables
+export var vulnerable = false
+
 # MouseOver variables
 onready var mouseSpace = $MouseOverBox
 var mousePos
@@ -54,6 +57,8 @@ onready var solutionSprite = $Solution
 onready var statusSprite = $Status
 onready var victorySprite = $Victory
 onready var wealthSprite = $Wealth
+
+onready var selfSprite = $NanobotSprite
 
 # Neural Net (behaviour distributed through calls and signals)
 onready var neuralNet = $NeuralNet
@@ -108,6 +113,12 @@ func spawnOffspring():
 	#making offspring. Receiver is the one who spawns.
 	emit_signal("spawn", global_position)
 	
+func makeVulnerable(become):
+	#this entity becomes socially vulnerable to all in its view
+	vulnerable = become
+	neuralNet.VulnerableTrue.visible = become
+	neuralNet.VulnerableFalse.visible = !become
+	
 func triggerExplore(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Explore", isAPlayer)
@@ -128,10 +139,16 @@ func triggerFury(isAPlayer):
 	logTransaction("Fury", isAPlayer)
 	neuralNet.Fury(isAPlayer)
 	#die
+	#make this entity vulnerable
+	makeVulnerable(true)
 	queue_free()
 
 func triggerJealousy(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
+	#is vulnerable?
+	if(!vulnerable):
+		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+	makeVulnerable(false)
 	logTransaction("Jealousy", isAPlayer)
 	neuralNet.Jealousy(isAPlayer)
 
@@ -154,18 +171,29 @@ func triggerLust(isAPlayer):
 
 func triggerMalice(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
+	#is vulnerable
+	if(!vulnerable):
+		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+	makeVulnerable(false)
 	logTransaction("Malice", isAPlayer)
 	neuralNet.Malice(isAPlayer)
 	#die
+	#make this entity vulnerable
+	makeVulnerable(true)
 	queue_free()
 
 func triggerPlunder(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
 	logTransaction("Plunder", isAPlayer)
 	neuralNet.Plunder(isAPlayer)
+	#make this entity vulnerable
 
 func triggerPride(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
+	#is vulnerable
+	if(!vulnerable):
+		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+	makeVulnerable(false)
 	logTransaction("Pride", isAPlayer)
 	neuralNet.Pride(isAPlayer)
 
@@ -176,6 +204,10 @@ func triggerRespect(isAPlayer):
 
 func triggerRevenge(isAPlayer):
 	#somebody or something else has triggered this entity's drive.
+	#is vulnerable?
+	if(!vulnerable):
+		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+	makeVulnerable(false)
 	logTransaction("Revenge", isAPlayer)
 	neuralNet.Revenge(isAPlayer)
 	#die
@@ -196,6 +228,8 @@ func triggerVictory(isAPlayer):
 	logTransaction("Victory", isAPlayer)
 	neuralNet.Victory(isAPlayer)
 	#die
+	#make this entity vulnerable
+	makeVulnerable(true)
 	queue_free()
 
 func triggerWealth(isAPlayer):
@@ -208,18 +242,33 @@ func spriteShow(exSp, faSp, fuSp, frSp, jeSp, juSp, loSp, luSp, maSp, plSp, prSp
 	fameSprite.visible = faSp
 	funSprite.visible = fuSp
 	furySprite.visible = frSp
-	jealousySprite.visible = jeSp
+	if(vulnerable):
+		jealousySprite.visible = jeSp
+	else:
+		jealousySprite.visible = false
 	justiceSprite.visible = juSp
 	loveSprite.visible = loSp
 	lustSprite.visible = luSp
-	maliceSprite.visible = maSp
+	if(vulnerable):
+		maliceSprite.visible = maSp
+	else:
+		maliceSprite.visible = false
 	plunderSprite.visible = plSp
-	prideSprite.visible = prSp
+	if(vulnerable):
+		prideSprite.visible = prSp
+	else:
+		prideSprite.visible = false
 	respectSprite.visible = reSp
-	revengeSprite.visible = rvSp
+	if(vulnerable):
+		revengeSprite.visible = rvSp 
+	else:
+		revengeSprite.visible = false
 	solutionSprite.visible = soSp
 	statusSprite.visible = stSp
-	victorySprite.visible = viSp
+	if(vulnerable):
+		victorySprite.visible = viSp
+	else:
+		victorySprite.visible = false
 	wealthSprite.visible = weSp
 
 func _on_MouseOverBox_mouse_entered():
@@ -482,3 +531,8 @@ func _on_WealthMouseOverBox_input_event(viewport, event, shape_idx):
 	if (wealthSprite.visible && !isPlayer && event is InputEventMouseButton && event.pressed):
 		spriteShow(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
 		triggerWealth("Player")
+
+func _on_NeuralNet_emotionalState(ag, ar, eg):
+	#ag is green, ar is pink, eg is red
+	var emoColour = Color(0, eg, (ag+(0.5*ar))/2, (0.5*ar))
+	selfSprite.modulate(emoColour)#argb

@@ -1,5 +1,8 @@
 extends Node2D
 
+# signals
+signal emotionalState(ag,ar,eg)
+
 # visual display
 onready var ExploreTriggered = $ExploreTriggered
 onready var ExploreTriggeredTrue = $ExploreTriggered/True
@@ -166,6 +169,10 @@ onready var WealthWant = $WealthWant
 onready var WealthWantTrue = $WealthWant/True
 onready var WealthWantFalse = $WealthWant/False
 
+onready var Vulnerable = $Vulnerability
+onready var VulnerableTrue = $Vulnerability/True
+onready var VulnerableFalse = $Vulnerability/False
+
 func Explore(isAPlayer):
 	ExploreBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
@@ -295,11 +302,14 @@ func decl(isAPlayer):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	#change the colour of the entity over time as the agency, arousal and ego change
+	emit_signal("emotionalState",(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	
 
 func _on_ExploreBias_driveTriggered():
 	HiddenLayers.ISignal(("Explore"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
