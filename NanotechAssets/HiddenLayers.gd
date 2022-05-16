@@ -28,7 +28,7 @@ func ISignal(inputDrive,agency,arousal,ego):
 	arousalSat = arousal
 	egoSat = ego
 	#in layerList[input],if there is a corresponding synapse, trigger it.
-	layerList[layerList.count()].Synapse[inputDrive].trigger()
+	layerList[layerList.size()].Synapse[inputDrive].trigger()
 
 	#for now, just tweak biases
 	shallowLearn()
@@ -39,7 +39,7 @@ func ISignal(inputDrive,agency,arousal,ego):
 	
 	#outputs!
 	result = layerList[0]
-	for l in range(0,layerList[0].count()):
+	for l in range(0,layerList[0].size()):
 		if result.synapses[l].triggered:
 			emit_signal(result.synapses[l],true)
 		else:
@@ -129,23 +129,23 @@ func shallowLearn():
 			#layerList[l-1] is output of this set of synapses
 			#l is a layerlist element and it needs to tweak towards its output's weights by about 5%
 			atLayer = atLayer + 1
-			for m in range (0,layerList[(atLayer)].count()): #layers of the neural net
+			for m in range (0,layerList[(atLayer)].size()): #layers of the neural net
 				for n in layerList[m].synapses:#synapses of those layers
 					for o in n:#dendrites of those synapses
 						o.strength = o.strength - ((o.target.weight - o.strength)/20) #go 5% the difference
 			
 func _ready():
 	while(layers != -1):
-		layerList[layers] = layer.new()
+		layerList.append(layer.new())		
 		layers = layers - 1
-	layers = layerList.count()
+	layers = layerList.size()
 	for l in layerList:
-		if (l is layerList[0]): #as layer 0 is the output
+		if (l == layerList[0]): #as layer 0 is the output
 			for _m in range(0,16):
 				nextNode = synapse.new()
-			result = layerList[l]
+			result = l
 			atLayer = 0
-		elif(l is layerList.count()):
+		elif(l == layerList.back()): ##else if l is the last element in the list
 			#input layer
 			for _m in range(0,16):
 				nextNode = synapse.new()
@@ -153,7 +153,7 @@ func _ready():
 		else:
 			#make a node that corresponds to this layer.
 			nextNode = synapse.new()
-			for _m in range(0,layerList[atLayer].count()):
+			for _m in range(0,layerList[atLayer].size()):
 				nextLink = dendrite.new()
 				nextLink.target = nextNode
 				nextNode.dendrites.append(nextLink)

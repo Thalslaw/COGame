@@ -647,4 +647,4 @@ func _on_WealthMouseOverBox_input_event(viewport, event, shape_idx):
 func _on_NeuralNet_emotionalState(ag, ar, eg):
 	#ag is green, ar is pink, eg is red
 	var emoColour = Color(0, eg, (ag+(0.5*ar))/2, (0.5*ar))
-	selfSprite.modulate(emoColour)#argb
+	selfSprite.modulate = emoColour
