@@ -119,123 +119,238 @@ func makeVulnerable(become):
 	neuralNet.VulnerableTrue.visible = become
 	neuralNet.VulnerableFalse.visible = !become
 	
-func triggerExplore(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Explore", isAPlayer)
-	neuralNet.Explore(isAPlayer)
+func triggerExplore(sender):
+	if(sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Explore", "Player")
+		neuralNet.Explore(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Explore", "NotAPlayer")#the notAPlayer is going to be made entity specific later
+		neuralNet.Explore(false)
 
-func triggerFame(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Fame", isAPlayer)
-	neuralNet.Fame(isAPlayer)
+func triggerFame(sender):
+	if(sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Fame", "Player")
+		neuralNet.Fame(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Fame", "NotAPlayer")
+		neuralNet.Fame(false)
 
-func triggerFun(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Fun", isAPlayer)
-	neuralNet.Fun(isAPlayer)
+func triggerFun(sender):
+	if(sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Fun", "Player")
+		neuralNet.Fun(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Fun", "NotAPlayer")
+		neuralNet.Fun(false)
 
-func triggerFury(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Fury", isAPlayer)
-	neuralNet.Fury(isAPlayer)
-	#die
-	#make this entity vulnerable
-	makeVulnerable(true)
-	queue_free()
+func triggerFury(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Fury", "Player")
+		neuralNet.Fury(true)
+		#normally this would make an entity vulnerable
+		#die
+		queue_free()
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Fury", "NotAPlayer")
+		neuralNet.Fury(false)
+		#normally this would make an entity vulnerable
+		#die
+		queue_free()
 
-func triggerJealousy(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	#is vulnerable?
-	if(!vulnerable):
-		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
-	makeVulnerable(false)
-	logTransaction("Jealousy", isAPlayer)
-	neuralNet.Jealousy(isAPlayer)
+func triggerJealousy(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		#is vulnerable?
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Jealousy", "Player")
+		neuralNet.Jealousy(true)
+	else:
+		#a non player has triggered this entity's drive.
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Jealousy", "NotAPlayer")
+		neuralNet.Jealousy(false)
 
-func triggerJustice(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Justice", isAPlayer)
-	neuralNet.Justice(isAPlayer)
+func triggerJustice(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Justice", "Player")
+		neuralNet.Justice(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Justice", "NotAPlayer")
+		neuralNet.Justice(false)
 
-func triggerLove(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Love", isAPlayer)
-	neuralNet.Love(isAPlayer)
-	spawnOffspring()
+func triggerLove(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Love", "Player")
+		neuralNet.Love(true)
+		spawnOffspring()
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Love", "NotAPlayer")
+		neuralNet.Love(false)
+		spawnOffspring()
 
-func triggerLust(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Love", isAPlayer)
-	neuralNet.Lust(isAPlayer)
-	spawnOffspring()
+func triggerLust(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Love", "Player")
+		neuralNet.Lust(true)
+		spawnOffspring()
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Love", "NotAPlayer")
+		neuralNet.Lust(false)
+		spawnOffspring()
 
-func triggerMalice(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	#is vulnerable
-	if(!vulnerable):
-		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
-	makeVulnerable(false)
-	logTransaction("Malice", isAPlayer)
-	neuralNet.Malice(isAPlayer)
-	#die
-	#make this entity vulnerable
-	makeVulnerable(true)
-	queue_free()
+func triggerMalice(sender):
+	if(sender == "Player"):
+		#player has triggered this entity's drive.
+		#is vulnerable
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Malice", "Player")
+		neuralNet.Malice(true)
+		#normally this would make the entity vulnerable
+		#die
+		queue_free()
+	else:
+		#a non player has triggered this entity's drive.
+		#is vulnerable
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Malice", "NotAPlayer")
+		neuralNet.Malice(false)
+		#normally this would make the entity vulnerable
+		#die
+		queue_free()
 
-func triggerPlunder(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Plunder", isAPlayer)
-	neuralNet.Plunder(isAPlayer)
-	#make this entity vulnerable
+func triggerPlunder(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Plunder", "Player")
+		neuralNet.Plunder(true)
+		#make this entity vulnerable
+		makeVulnerable(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Plunder", "NotAPlayer")
+		neuralNet.Plunder(false)
+		#make this entity vulnerable
+		makeVulnerable(true)
 
-func triggerPride(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	#is vulnerable
-	if(!vulnerable):
-		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
-	makeVulnerable(false)
-	logTransaction("Pride", isAPlayer)
-	neuralNet.Pride(isAPlayer)
+func triggerPride(sender):
+	if(sender == "Player"):
+		#player has triggered this entity's drive.
+		#is vulnerable
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Pride", "Player")
+		neuralNet.Pride(true)
+	else:
+		#a non player has triggered this entity's drive.
+		#is vulnerable
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Pride", "NotAPlayer")
+		neuralNet.Pride(false)
 
-func triggerRespect(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Respect", isAPlayer)
-	neuralNet.Respect(isAPlayer)
+func triggerRespect(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Respect", "Player")
+		neuralNet.Respect(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Respect", "NotAPlayer")
+		neuralNet.Respect(false)
 
-func triggerRevenge(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	#is vulnerable?
-	if(!vulnerable):
-		print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
-	makeVulnerable(false)
-	logTransaction("Revenge", isAPlayer)
-	neuralNet.Revenge(isAPlayer)
-	#die
-	queue_free()
+func triggerRevenge(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		#is vulnerable?
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Revenge", "Player")
+		neuralNet.Revenge(true)
+		#die
+		queue_free()
+	else:
+		#a non player has triggered this entity's drive.
+		#is vulnerable?
+		if(!vulnerable):
+			print_debug("Misbehaviour with regards to vulnerability being triggered when it shouldn't.")
+		makeVulnerable(false)
+		logTransaction("Revenge", "NotAPlayer")
+		neuralNet.Revenge(false)
+		#die
+		queue_free()
 
-func triggerSolution(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Solution", isAPlayer)
-	neuralNet.Solution(isAPlayer)
+func triggerSolution(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Solution", "Player")
+		neuralNet.Solution(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Solution", "NotAPlayer")
+		neuralNet.Solution(false)
 
-func triggerStatus(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Status", isAPlayer)
-	neuralNet.Status(isAPlayer)
+func triggerStatus(sender):
+	if(sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Status", "Player")
+		neuralNet.Status(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Status", "NotAPlayer")
+		neuralNet.Status(false)
 
-func triggerVictory(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Victory", isAPlayer)
-	neuralNet.Victory(isAPlayer)
-	#die
-	#make this entity vulnerable
-	makeVulnerable(true)
-	queue_free()
+func triggerVictory(sender):
+	if(sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Victory", "Player")
+		neuralNet.Victory(true)
+		#die
+		#make this entity vulnerable
+		makeVulnerable(true)
+		queue_free()
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Victory", "NotAPlayer")
+		neuralNet.Victory(false)
+		#die
+		#make this entity vulnerable
+		makeVulnerable(true)
+		queue_free()
 
-func triggerWealth(isAPlayer):
-	#somebody or something else has triggered this entity's drive.
-	logTransaction("Wealth", isAPlayer)
-	neuralNet.Wealth(isAPlayer)
+func triggerWealth(sender):
+	if (sender == "Player"):
+		#player has triggered this entity's drive.
+		logTransaction("Wealth", "Player")
+		neuralNet.Wealth(true)
+	else:
+		#a non player has triggered this entity's drive.
+		logTransaction("Wealth", "NotAPlayer")
+		neuralNet.Wealth(false)
 
 func spriteShow(exSp, faSp, fuSp, frSp, jeSp, juSp, loSp, luSp, maSp, plSp, prSp, reSp, rvSp, soSp, stSp, viSp, weSp):
 	exploreSprite.visible = exSp

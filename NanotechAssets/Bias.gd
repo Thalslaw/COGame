@@ -1,6 +1,6 @@
 extends Node2D
 
-signal driveTriggered(value)
+signal driveTriggered(value,amount)
 
 # Declare member variables here. Examples:
 var bias = 0.5
@@ -13,7 +13,7 @@ func trigger(ag,ar,eg):
 	if(ag>=bias||ar>=bias||eg>=bias):
 		showFalse.visible = false
 		showTrue.visible = true
-		emit_signal(driveNumber)
+		emit_signal(driveNumber,bias)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	showTrue = get_node("True")
