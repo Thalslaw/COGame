@@ -101,7 +101,7 @@ func _physics_process(delta):
 
 func logTransaction(drive, isAPlayer):
 	#the entityLog already exists for this entity and maybe others.
-	entityLog.open("user://entityLog.dat", File.WRITE)
+	entityLog.open("res://entityLog.dat", File.WRITE)
 	var content = ("Drive: " + drive + " Player?: " + isAPlayer)
 	entityLog.store_string(content)
 	entityLog.close()
