@@ -80,19 +80,16 @@ func _physics_process(delta):
 		input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 		input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 		input_vector = input_vector.normalized()
-		
 	else:
 		#produce the same data as if the entity were a player.
-
 		#basic wiggle
 		input_vector.x = randf() - randf()
 		input_vector.y = randf() - randf()
 		input_vector = input_vector.normalized()
-		
-		#also, respond to player interactions.
 
-	#then resolve state dependant variables
-	
+	#rotation
+	selfSprite.look_at(input_vector)
+
 	#then resolve movement
 	
 	if input_vector != Vector2.ZERO:

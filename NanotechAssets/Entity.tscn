@@ -111,6 +111,10 @@ scale = Vector2( 1.6, 1.6 )
 z_index = 1
 texture = ExtResource( 2 )
 
+[node name="Rocket" type="Sprite" parent="NanobotSprite"]
+position = Vector2( 0, 14 )
+texture = ExtResource( 23 )
+
 [node name="Ag" type="Sprite" parent="."]
 position = Vector2( -63.3471, -46.8337 )
 scale = Vector2( 0.5, 0.5 )
@@ -961,11 +965,6 @@ texture = ExtResource( 25 )
 [node name="False" type="Sprite" parent="NeuralNet/Vulnerability"]
 visible = false
 texture = ExtResource( 26 )
-
-[node name="Rocket" type="Sprite" parent="."]
-position = Vector2( -0.0886536, 21.4477 )
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 23 )
 
 [node name="gameCamera" type="Camera2D" parent="."]
 
