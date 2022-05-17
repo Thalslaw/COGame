@@ -174,6 +174,9 @@ onready var Vulnerable = $Vulnerability
 onready var VulnerableTrue = $Vulnerability/True
 onready var VulnerableFalse = $Vulnerability/False
 
+#memories
+var LeverageList = []
+
 
 func Explore(isAPlayer):
 	ExploreBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
@@ -313,73 +316,107 @@ func _process(delta):
 	emit_signal("emotionalState",(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	
 
-func _on_ExploreBias_driveTriggered(value, amount):
+func _on_ExploreBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_FameBias_driveTriggered(value, amount):
+func _on_FameBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_FunBias_driveTriggered(value, amount):
+func _on_FunBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_FuryBias_driveTriggered(value, amount):
+func _on_FuryBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_JealousyBias_driveTriggered(value, amount):
+func _on_JealousyBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_JusticeBias_driveTriggered(value, amount):
+func _on_JusticeBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_LoveBias_driveTriggered(value, amount):
+func _on_LoveBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_LustBias_driveTriggered(value, amount):
+func _on_LustBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_MaliceBias_driveTriggered(value, amount):
+func _on_MaliceBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_PlunderBias_driveTriggered(value, amount):
+func _on_PlunderBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_PrideBias_driveTriggered(value, amount):
+func _on_PrideBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_RespectBias_driveTriggered(value, amount):
+func _on_RespectBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_RevengeBias_driveTriggered(value, amount):
+func _on_RevengeBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_SolutionBias_driveTriggered(value, amount):
+func _on_SolutionBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_StatusBias_driveTriggered(value, amount):
+func _on_StatusBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_VictoryBias_driveTriggered(value, amount):
+func _on_VictoryBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
-func _on_WealthBias_driveTriggered(value, amount):
+func _on_WealthBias_driveTriggered(value, amount, entity):
 	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
+	var memory = [amount, entity]
+	LeverageList.append(memory)
 
 
 func _on_HiddenLayers_output(want, yn):
