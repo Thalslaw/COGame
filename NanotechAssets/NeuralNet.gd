@@ -314,71 +314,71 @@ func _process(delta):
 	
 
 func _on_ExploreBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Explore"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_FameBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Fame"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_FunBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Fun"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_FuryBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Fury"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_JealousyBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Jealousy"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_JusticeBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Justice"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_LoveBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Love"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_LustBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Lust"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_MaliceBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Malice"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_PlunderBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Plunder"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_PrideBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Pride"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_RespectBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Respect"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_RevengeBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Revenge"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_SolutionBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Solution"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_StatusBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Status"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_VictoryBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Victory"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 func _on_WealthBias_driveTriggered(value, amount):
-	HiddenLayers.ISignal(("Wealth"),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
+	HiddenLayers.ISignal((value),(AgQuotient.Quotient), (ArQuotient.Quotient), (EgQuotient.Quotient))
 	#remember the amount of satisfaction gained from the other person's interactions.
 
 

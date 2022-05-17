@@ -116,6 +116,7 @@ position = Vector2( 0, 14 )
 texture = ExtResource( 23 )
 
 [node name="Ag" type="Sprite" parent="."]
+visible = false
 position = Vector2( -63.3471, -46.8337 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
@@ -126,6 +127,7 @@ texture = ExtResource( 3 )
 shape = SubResource( 5 )
 
 [node name="Ar" type="Sprite" parent="."]
+visible = false
 position = Vector2( 65.3903, -44.7051 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
@@ -136,6 +138,7 @@ texture = ExtResource( 4 )
 shape = SubResource( 6 )
 
 [node name="Eg" type="Sprite" parent="."]
+visible = false
 position = Vector2( -0.0886536, 78.6494 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
@@ -146,6 +149,7 @@ texture = ExtResource( 5 )
 shape = SubResource( 7 )
 
 [node name="Explore" type="Sprite" parent="."]
+visible = false
 position = Vector2( -19, -121 )
 texture = ExtResource( 8 )
 
@@ -155,6 +159,7 @@ texture = ExtResource( 8 )
 shape = SubResource( 8 )
 
 [node name="Fame" type="Sprite" parent="."]
+visible = false
 position = Vector2( 109, 57 )
 texture = ExtResource( 12 )
 
@@ -164,6 +169,7 @@ texture = ExtResource( 12 )
 shape = SubResource( 9 )
 
 [node name="Fun" type="Sprite" parent="."]
+visible = false
 position = Vector2( 17, -121 )
 texture = ExtResource( 18 )
 
@@ -173,6 +179,7 @@ texture = ExtResource( 18 )
 shape = SubResource( 10 )
 
 [node name="Fury" type="Sprite" parent="."]
+visible = false
 position = Vector2( 86, 89 )
 texture = ExtResource( 15 )
 
@@ -182,6 +189,7 @@ texture = ExtResource( 15 )
 shape = SubResource( 11 )
 
 [node name="Jealousy" type="Sprite" parent="."]
+visible = false
 position = Vector2( 120, 14 )
 texture = ExtResource( 17 )
 
@@ -191,6 +199,7 @@ texture = ExtResource( 17 )
 shape = SubResource( 12 )
 
 [node name="Justice" type="Sprite" parent="."]
+visible = false
 position = Vector2( -102, 68 )
 texture = ExtResource( 6 )
 
@@ -200,6 +209,7 @@ texture = ExtResource( 6 )
 shape = SubResource( 13 )
 
 [node name="Love" type="Sprite" parent="."]
+visible = false
 position = Vector2( 49, 111 )
 texture = ExtResource( 14 )
 
@@ -209,6 +219,7 @@ texture = ExtResource( 14 )
 shape = SubResource( 14 )
 
 [node name="Lust" type="Sprite" parent="."]
+visible = false
 position = Vector2( -51, -115 )
 texture = ExtResource( 22 )
 
@@ -218,6 +229,7 @@ texture = ExtResource( 22 )
 shape = SubResource( 15 )
 
 [node name="Malice" type="Sprite" parent="."]
+visible = false
 position = Vector2( -76, -97 )
 texture = ExtResource( 7 )
 
@@ -227,6 +239,7 @@ texture = ExtResource( 7 )
 shape = SubResource( 16 )
 
 [node name="Plunder" type="Sprite" parent="."]
+visible = false
 position = Vector2( 49, -112 )
 texture = ExtResource( 11 )
 
@@ -236,6 +249,7 @@ texture = ExtResource( 11 )
 shape = SubResource( 17 )
 
 [node name="Pride" type="Sprite" parent="."]
+visible = false
 position = Vector2( -116, 39 )
 texture = ExtResource( 16 )
 
@@ -245,6 +259,7 @@ texture = ExtResource( 16 )
 shape = SubResource( 18 )
 
 [node name="Respect" type="Sprite" parent="."]
+visible = false
 position = Vector2( -80, 93 )
 texture = ExtResource( 13 )
 
@@ -254,6 +269,7 @@ texture = ExtResource( 13 )
 shape = SubResource( 19 )
 
 [node name="Revenge" type="Sprite" parent="."]
+visible = false
 position = Vector2( 118, -23 )
 texture = ExtResource( 21 )
 
@@ -263,6 +279,7 @@ texture = ExtResource( 21 )
 shape = SubResource( 20 )
 
 [node name="Solution" type="Sprite" parent="."]
+visible = false
 position = Vector2( -53, 110 )
 texture = ExtResource( 10 )
 
@@ -272,6 +289,7 @@ texture = ExtResource( 10 )
 shape = SubResource( 21 )
 
 [node name="Status" type="Sprite" parent="."]
+visible = false
 position = Vector2( -122, 6 )
 texture = ExtResource( 19 )
 
@@ -281,6 +299,7 @@ texture = ExtResource( 19 )
 shape = SubResource( 22 )
 
 [node name="Victory" type="Sprite" parent="."]
+visible = false
 position = Vector2( 74, -96 )
 texture = ExtResource( 9 )
 
@@ -290,6 +309,7 @@ texture = ExtResource( 9 )
 shape = SubResource( 23 )
 
 [node name="Wealth" type="Sprite" parent="."]
+visible = false
 position = Vector2( -117, -26 )
 texture = ExtResource( 20 )
 

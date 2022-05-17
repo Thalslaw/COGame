@@ -87,17 +87,17 @@ func _physics_process(delta):
 		input_vector.y = randf() - randf()
 		input_vector = input_vector.normalized()
 
-	#rotation
-	selfSprite.look_at(input_vector)
-
 	#then resolve movement
-	
+
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
+
 	velocity = move_and_slide(velocity)
+
+	#rotation
+	selfSprite.look_at(input_vector)
 
 func logTransaction(drive, isAPlayer):
 	#the entityLog already exists for this entity and maybe others.
