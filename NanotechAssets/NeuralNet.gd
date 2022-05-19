@@ -179,104 +179,104 @@ var LeverageList = []
 
 
 func Explore(isAPlayer):
-	ExploreBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
+		ExploreBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1), get_parent())
 		ExploreTriggeredFalse.visible = false
 		ExploreTriggeredTrue.visible = true
 
 func Fame(isAPlayer):
-	FameBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		FameBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0), get_parent())
 		FameTriggeredFalse.visible = false
 		FameTriggeredTrue.visible = true
 
 func Fun(isAPlayer):
-	FunBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
+		FunBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1), get_parent())
 		FunTriggeredFalse.visible = false
 		FunTriggeredTrue.visible = true
 
 func Fury(isAPlayer):
-	FuryBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		FuryBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0), get_parent())
 		FuryTriggeredFalse.visible = false
 		FuryTriggeredTrue.visible = true
 
 func Jealousy(isAPlayer):
-	JealousyBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		JealousyBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0), get_parent())
 		JealousyTriggeredFalse.visible = false
 		JealousyTriggeredTrue.visible = true
 
 func Justice(isAPlayer):
-	JusticeBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		JusticeBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0), get_parent())
 		JusticeTriggeredFalse.visible = false
 		JusticeTriggeredTrue.visible = true
 
 func Love(isAPlayer):
-	LoveBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		LoveBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0), get_parent())
 		LoveTriggeredFalse.visible = false
 		LoveTriggeredTrue.visible = true
 
 func Lust(isAPlayer):
-	LustBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
+		LustBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1), get_parent())
 		LustTriggeredFalse.visible = false
 		LustTriggeredTrue.visible = true
 
 func Malice(isAPlayer):
-	MaliceBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
+		MaliceBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1), get_parent())
 		MaliceTriggeredFalse.visible = false
 		MaliceTriggeredTrue.visible = true
 
 func Plunder(isAPlayer):
-	PlunderBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
+		PlunderBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1), get_parent())
 		PlunderTriggeredFalse.visible = false
 		PlunderTriggeredTrue.visible = true
 
 func Pride(isAPlayer):
-	PrideBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		PrideBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0), get_parent())
 		PrideTriggeredFalse.visible = false
 		PrideTriggeredTrue.visible = true
 
 func Respect(isAPlayer):
-	RespectBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		RespectBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0), get_parent())
 		RespectTriggeredFalse.visible = false
 		RespectTriggeredTrue.visible = true
 
 func Revenge(isAPlayer):
-	RevengeBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		RevengeBias.trigger((AgQuotient.Quotient*1), (ArQuotient.Quotient*0), (EgQuotient.Quotient*0), get_parent())
 		RevengeTriggeredFalse.visible = false
 		RevengeTriggeredTrue.visible = true
 
 func Solution(isAPlayer):
-	SolutionBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		SolutionBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0), get_parent())
 		SolutionTriggeredFalse.visible = false
 		SolutionTriggeredTrue.visible = true
 
 func Status(isAPlayer):
-	StatusBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		StatusBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0), get_parent())
 		StatusTriggeredFalse.visible = false
 		StatusTriggeredTrue.visible = true
 
 func Victory(isAPlayer):
-	VictoryBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1))
 	if(isAPlayer):
+		VictoryBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*0), (EgQuotient.Quotient*1), get_parent())
 		VictoryTriggeredFalse.visible = false
 		VictoryTriggeredTrue.visible = true
 
 func Wealth(isAPlayer):
-	WealthBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0))
 	if(isAPlayer):
+		WealthBias.trigger((AgQuotient.Quotient*0), (ArQuotient.Quotient*1), (EgQuotient.Quotient*0), get_parent())
 		WealthTriggeredFalse.visible = false
 		WealthTriggeredTrue.visible = true
 
