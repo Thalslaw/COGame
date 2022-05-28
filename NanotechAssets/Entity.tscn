@@ -986,6 +986,193 @@ texture = ExtResource( 25 )
 visible = false
 texture = ExtResource( 26 )
 
+[node name="ExploreAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 5 )
+
+[node name="True" type="Sprite" parent="NeuralNet/ExploreAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/ExploreAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FameAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 10 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FameAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FameAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FunAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 15 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FunAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FunAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FuryAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 20 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FuryAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FuryAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JealousyAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 25 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JealousyAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JealousyAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JusticeAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JusticeAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JusticeAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LoveAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 35 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LoveAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LoveAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LustAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 40 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LustAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LustAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="MaliceAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 45 )
+
+[node name="True" type="Sprite" parent="NeuralNet/MaliceAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/MaliceAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PlunderAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 50 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PlunderAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PlunderAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PrideAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 55 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PrideAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PrideAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RespectAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 60 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RespectAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RespectAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RevengeAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 65 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RevengeAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RevengeAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="SolutionAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 70 )
+
+[node name="True" type="Sprite" parent="NeuralNet/SolutionAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/SolutionAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="StatusAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 75 )
+
+[node name="True" type="Sprite" parent="NeuralNet/StatusAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/StatusAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="VictoryAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 80 )
+
+[node name="True" type="Sprite" parent="NeuralNet/VictoryAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/VictoryAble"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="WealthAble" type="Node2D" parent="NeuralNet"]
+position = Vector2( 98, 85 )
+
+[node name="True" type="Sprite" parent="NeuralNet/WealthAble"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/WealthAble"]
+visible = false
+texture = ExtResource( 26 )
+
 [node name="gameCamera" type="Camera2D" parent="."]
 
 [connection signal="mouse_entered" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_entered"]
