@@ -1,0 +1,1068 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
+[ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
+[ext_resource path="res://NanotechAssets/AG.png" type="Texture" id=3]
+[ext_resource path="res://NanotechAssets/AR.png" type="Texture" id=4]
+[ext_resource path="res://NanotechAssets/EG.png" type="Texture" id=5]
+[ext_resource path="res://NanotechAssets/Drives/Justice.png" type="Texture" id=6]
+[ext_resource path="res://NanotechAssets/Drives/Malice.png" type="Texture" id=7]
+[ext_resource path="res://NanotechAssets/Drives/Explore.png" type="Texture" id=8]
+[ext_resource path="res://NanotechAssets/Drives/Victory.png" type="Texture" id=9]
+[ext_resource path="res://NanotechAssets/Drives/Solution.png" type="Texture" id=10]
+[ext_resource path="res://NanotechAssets/Drives/Plunder.png" type="Texture" id=11]
+[ext_resource path="res://NanotechAssets/Drives/Fame.png" type="Texture" id=12]
+[ext_resource path="res://NanotechAssets/Drives/Respect.png" type="Texture" id=13]
+[ext_resource path="res://NanotechAssets/Drives/Love.png" type="Texture" id=14]
+[ext_resource path="res://NanotechAssets/Drives/Fury.png" type="Texture" id=15]
+[ext_resource path="res://NanotechAssets/Drives/Pride.png" type="Texture" id=16]
+[ext_resource path="res://NanotechAssets/Drives/Jealousy.png" type="Texture" id=17]
+[ext_resource path="res://NanotechAssets/Drives/Fun.png" type="Texture" id=18]
+[ext_resource path="res://NanotechAssets/Drives/Status.png" type="Texture" id=19]
+[ext_resource path="res://NanotechAssets/Drives/Wealth.png" type="Texture" id=20]
+[ext_resource path="res://NanotechAssets/Drives/Revenge.png" type="Texture" id=21]
+[ext_resource path="res://NanotechAssets/Drives/Lust.png" type="Texture" id=22]
+[ext_resource path="res://NanotechAssets/Rocket.png" type="Texture" id=23]
+[ext_resource path="res://NanotechAssets/NeuralNet.gd" type="Script" id=24]
+[ext_resource path="res://NanotechAssets/empty button.png" type="Texture" id=25]
+[ext_resource path="res://NanotechAssets/filled button.png" type="Texture" id=26]
+[ext_resource path="res://NanotechAssets/Bias.gd" type="Script" id=27]
+[ext_resource path="res://NanotechAssets/Quotient.gd" type="Script" id=28]
+[ext_resource path="res://NanotechAssets/HiddenLayers.gd" type="Script" id=29]
+[ext_resource path="res://NanotechAssets/Want.gd" type="Script" id=30]
+[ext_resource path="res://NanotechAssets/Vulnerability.gd" type="Script" id=31]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 139.152
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 31.4155
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 31.5296
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 31.1668
+
+[sub_resource type="CircleShape2D" id=8]
+
+[sub_resource type="CircleShape2D" id=9]
+
+[sub_resource type="CircleShape2D" id=10]
+
+[sub_resource type="CircleShape2D" id=11]
+
+[sub_resource type="CircleShape2D" id=12]
+
+[sub_resource type="CircleShape2D" id=13]
+
+[sub_resource type="CircleShape2D" id=14]
+
+[sub_resource type="CircleShape2D" id=15]
+
+[sub_resource type="CircleShape2D" id=16]
+
+[sub_resource type="CircleShape2D" id=17]
+
+[sub_resource type="CircleShape2D" id=18]
+
+[sub_resource type="CircleShape2D" id=19]
+
+[sub_resource type="CircleShape2D" id=20]
+
+[sub_resource type="CircleShape2D" id=21]
+
+[sub_resource type="CircleShape2D" id=22]
+
+[sub_resource type="CircleShape2D" id=23]
+
+[sub_resource type="CircleShape2D" id=24]
+
+[node name="Nanobot" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="HurtboxCollider" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource( 1 )
+
+[node name="ViewBox" type="Area2D" parent="."]
+
+[node name="ViewCollider" type="CollisionShape2D" parent="ViewBox"]
+shape = SubResource( 3 )
+
+[node name="MouseOverBox" type="Area2D" parent="."]
+
+[node name="MouseOverCollider" type="CollisionShape2D" parent="MouseOverBox"]
+shape = SubResource( 4 )
+
+[node name="NanobotSprite" type="Sprite" parent="."]
+position = Vector2( -4.76838e-08, 7.15256e-07 )
+scale = Vector2( 1.6, 1.6 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="Rocket" type="Sprite" parent="NanobotSprite"]
+position = Vector2( 0, 14 )
+texture = ExtResource( 23 )
+
+[node name="Ag" type="Sprite" parent="."]
+visible = false
+position = Vector2( -63.3471, -46.8337 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="AgencyMouseOverBox" type="Area2D" parent="Ag"]
+
+[node name="AgencyMouseOverCollider" type="CollisionShape2D" parent="Ag/AgencyMouseOverBox"]
+shape = SubResource( 5 )
+
+[node name="Ar" type="Sprite" parent="."]
+visible = false
+position = Vector2( 65.3903, -44.7051 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="ArousalMouseOverBox" type="Area2D" parent="Ar"]
+
+[node name="ArousalMouseOverCollider" type="CollisionShape2D" parent="Ar/ArousalMouseOverBox"]
+shape = SubResource( 6 )
+
+[node name="Eg" type="Sprite" parent="."]
+visible = false
+position = Vector2( -0.0886536, 78.6494 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="EgoMouseOverBox" type="Area2D" parent="Eg"]
+
+[node name="EgoMouseOverCollider" type="CollisionShape2D" parent="Eg/EgoMouseOverBox"]
+shape = SubResource( 7 )
+
+[node name="Explore" type="Sprite" parent="."]
+visible = false
+position = Vector2( -19, -121 )
+texture = ExtResource( 8 )
+
+[node name="ExploreMouseOverBox" type="Area2D" parent="Explore"]
+
+[node name="ExploreMouseOverCollider" type="CollisionShape2D" parent="Explore/ExploreMouseOverBox"]
+shape = SubResource( 8 )
+
+[node name="Fame" type="Sprite" parent="."]
+visible = false
+position = Vector2( 109, 57 )
+texture = ExtResource( 12 )
+
+[node name="FameMouseOverBox" type="Area2D" parent="Fame"]
+
+[node name="FameMouseOverCollider" type="CollisionShape2D" parent="Fame/FameMouseOverBox"]
+shape = SubResource( 9 )
+
+[node name="Fun" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17, -121 )
+texture = ExtResource( 18 )
+
+[node name="FunMouseOverBox" type="Area2D" parent="Fun"]
+
+[node name="FunMouseOverCollider" type="CollisionShape2D" parent="Fun/FunMouseOverBox"]
+shape = SubResource( 10 )
+
+[node name="Fury" type="Sprite" parent="."]
+visible = false
+position = Vector2( 86, 89 )
+texture = ExtResource( 15 )
+
+[node name="FuryMouseOverBox" type="Area2D" parent="Fury"]
+
+[node name="FuryMouseOverCollider" type="CollisionShape2D" parent="Fury/FuryMouseOverBox"]
+shape = SubResource( 11 )
+
+[node name="Jealousy" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 14 )
+texture = ExtResource( 17 )
+
+[node name="JealousyMouseOverBox" type="Area2D" parent="Jealousy"]
+
+[node name="JealousyMouseOverCollider" type="CollisionShape2D" parent="Jealousy/JealousyMouseOverBox"]
+shape = SubResource( 12 )
+
+[node name="Justice" type="Sprite" parent="."]
+visible = false
+position = Vector2( -102, 68 )
+texture = ExtResource( 6 )
+
+[node name="JusticeMouseOverBox" type="Area2D" parent="Justice"]
+
+[node name="JusticeMouseOverCollider" type="CollisionShape2D" parent="Justice/JusticeMouseOverBox"]
+shape = SubResource( 13 )
+
+[node name="Love" type="Sprite" parent="."]
+visible = false
+position = Vector2( 49, 111 )
+texture = ExtResource( 14 )
+
+[node name="LoveMouseOverBox" type="Area2D" parent="Love"]
+
+[node name="LoveMouseOverCollider" type="CollisionShape2D" parent="Love/LoveMouseOverBox"]
+shape = SubResource( 14 )
+
+[node name="Lust" type="Sprite" parent="."]
+visible = false
+position = Vector2( -51, -115 )
+texture = ExtResource( 22 )
+
+[node name="LustMouseOverBox" type="Area2D" parent="Lust"]
+
+[node name="LustMouseOverCollider" type="CollisionShape2D" parent="Lust/LustMouseOverBox"]
+shape = SubResource( 15 )
+
+[node name="Malice" type="Sprite" parent="."]
+visible = false
+position = Vector2( -76, -97 )
+texture = ExtResource( 7 )
+
+[node name="MaliceMouseOverBox" type="Area2D" parent="Malice"]
+
+[node name="MaliceMouseOverCollider" type="CollisionShape2D" parent="Malice/MaliceMouseOverBox"]
+shape = SubResource( 16 )
+
+[node name="Plunder" type="Sprite" parent="."]
+visible = false
+position = Vector2( 49, -112 )
+texture = ExtResource( 11 )
+
+[node name="PlunderMouseOverBox" type="Area2D" parent="Plunder"]
+
+[node name="PlunderMouseOverCollider" type="CollisionShape2D" parent="Plunder/PlunderMouseOverBox"]
+shape = SubResource( 17 )
+
+[node name="Pride" type="Sprite" parent="."]
+visible = false
+position = Vector2( -116, 39 )
+texture = ExtResource( 16 )
+
+[node name="PrideMouseOverBox" type="Area2D" parent="Pride"]
+
+[node name="PrideMouseOverCollider" type="CollisionShape2D" parent="Pride/PrideMouseOverBox"]
+shape = SubResource( 18 )
+
+[node name="Respect" type="Sprite" parent="."]
+visible = false
+position = Vector2( -80, 93 )
+texture = ExtResource( 13 )
+
+[node name="RespectMouseOverBox" type="Area2D" parent="Respect"]
+
+[node name="RespectMouseOverCollider" type="CollisionShape2D" parent="Respect/RespectMouseOverBox"]
+shape = SubResource( 19 )
+
+[node name="Revenge" type="Sprite" parent="."]
+visible = false
+position = Vector2( 118, -23 )
+texture = ExtResource( 21 )
+
+[node name="RevengeMouseOverBox" type="Area2D" parent="Revenge"]
+
+[node name="RevengeMouseOverCollider" type="CollisionShape2D" parent="Revenge/RevengeMouseOverBox"]
+shape = SubResource( 20 )
+
+[node name="Solution" type="Sprite" parent="."]
+visible = false
+position = Vector2( -53, 110 )
+texture = ExtResource( 10 )
+
+[node name="SolutionMouseOverBox" type="Area2D" parent="Solution"]
+
+[node name="SolutionMouseOverCollider" type="CollisionShape2D" parent="Solution/SolutionMouseOverBox"]
+shape = SubResource( 21 )
+
+[node name="Status" type="Sprite" parent="."]
+visible = false
+position = Vector2( -122, 6 )
+texture = ExtResource( 19 )
+
+[node name="StatusMouseOverBox" type="Area2D" parent="Status"]
+
+[node name="StatusMouseOverCollider" type="CollisionShape2D" parent="Status/StatusMouseOverBox"]
+shape = SubResource( 22 )
+
+[node name="Victory" type="Sprite" parent="."]
+visible = false
+position = Vector2( 74, -96 )
+texture = ExtResource( 9 )
+
+[node name="VictoryMouseOverBox" type="Area2D" parent="Victory"]
+
+[node name="VictoryMouseOverCollider" type="CollisionShape2D" parent="Victory/VictoryMouseOverBox"]
+shape = SubResource( 23 )
+
+[node name="Wealth" type="Sprite" parent="."]
+visible = false
+position = Vector2( -117, -26 )
+texture = ExtResource( 20 )
+
+[node name="WealthMouseOverBox" type="Area2D" parent="Wealth"]
+
+[node name="WealthMouseOverCollider" type="CollisionShape2D" parent="Wealth/WealthMouseOverBox"]
+shape = SubResource( 24 )
+
+[node name="NeuralNet" type="Node2D" parent="."]
+position = Vector2( -140, 129 )
+script = ExtResource( 24 )
+
+[node name="NNViewport" type="Node2D" parent="NeuralNet"]
+
+[node name="True" type="Sprite" parent="NeuralNet/NNViewport"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/NNViewport"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="ExploreTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 5 )
+
+[node name="True" type="Sprite" parent="NeuralNet/ExploreTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/ExploreTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FameTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 10 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FameTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FameTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FunTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 15 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FunTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FunTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FuryTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 20 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FuryTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FuryTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JealousyTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 25 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JealousyTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JealousyTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JusticeTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JusticeTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JusticeTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LoveTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 35 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LoveTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LoveTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LustTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 40 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LustTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LustTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="MaliceTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 45 )
+
+[node name="True" type="Sprite" parent="NeuralNet/MaliceTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/MaliceTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PlunderTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 50 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PlunderTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PlunderTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PrideTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 55 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PrideTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PrideTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RespectTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 60 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RespectTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RespectTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RevengeTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 65 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RevengeTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RevengeTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="SolutionTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 70 )
+
+[node name="True" type="Sprite" parent="NeuralNet/SolutionTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/SolutionTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="StatusTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 75 )
+
+[node name="True" type="Sprite" parent="NeuralNet/StatusTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/StatusTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="VictoryTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 80 )
+
+[node name="True" type="Sprite" parent="NeuralNet/VictoryTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/VictoryTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="WealthTriggered" type="Node2D" parent="NeuralNet"]
+position = Vector2( 0, 85 )
+
+[node name="True" type="Sprite" parent="NeuralNet/WealthTriggered"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/WealthTriggered"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="AgQuotient" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 90 )
+script = ExtResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="NeuralNet/AgQuotient"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="ArQuotient" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 95 )
+script = ExtResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="NeuralNet/ArQuotient"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="EgQuotient" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 100 )
+script = ExtResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="NeuralNet/EgQuotient"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="ExploreBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 5 )
+script = ExtResource( 27 )
+
+[node name="True" type="Sprite" parent="NeuralNet/ExploreBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/ExploreBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FameBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 10 )
+script = ExtResource( 27 )
+driveNumber = 1
+
+[node name="True" type="Sprite" parent="NeuralNet/FameBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FameBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FunBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 15 )
+script = ExtResource( 27 )
+driveNumber = 2
+
+[node name="True" type="Sprite" parent="NeuralNet/FunBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FunBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FuryBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 20 )
+script = ExtResource( 27 )
+driveNumber = 3
+
+[node name="True" type="Sprite" parent="NeuralNet/FuryBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FuryBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JealousyBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 25 )
+script = ExtResource( 27 )
+driveNumber = 4
+
+[node name="True" type="Sprite" parent="NeuralNet/JealousyBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JealousyBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JusticeBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 30 )
+script = ExtResource( 27 )
+driveNumber = 5
+
+[node name="True" type="Sprite" parent="NeuralNet/JusticeBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JusticeBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LoveBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 35 )
+script = ExtResource( 27 )
+driveNumber = 6
+
+[node name="True" type="Sprite" parent="NeuralNet/LoveBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LoveBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LustBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 40 )
+script = ExtResource( 27 )
+driveNumber = 7
+
+[node name="True" type="Sprite" parent="NeuralNet/LustBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LustBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="MaliceBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 45 )
+script = ExtResource( 27 )
+driveNumber = 8
+
+[node name="True" type="Sprite" parent="NeuralNet/MaliceBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/MaliceBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PlunderBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 50 )
+script = ExtResource( 27 )
+driveNumber = 9
+
+[node name="True" type="Sprite" parent="NeuralNet/PlunderBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PlunderBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PrideBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 55 )
+script = ExtResource( 27 )
+driveNumber = 10
+
+[node name="True" type="Sprite" parent="NeuralNet/PrideBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PrideBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RespectBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 60 )
+script = ExtResource( 27 )
+driveNumber = 11
+
+[node name="True" type="Sprite" parent="NeuralNet/RespectBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RespectBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RevengeBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 65 )
+script = ExtResource( 27 )
+driveNumber = 12
+
+[node name="True" type="Sprite" parent="NeuralNet/RevengeBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RevengeBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="SolutionBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 70 )
+script = ExtResource( 27 )
+driveNumber = 13
+
+[node name="True" type="Sprite" parent="NeuralNet/SolutionBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/SolutionBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="StatusBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 75 )
+script = ExtResource( 27 )
+driveNumber = 14
+
+[node name="True" type="Sprite" parent="NeuralNet/StatusBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/StatusBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="VictoryBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 80 )
+script = ExtResource( 27 )
+driveNumber = 15
+
+[node name="True" type="Sprite" parent="NeuralNet/VictoryBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/VictoryBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="WealthBias" type="Node2D" parent="NeuralNet"]
+position = Vector2( 20, 85 )
+script = ExtResource( 27 )
+driveNumber = 16
+
+[node name="True" type="Sprite" parent="NeuralNet/WealthBias"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/WealthBias"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="HiddenLayers" type="Node2D" parent="NeuralNet"]
+position = Vector2( 40, 5 )
+script = ExtResource( 29 )
+
+[node name="ExploreWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 5 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/ExploreWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/ExploreWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FameWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 10 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FameWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FameWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FunWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 15 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FunWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FunWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="FuryWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 20 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/FuryWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/FuryWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JealousyWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 25 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JealousyWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JealousyWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="JusticeWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 30 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/JusticeWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/JusticeWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LoveWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 35 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LoveWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LoveWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="LustWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 40 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/LustWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/LustWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="MaliceWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 45 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/MaliceWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/MaliceWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PlunderWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 50 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PlunderWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PlunderWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="PrideWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 55 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/PrideWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/PrideWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RespectWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 60 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RespectWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RespectWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="RevengeWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 65 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/RevengeWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/RevengeWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="SolutionWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 70 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/SolutionWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/SolutionWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="StatusWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 75 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/StatusWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/StatusWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="VictoryWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 80 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/VictoryWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/VictoryWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="WealthWant" type="Node2D" parent="NeuralNet"]
+position = Vector2( 59, 85 )
+script = ExtResource( 30 )
+
+[node name="True" type="Sprite" parent="NeuralNet/WealthWant"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/WealthWant"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="Vulnerability" type="Node2D" parent="NeuralNet"]
+position = Vector2( 78, 5 )
+script = ExtResource( 31 )
+
+[node name="True" type="Sprite" parent="NeuralNet/Vulnerability"]
+visible = false
+texture = ExtResource( 25 )
+
+[node name="False" type="Sprite" parent="NeuralNet/Vulnerability"]
+visible = false
+texture = ExtResource( 26 )
+
+[node name="gameCamera" type="Camera2D" parent="."]
+
+[connection signal="mouse_entered" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_exited"]
+[connection signal="mouse_entered" from="Ag/AgencyMouseOverBox" to="." method="_on_AgencyMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Ag/AgencyMouseOverBox" to="." method="_on_AgencyMouseOverBox_mouse_exited"]
+[connection signal="mouse_entered" from="Ar/ArousalMouseOverBox" to="." method="_on_ArousalMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Ar/ArousalMouseOverBox" to="." method="_on_ArousalMouseOverBox_mouse_exited"]
+[connection signal="mouse_entered" from="Eg/EgoMouseOverBox" to="." method="_on_EgoMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Eg/EgoMouseOverBox" to="." method="_on_EgoMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Explore/ExploreMouseOverBox" to="." method="_on_ExploreMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Explore/ExploreMouseOverBox" to="." method="_on_ExploreMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Explore/ExploreMouseOverBox" to="." method="_on_ExploreMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Fame/FameMouseOverBox" to="." method="_on_FameMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Fame/FameMouseOverBox" to="." method="_on_FameMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Fame/FameMouseOverBox" to="." method="_on_FameMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Fun/FunMouseOverBox" to="." method="_on_FunMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Fun/FunMouseOverBox" to="." method="_on_FunMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Fun/FunMouseOverBox" to="." method="_on_FunMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Fury/FuryMouseOverBox" to="." method="_on_FuryMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Fury/FuryMouseOverBox" to="." method="_on_FuryMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Fury/FuryMouseOverBox" to="." method="_on_FuryMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Jealousy/JealousyMouseOverBox" to="." method="_on_JealousyMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Jealousy/JealousyMouseOverBox" to="." method="_on_JealousyMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Jealousy/JealousyMouseOverBox" to="." method="_on_JealousyMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Justice/JusticeMouseOverBox" to="." method="_on_JusticeMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Justice/JusticeMouseOverBox" to="." method="_on_JusticeMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Justice/JusticeMouseOverBox" to="." method="_on_JusticeMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Love/LoveMouseOverBox" to="." method="_on_LoveMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Love/LoveMouseOverBox" to="." method="_on_LoveMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Love/LoveMouseOverBox" to="." method="_on_LoveMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Lust/LustMouseOverBox" to="." method="_on_LustMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Lust/LustMouseOverBox" to="." method="_on_LustMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Lust/LustMouseOverBox" to="." method="_on_LustMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Malice/MaliceMouseOverBox" to="." method="_on_MaliceMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Malice/MaliceMouseOverBox" to="." method="_on_MaliceMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Malice/MaliceMouseOverBox" to="." method="_on_MaliceMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Plunder/PlunderMouseOverBox" to="." method="_on_PlunderMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Plunder/PlunderMouseOverBox" to="." method="_on_PlunderMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Plunder/PlunderMouseOverBox" to="." method="_on_PlunderMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Pride/PrideMouseOverBox" to="." method="_on_PrideMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Pride/PrideMouseOverBox" to="." method="_on_PrideMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Pride/PrideMouseOverBox" to="." method="_on_PrideMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Respect/RespectMouseOverBox" to="." method="_on_RespectMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Respect/RespectMouseOverBox" to="." method="_on_RespectMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Respect/RespectMouseOverBox" to="." method="_on_RespectMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Revenge/RevengeMouseOverBox" to="." method="_on_RevengeMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Revenge/RevengeMouseOverBox" to="." method="_on_RevengeMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Revenge/RevengeMouseOverBox" to="." method="_on_RevengeMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Solution/SolutionMouseOverBox" to="." method="_on_SolutionMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Solution/SolutionMouseOverBox" to="." method="_on_SolutionMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Solution/SolutionMouseOverBox" to="." method="_on_SolutionMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Status/StatusMouseOverBox" to="." method="_on_StatusMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Status/StatusMouseOverBox" to="." method="_on_StatusMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Status/StatusMouseOverBox" to="." method="_on_StatusMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Victory/VictoryMouseOverBox" to="." method="_on_VictoryMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Victory/VictoryMouseOverBox" to="." method="_on_VictoryMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Victory/VictoryMouseOverBox" to="." method="_on_VictoryMouseOverBox_mouse_exited"]
+[connection signal="input_event" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_input_event"]
+[connection signal="mouse_entered" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_mouse_entered"]
+[connection signal="mouse_exited" from="Wealth/WealthMouseOverBox" to="." method="_on_WealthMouseOverBox_mouse_exited"]
+[connection signal="emotionalState" from="NeuralNet" to="." method="_on_NeuralNet_emotionalState"]
+[connection signal="driveTriggered" from="NeuralNet/ExploreBias" to="NeuralNet" method="_on_ExploreBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/FameBias" to="NeuralNet" method="_on_FameBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/FunBias" to="NeuralNet" method="_on_FunBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/FuryBias" to="NeuralNet" method="_on_FuryBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/JealousyBias" to="NeuralNet" method="_on_JealousyBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/JusticeBias" to="NeuralNet" method="_on_JusticeBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/LoveBias" to="NeuralNet" method="_on_LoveBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/LustBias" to="NeuralNet" method="_on_LustBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/MaliceBias" to="NeuralNet" method="_on_MaliceBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/PlunderBias" to="NeuralNet" method="_on_PlunderBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/PrideBias" to="NeuralNet" method="_on_PrideBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/RespectBias" to="NeuralNet" method="_on_RespectBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/RevengeBias" to="NeuralNet" method="_on_RevengeBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/SolutionBias" to="NeuralNet" method="_on_SolutionBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/StatusBias" to="NeuralNet" method="_on_StatusBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/VictoryBias" to="NeuralNet" method="_on_VictoryBias_driveTriggered"]
+[connection signal="driveTriggered" from="NeuralNet/WealthBias" to="NeuralNet" method="_on_WealthBias_driveTriggered"]
+[connection signal="output" from="NeuralNet/HiddenLayers" to="NeuralNet" method="_on_HiddenLayers_output"]
