@@ -22,39 +22,39 @@ func _ready():
 	showFalse = get_node("False")
 	if(driveNumber == 0):
 		DriveName = "Explore"
-	elif(driveNumber == 1):
+	if(driveNumber == 1):
 		DriveName = "Fame"
-	elif(driveNumber == 2):
+	if(driveNumber == 2):
 		DriveName = "Fun"
-	elif(driveNumber == 3):
+	if(driveNumber == 3):
 		DriveName = "Fury"
-	elif(driveNumber == 4):
+	if(driveNumber == 4):
 		DriveName = "Jealousy"
-	elif(driveNumber == 5):
+	if(driveNumber == 5):
 		DriveName = "Justice"
-	elif(driveNumber == 6):
+	if(driveNumber == 6):
 		DriveName = "Love"
-	elif(driveNumber == 7):
+	if(driveNumber == 7):
 		DriveName = "Lust"
-	elif(driveNumber == 8):
+	if(driveNumber == 8):
 		DriveName = "Malice"
-	elif(driveNumber == 9):
+	if(driveNumber == 9):
 		DriveName = "Plunder"
-	elif(driveNumber == 10):
+	if(driveNumber == 10):
 		DriveName = "Pride"
-	elif(driveNumber == 11):
+	if(driveNumber == 11):
 		DriveName = "Respect"
-	elif(driveNumber == 12):
+	if(driveNumber == 12):
 		DriveName = "Revenge"
-	elif(driveNumber == 13):
+	if(driveNumber == 13):
 		DriveName = "Solution"
-	elif(driveNumber == 14):
+	if(driveNumber == 14):
 		DriveName = "Status"
-	elif(driveNumber == 15):
+	if(driveNumber == 15):
 		DriveName = "Victory"
-	elif(driveNumber == 16):
+	if(driveNumber == 16):
 		DriveName = "Wealth"
-		
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
