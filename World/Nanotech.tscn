@@ -53,6 +53,9 @@ margin_right = 1056.0
 margin_bottom = 392.0
 size_flags_stretch_ratio = 0.34
 text = "Entity Behaviour Learning Frameworked. 
+
+Olivia Todo: make face. face sits on edge and can spin
+
 ToDo: Behaviours and Core Gameplay Loop, Databasing.
 
 24 days of sustainable coding for core code.
