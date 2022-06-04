@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
 [ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
@@ -100,6 +100,10 @@ radius = 31.1668
 [sub_resource type="CircleShape2D" id=23]
 
 [sub_resource type="CircleShape2D" id=24]
+
+[sub_resource type="CapsuleShape2D" id=25]
+radius = 68.0
+height = 68.0
 
 [node name="Nanobot" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -1208,6 +1212,13 @@ visible = false
 texture = ExtResource( 26 )
 
 [node name="gameCamera" type="Camera2D" parent="."]
+
+[node name="Head" type="Area2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="Viewcone" type="CollisionShape2D" parent="Head"]
+position = Vector2( 0, -64 )
+shape = SubResource( 25 )
 
 [connection signal="mouse_entered" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_entered"]
 [connection signal="mouse_exited" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_exited"]
