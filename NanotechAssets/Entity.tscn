@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://NanotechAssets/Entity.gd" type="Script" id=1]
 [ext_resource path="res://NanotechAssets/Bot.png" type="Texture" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://NanotechAssets/SolutionAble.gd" type="Script" id=46]
 [ext_resource path="res://NanotechAssets/StatusAble.gd" type="Script" id=47]
 [ext_resource path="res://NanotechAssets/WealthAble.gd" type="Script" id=48]
+[ext_resource path="res://NanotechAssets/faec.png" type="Texture" id=49]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -1219,6 +1220,11 @@ position = Vector2( 0, -8 )
 [node name="Viewcone" type="CollisionShape2D" parent="Head"]
 position = Vector2( 0, -64 )
 shape = SubResource( 25 )
+
+[node name="Faec" type="Sprite" parent="Head/Viewcone"]
+position = Vector2( -0.0886536, 62.2142 )
+scale = Vector2( 1.51388, 1.72871 )
+texture = ExtResource( 49 )
 
 [connection signal="mouse_entered" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_entered"]
 [connection signal="mouse_exited" from="MouseOverBox" to="." method="_on_MouseOverBox_mouse_exited"]
